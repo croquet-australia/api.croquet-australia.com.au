@@ -2,7 +2,9 @@
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Filters;
+using Anotar.NLog;
 using CroquetAustralia.WebApi.Filters;
+using CroquetAustralia.WebApi.Settings;
 
 namespace CroquetAustralia.WebApi
 {
@@ -19,8 +21,10 @@ namespace CroquetAustralia.WebApi
 
         private static void ConfigureCors(HttpConfiguration config)
         {
-            var cors = new EnableCorsAttribute("https://localhost:44302", "*", "*");
+            var cors = new EnableCorsAttribute(new WebAppSettings().BaseUri, "*", "*");
             config.EnableCors(cors);
+
+            LogTo.Info($"Enable CORS with origins '{string.Join(",", cors.Origins)}'.");
         }
 
         private static void ConfigureFormatters(MediaTypeFormatterCollection formatters)
@@ -32,6 +36,7 @@ namespace CroquetAustralia.WebApi
         private static void ConfigureFilters(HttpFilterCollection filters)
         {
             filters.Add(new RequireHttpsAttribute());
+            filters.Add(new ValidateModelAttribute());
         }
     }
 }

@@ -5,9 +5,16 @@ namespace CroquetAustralia.Domain.Services
 {
     public class CloudStorage
     {
-        public static CloudQueue GetEventsQueue()
+        private readonly IConnectionStringSettings _connectionStringSettings;
+
+        public CloudStorage(IConnectionStringSettings connectionStringSettings)
         {
-            var storageAccount = CloudStorageAccount.Parse("UseDevelopmentStorage=true;");
+            _connectionStringSettings = connectionStringSettings;
+        }
+
+        public CloudQueue GetEventsQueue()
+        {
+            var storageAccount = CloudStorageAccount.Parse(_connectionStringSettings.AzureStorage);
             var queueClient = storageAccount.CreateCloudQueueClient();
 
             var queue = queueClient.GetQueueReference("events");

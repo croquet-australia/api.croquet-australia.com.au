@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CroquetAustralia.Domain.Core;
-using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Newtonsoft.Json;
 
@@ -11,9 +10,9 @@ namespace CroquetAustralia.Domain.Services
     {
         private readonly Lazy<CloudQueue> _lazyQueue;
 
-        public EventQueue()
+        public EventQueue(CloudStorage cloudStorage)
         {
-            _lazyQueue = new Lazy<CloudQueue>(CloudStorage.GetEventsQueue);
+            _lazyQueue = new Lazy<CloudQueue>(cloudStorage.GetEventsQueue);
         }
 
         private CloudQueue Queue => _lazyQueue.Value;

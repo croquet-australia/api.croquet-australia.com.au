@@ -6,6 +6,8 @@
 param(
     [CmdletBinding(SupportsShouldProcess=$true)]
          
+    [Parameter(Mandatory = $true)] 
+    [string] $ConnectionStringAzureStorage,
     [Parameter(Mandatory = $false)] 
     [string] $WebSiteName = "croquet-australia-api",
     [Parameter(Mandatory = $false)] 
@@ -13,6 +15,7 @@ param(
 )
 
 $appSettings = @{ ` 
+    "ConnectionString:AzureStorage" = $ConnectionStringAzureStorage;
     "WebApp:BaseUri" = $WebAppBaseUri;
 }
 

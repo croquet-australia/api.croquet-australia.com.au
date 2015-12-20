@@ -1,5 +1,5 @@
-﻿using Anotar.NLog;
-using CroquetAustralia.Domain.Services;
+﻿using CroquetAustralia.Domain.Services;
+using CroquetAustralia.WebApi.Settings;
 using Ninject.Modules;
 
 namespace CroquetAustralia.WebApi
@@ -8,7 +8,7 @@ namespace CroquetAustralia.WebApi
     {
         public override void Load()
         {
-            LogTo.Trace("Load() - in s");
+            Bind<IConnectionStringSettings>().To<ConnectionStringSettings>();
             Bind<IEventQueue>().To<EventQueue>().InSingletonScope();
         }
     }

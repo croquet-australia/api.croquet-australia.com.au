@@ -1,9 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
+using AutoMapper;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 using CroquetAustralia.Domain.Services;
@@ -21,9 +18,12 @@ namespace CroquetAustralia.WebApi.Controllers
         }
 
         [HttpPost, Route("add-entry")]
-        public Task AddEntryAsync(SubmitEntry command)
+        public async Task AddEntryAsync(SubmitEntry command)
         {
-                throw new NotImplementedException("Model is valid");
+            // todo: extension method command.MapTo<EntrySubmitted>
+            var @event = Mapper.Map<EntrySubmitted>(command);
+
+            await _eventQueue.AddEventAsync(@event);
         }
     }
 }

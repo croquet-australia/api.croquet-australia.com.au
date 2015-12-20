@@ -2,8 +2,8 @@
 
 namespace CroquetAustralia.Domain.Core
 {
-    public interface ICommand
+    public interface IEntity
     {
-        Guid EntityId { get; set; }
+        Guid Id { get; set; }
     }
 }

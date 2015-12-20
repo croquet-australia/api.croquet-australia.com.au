@@ -4,6 +4,7 @@ namespace CroquetAustralia.Domain.Core
 {
     public interface IEvent
     {
-        Guid Id { get; set; }
+        Guid EntityId { get; set; }
+        DateTime Created { get; set; }
     }
 }

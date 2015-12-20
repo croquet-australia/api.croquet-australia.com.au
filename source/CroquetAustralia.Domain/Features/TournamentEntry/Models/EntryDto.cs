@@ -8,14 +8,14 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Models
 {
     [NullGuard(ValidationFlags.None)]
     [EmptyStringGuard(EmptyStringGuard.ValidationFlags.None)]
-    public abstract class Entry
+    public abstract class EntryDto
     {
-        internal Entry()
+        internal EntryDto()
         {
         }
 
         [Required]
-        public Guid Id { get; set; }
+        public Guid EntityId { get; set; }
 
         [Required]
         public Guid TournamentId { get; set; }

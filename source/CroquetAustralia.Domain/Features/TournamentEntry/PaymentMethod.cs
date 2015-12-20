@@ -2,6 +2,7 @@
 {
     public enum PaymentMethod
     {
-        EFT
+        EFT,
+        Cheque
     }
 }

@@ -5,7 +5,7 @@ using CroquetAustralia.Domain.Features.TournamentEntry.Models;
 
 namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
 {
-    public class SubmitEntry : Entry,IValidatableObject
+    public class SubmitEntry : EntryDto, IValidatableObject
     {
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

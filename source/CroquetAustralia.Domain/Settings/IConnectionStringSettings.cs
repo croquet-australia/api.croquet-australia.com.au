@@ -1,4 +1,4 @@
-﻿namespace CroquetAustralia.Domain.Services
+﻿namespace CroquetAustralia.Domain.Settings
 {
     public interface IConnectionStringSettings
     {

@@ -1,6 +1,6 @@
-﻿using CroquetAustralia.Domain.Services;
+﻿using CroquetAustralia.Library.Settings;
 
-namespace CroquetAustralia.WebApi.Settings
+namespace CroquetAustralia.Domain.Settings
 {
     public class ConnectionStringSettings : BaseAppSettings, IConnectionStringSettings
     {

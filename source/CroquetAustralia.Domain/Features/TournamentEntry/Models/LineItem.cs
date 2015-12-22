@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using EmptyStringGuard;
+using Newtonsoft.Json;
 using NullGuard;
 using ValidationFlags = NullGuard.ValidationFlags;
 
@@ -22,6 +23,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Models
         [Range(0, 100)]
         public decimal DiscountPercentage { get; set; }
 
+        [JsonIgnore]
         public decimal TotalPrice => Quantity * UnitPrice * (100 - DiscountPercentage) / 100;
     }
 }

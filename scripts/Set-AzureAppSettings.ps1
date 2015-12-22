@@ -11,11 +11,15 @@ param(
     [Parameter(Mandatory = $false)] 
     [string] $WebSiteName = "croquet-australia-api",
     [Parameter(Mandatory = $false)] 
-    [string] $WebAppBaseUri = "https://croquet-australia-tournaments.azurewebsites.net/"
+    [string] $WebAppBaseUri = "https://croquet-australia.com.au/",
+    [Parameter(Mandatory = $false)]
+    [string] $QueueNamePrefix = ""
+
 )
 
 $appSettings = @{ ` 
-    "ConnectionString:AzureStorage" = $ConnectionStringAzureStorage;
+    "ConnectionString:AzureStorage" = $ConnectionStringAzureStorage; `
+    "QueueName:Prefix" = $QueueNamePrefix; `
     "WebApp:BaseUri" = $WebAppBaseUri;
 }
 

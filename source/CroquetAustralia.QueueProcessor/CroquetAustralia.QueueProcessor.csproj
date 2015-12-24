@@ -94,6 +94,7 @@
       <HintPath>..\..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -105,6 +106,8 @@
     <Compile Include="..\CroquetAustralia.WebApi\Properties\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Email\MailInBlue.cs" />
+    <Compile Include="Email\MailInBlueSettings.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Helpers\AzureStorageConnectionString.cs" />
     <Compile Include="Email\EmailAddress.cs" />

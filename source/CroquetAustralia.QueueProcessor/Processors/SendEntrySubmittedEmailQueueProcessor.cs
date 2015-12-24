@@ -15,10 +15,10 @@ namespace CroquetAustralia.QueueProcessor.Processors
 {
     public class SendEntrySubmittedEmailQueueProcessor
     {
+        private readonly IEmailService _emailService;
         private readonly IEventsQueue _eventsQueue;
 
         private readonly QueueMessageSerializer _queueMessageSerializer;
-        private readonly IEmailService _emailService;
 
         // todo: proper dependency injection?
         public SendEntrySubmittedEmailQueueProcessor() : this(

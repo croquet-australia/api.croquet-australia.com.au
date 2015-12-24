@@ -23,12 +23,11 @@ namespace CroquetAustralia.QueueProcessor
             LogTo.Info($"Received message from '{EventsQueue.QueueName}' queue.");
             await EventsQueueProcessor.ProcessEventAsync(message, logger);
         }
-        
-        // todo: reinstate after EventsQueueHandler has been tested in production.
-        //public static async Task SendEntrySubmittedEmailQueueHandler([QueueTrigger(SendEntrySubmittedEmailQueue.QueueName)] string message, TextWriter logger)
-        //{
-        //    LogTo.Info($"Received message from '{SendEntrySubmittedEmailQueue.QueueName}' queue.");
-        //    await SendEntrySubmittedEmailQueueProcessor.ProcessEventAsync(message, logger);
-        //}
+
+        public static async Task SendEntrySubmittedEmailQueueHandler([QueueTrigger(SendEntrySubmittedEmailQueue.QueueName)] string message, TextWriter logger)
+        {
+            LogTo.Info($"Received message from '{SendEntrySubmittedEmailQueue.QueueName}' queue.");
+            await SendEntrySubmittedEmailQueueProcessor.ProcessEventAsync(message, logger);
+        }
     }
 }

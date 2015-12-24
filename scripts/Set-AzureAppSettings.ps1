@@ -8,19 +8,18 @@ param(
          
     [Parameter(Mandatory = $true)] 
     [string] $ConnectionStringAzureStorage,
+    [Parameter(Mandatory = $true)]
+    [string] $MailInBlueAccessId,
     [Parameter(Mandatory = $false)] 
     [string] $WebSiteName = "croquet-australia-api",
     [Parameter(Mandatory = $false)] 
-    [string] $WebAppBaseUri = "https://croquet-australia.com.au/",
-    [Parameter(Mandatory = $false)]
-    [string] $QueueNamePrefix = ""
-
+    [string] $WebAppBaseUri = "https://croquet-australia.com.au/"
 )
 
 $appSettings = @{ ` 
     "ConnectionString:AzureStorage" = $ConnectionStringAzureStorage; `
-    "QueueName:Prefix" = $QueueNamePrefix; `
     "WebApp:BaseUri" = $WebAppBaseUri;
 }
 
+# todo: Set connection string WebJobDashboardxxxxx
 Set-AzureWebsite -Name "$WebSiteName" -AppSettings $appSettings 

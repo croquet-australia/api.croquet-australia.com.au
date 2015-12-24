@@ -54,11 +54,6 @@ namespace CroquetAustralia.QueueProcessor.Processors
         {
             LogTo.Info($"Processing '{eventType.FullName}' event.");
 
-            if (IsTestEvent(@event))
-            {
-                return;
-            }
-
             await logger.WriteLineAsync($"Received {eventType} from {EventsQueue.QueueName}...");
             var eventProcessor = GetEventProcessor(eventType);
 
@@ -69,40 +64,6 @@ namespace CroquetAustralia.QueueProcessor.Processors
             await _eventsRepository.AddAsync(@event);
 
             await logger.WriteLineAsync($"Successfully processed {eventType} from {EventsQueue.QueueName}...");
-        }
-
-        private bool IsTestEvent(IEvent @event)
-        {
-            if (@event.Created > new DateTime(2015, 12, 23,23,5,0))
-            {
-                return false;
-            }
-
-            if (@event.EntityId.ToString() == "49680322-5c91-1ebf-a86d-8f7863abae28")
-            {
-                LogTo.Warn("Ignoring Heather Knight's duplicate entry.");
-                return true;
-            }
-
-            var entrySubmitted = @event as EntrySubmitted;
-
-            if (entrySubmitted == null)
-            {
-                return false;
-            }
-
-            // ReSharper disable once SwitchStatementMissingSomeCases
-            switch (entrySubmitted.Player.Email)
-            {
-                case "tim@26tp.com":
-                    LogTo.Warn("Ignoring my test entry.");
-                    return true;
-                case "admin@croquet-australia.com.au":
-                    LogTo.Warn("Ignoring Susan's test entry.");
-                    return true;
-            }
-
-            return false;
         }
 
         private Func<IEvent, Type, TextWriter, Task> GetEventProcessor(Type eventType)

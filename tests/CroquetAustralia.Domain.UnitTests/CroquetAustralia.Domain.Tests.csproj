@@ -76,6 +76,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Services\Serializers\EventQueueMessageSerializerTests.cs" />
+    <Compile Include="TestHelpers\CommonTestBase.cs" />
     <Compile Include="TestHelpers\TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +88,10 @@
     <ProjectReference Include="..\..\source\CroquetAustralia.Domain\CroquetAustralia.Domain.csproj">
       <Project>{16452970-3d90-4595-9f04-38ff37991b68}</Project>
       <Name>CroquetAustralia.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\source\CroquetAustralia.Library\CroquetAustralia.Library.csproj">
+      <Project>{828311e0-71c0-46ef-9bce-4454cbd249c8}</Project>
+      <Name>CroquetAustralia.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

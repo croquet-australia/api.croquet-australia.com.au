@@ -1,5 +1,4 @@
 ﻿using CroquetAustralia.Domain.Settings;
-using CroquetAustralia.QueueProcessor.Helpers;
 using Microsoft.Azure.WebJobs;
 
 namespace CroquetAustralia.QueueProcessor
@@ -19,12 +18,7 @@ namespace CroquetAustralia.QueueProcessor
         private static JobHostConfiguration GetJobHostConfiguration()
         {
             var connectionStrings = new ConnectionStringSettings();
-            var queueNameSettings = new QueueNameSettings();
-
-            var config = new JobHostConfiguration(connectionStrings.AzureStorage)
-            {
-                NameResolver = new QueueNameResolver(queueNameSettings)
-            };
+            var config = new JobHostConfiguration(connectionStrings.AzureStorage);
 
             return config;
         }

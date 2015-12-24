@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using CroquetAustralia.Domain.Core;
 using CroquetAustralia.Domain.Services.Queues;
 using CroquetAustralia.Library.Extensions;
 using Newtonsoft.Json.Linq;
@@ -53,6 +54,14 @@ namespace CroquetAustralia.Domain.Services.Serializers
             var messageObject = messageToken.ToObject(type);
 
             return messageObject;
+        }
+
+        public TEvent Deserialize<TEvent>(string message) where TEvent : IEvent
+        {
+            var methodObject = Deserialize(message);
+            var @event = (TEvent) methodObject;
+
+            return @event;
         }
 
         private static Type GetEventType(string eventType)

@@ -2,8 +2,10 @@
 {
     public class SendEntrySubmittedEmailQueue : QueueBase, ISendEntrySubmittedEmailQueue
     {
+        public const string QueueName = "send-entry-submitted-email";
+
         public SendEntrySubmittedEmailQueue(IAzureStorageConnectionString connectionString)
-            : base("send-entry-submitted-email", connectionString)
+            : base(QueueName, connectionString)
         {
         }
     }

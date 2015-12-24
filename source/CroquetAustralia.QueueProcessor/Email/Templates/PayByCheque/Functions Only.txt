@@ -1,0 +1,16 @@
+﻿Dear {{Player.FirstName}}
+
+Thank you for your request to attend —
+
+{{Functions}}
+
+The total amount of {{TotalPayable}} is to be paid by cheque payable to Australian Croquet Association Inc — 
+
+PO BOX 254
+DICKSON ACT 2602
+
+If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at events@croquet-australia.com.au.
+
+Regards
+
+Croquet Australia

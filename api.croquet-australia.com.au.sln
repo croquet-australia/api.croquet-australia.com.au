@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.Library", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.Domain.Tests", "tests\CroquetAustralia.Domain.UnitTests\CroquetAustralia.Domain.Tests.csproj", "{D875B471-F991-4074-9277-710ADA1B4FBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProcessor.Tests", "tests\CroquetAustralia.QueueProcessor.Tests\CroquetAustralia.QueueProcessor.Tests.csproj", "{1B56AB56-2616-4728-A46F-ED382619AF41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D875B471-F991-4074-9277-710ADA1B4FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D875B471-F991-4074-9277-710ADA1B4FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D875B471-F991-4074-9277-710ADA1B4FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B56AB56-2616-4728-A46F-ED382619AF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B56AB56-2616-4728-A46F-ED382619AF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B56AB56-2616-4728-A46F-ED382619AF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B56AB56-2616-4728-A46F-ED382619AF41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +61,6 @@ Global
 		{15E06A79-66C1-438E-94D5-BCEDBE5494F0} = {89751C2D-8A75-4DC1-8564-CC1A3794A10B}
 		{828311E0-71C0-46EF-9BCE-4454CBD249C8} = {454E4909-62BC-476A-8B78-30D4C058A2CB}
 		{D875B471-F991-4074-9277-710ADA1B4FBF} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{1B56AB56-2616-4728-A46F-ED382619AF41} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 	EndGlobalSection
 EndGlobal

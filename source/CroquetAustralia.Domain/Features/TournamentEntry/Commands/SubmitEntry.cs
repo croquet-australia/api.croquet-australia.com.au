@@ -12,7 +12,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             if (EventId.HasValue == false && Functions.Any() == false && Merchandise.Any() == false)
             {
                 yield return new ValidationResult(
-                    "An entry, function or merchandise must be selected.",
+                    "An entry, function or Merchandise must be selected.",
                     new[] { nameof(EventId), nameof(Functions), nameof(Merchandise) });
             }
 

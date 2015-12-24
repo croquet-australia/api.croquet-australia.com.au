@@ -18,28 +18,33 @@ namespace CroquetAustralia.QueueProcessor.Processors
         private readonly EventsQueueMessageSerializer _eventsQueueMessageSerializer;
         private readonly IEventsRepository _eventsRepository;
         private readonly ISendEntrySubmittedEmailQueue _sendEntrySubmittedEmailQueue;
+        private readonly IPaymentReceivedQueue _paymentReceivedQueue;
 
         // todo: proper dependency injection?
         public EventsQueueProcessor() : this(
             new EventsQueueMessageSerializer(),
             new SendEntrySubmittedEmailQueue(new AzureStorageConnectionString()),
-            new EventsRepository(new AzureStorageConnectionString()))
+            new EventsRepository(new AzureStorageConnectionString()),
+            new PaymentReceivedQueue(new AzureStorageConnectionString()))
         {
         }
 
         private EventsQueueProcessor(
             EventsQueueMessageSerializer eventsQueueMessageSerializer,
             ISendEntrySubmittedEmailQueue sendEntrySubmittedEmailQueue,
-            IEventsRepository eventsRepository)
+            IEventsRepository eventsRepository,
+            IPaymentReceivedQueue paymentReceivedQueue)
         {
             _eventsQueueMessageSerializer = eventsQueueMessageSerializer;
             _sendEntrySubmittedEmailQueue = sendEntrySubmittedEmailQueue;
             _eventsRepository = eventsRepository;
+            _paymentReceivedQueue = paymentReceivedQueue;
 
             _eventProcessors = new Dictionary<Type, Func<IEvent, Type, TextWriter, Task>>
             {
                 {typeof (EntrySubmitted), EntrySubmittedProcessorAsync},
-                {typeof (SentEntrySubmittedEmail), NoOpProcessorAsync}
+                {typeof (SentEntrySubmittedEmail), NoOpProcessorAsync},
+                {typeof (PaymentReceived), PaymentReceivedProcessorAsync}
             };
         }
 
@@ -86,6 +91,11 @@ namespace CroquetAustralia.QueueProcessor.Processors
         private async Task EntrySubmittedProcessorAsync(IEvent @event, Type eventType, TextWriter logger)
         {
             await _sendEntrySubmittedEmailQueue.AddMessageAsync(@event);
+        }
+
+        private async Task PaymentReceivedProcessorAsync(IEvent @event, Type eventType, TextWriter logger)
+        {
+            await _paymentReceivedQueue.AddMessageAsync(@event);
         }
     }
 }

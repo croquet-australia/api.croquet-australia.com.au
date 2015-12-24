@@ -98,6 +98,8 @@
     <Compile Include="Data\Tournament.cs" />
     <Compile Include="Data\TournamentItem.cs" />
     <Compile Include="Data\Tournaments.cs" />
+    <Compile Include="Features\TournamentEntry\Commands\ReceivePayment.cs" />
+    <Compile Include="Features\TournamentEntry\Events\PaymentReceived.cs" />
     <Compile Include="Features\TournamentEntry\Events\SentEntrySubmittedEmail.cs" />
     <Compile Include="Features\TournamentEntry\Models\EntryDto.cs" />
     <Compile Include="Features\TournamentEntry\Models\Player.cs" />
@@ -108,9 +110,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IEnveloper.cs" />
     <Compile Include="Services\Queues\IEventsQueue.cs" />
+    <Compile Include="Services\Queues\IPaymentReceivedQueue.cs" />
     <Compile Include="Services\Queues\ISendEntrySubmittedEmailQueue.cs" />
     <Compile Include="Services\Queues\QueueBase.cs" />
     <Compile Include="Services\Enveloper.cs" />
+    <Compile Include="Services\Queues\PaymentReceivedQueue.cs" />
     <Compile Include="Services\Queues\SendEntrySubmittedEmailQueue.cs" />
     <Compile Include="Services\Repositories\EventsRepository.cs" />
     <Compile Include="Services\Repositories\TableEntities\EventsTableEntity.cs" />

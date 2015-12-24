@@ -8,22 +8,19 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Events
 {
     [NullGuard(ValidationFlags.None)]
     [EmptyStringGuard(EmptyStringGuard.ValidationFlags.None)]
-    public class SentEntrySubmittedEmail : IEvent
+    public class PaymentReceived : IEvent
     {
-        public SentEntrySubmittedEmail()
+        public PaymentReceived()
         {
         }
 
-        public SentEntrySubmittedEmail(EntrySubmitted @event, string emailId)
+        public PaymentReceived(Guid entityId, PaymentMethod paymentMethod)
         {
-            EntityId = @event.EntityId;
-            EmailId = emailId;
-            EntrySubmitted = @event;
+            EntityId = entityId;
+            PaymentMethod = paymentMethod;
         }
 
-        public string EmailId { get; set; }
-        public EntrySubmitted EntrySubmitted { get; set; }
-
+        public PaymentMethod PaymentMethod { get; set; }
         public Guid EntityId { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
     }

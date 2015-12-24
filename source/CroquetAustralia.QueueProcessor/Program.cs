@@ -1,4 +1,6 @@
-﻿using CroquetAustralia.Domain.Settings;
+﻿using System;
+using Anotar.NLog;
+using CroquetAustralia.Domain.Settings;
 using Microsoft.Azure.WebJobs;
 
 namespace CroquetAustralia.QueueProcessor
@@ -7,11 +9,26 @@ namespace CroquetAustralia.QueueProcessor
     {
         public static void Main()
         {
-            // JobHost will search for and run methods that use the QueueTrigger attribute on its first parameter.
-            // By "my" convention all web jobs are in the WebJobs namespace
-            using (var host = new JobHost(GetJobHostConfiguration()))
+            LogTo.Info("Started QueueProcessor.");
+            LogTo.Info($"Storage '{new ConnectionStringSettings().AzureStorage.Split(';')[1]}'.)");
+
+            try
             {
-                host.RunAndBlock();
+                // JobHost will search for and run methods that use the QueueTrigger attribute on its first parameter.
+                // By convention all web jobs are configured in Functions.cs
+                using (var host = new JobHost(GetJobHostConfiguration()))
+                {
+                    host.RunAndBlock();
+                }
+            }
+            catch (Exception exception)
+            {
+                LogTo.ErrorException("Bugger, exception was thrown.", exception);
+                throw;
+            }
+            finally
+            {
+                LogTo.Info("Exiting QueueProcessor");
             }
         }
 

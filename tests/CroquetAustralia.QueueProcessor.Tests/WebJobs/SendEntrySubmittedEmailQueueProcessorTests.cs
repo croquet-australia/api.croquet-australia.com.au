@@ -39,7 +39,7 @@ namespace CroquetAustralia.QueueProcessor.Tests.WebJobs
 
         [UseReporter(typeof (DiffReporter))]
         // ReSharper disable once InconsistentNaming
-        public class ProcessEventAsync_PayByType : SendEntrySubmittedEmailQueueProcessorTests
+        public abstract class ProcessEventAsync_PayByType : SendEntrySubmittedEmailQueueProcessorTests
         {
             private readonly PaymentMethod _paymentMethod;
             private readonly InMemoryEmailService _emailService;

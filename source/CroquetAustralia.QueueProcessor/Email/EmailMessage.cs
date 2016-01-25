@@ -17,8 +17,7 @@ namespace CroquetAustralia.QueueProcessor.Email
         public IEnumerable<EmailAddress> Bcc = new[]
         {
             new EmailAddress("events@croquet-australia.com.au", "Croquet Australia - Events Committee"),
-            new EmailAddress("admin@croquet-australia.com.au", "Croquet Australia"),
-            new EmailAddress("tim@26tp.com", "Tim Murphy") // todo: review tim
+            new EmailAddress("admin@croquet-australia.com.au", "Croquet Australia")
         };
 
         public EmailMessage(string template, EntrySubmitted @event)

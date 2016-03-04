@@ -14,21 +14,21 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             {
                 yield return new ValidationResult(
                     "An entry, function or Merchandise must be selected.",
-                    new[] { nameof(EventId), nameof(Functions), nameof(Merchandise) });
+                    new[] {nameof(EventId), nameof(Functions), nameof(Merchandise)});
             }
 
             if (EventId.HasValue && Player.Handicap.HasValue == false)
             {
                 yield return new ValidationResult(
                     "Your handicap is required.",
-                    new[] { nameof(Player.Handicap) });
+                    new[] {nameof(Player.Handicap)});
             }
 
             if (TournamentIsClosed())
             {
                 yield return new ValidationResult(
                     "Entries for this tournament have closed.",
-                    new[] { nameof(EventId), nameof(Functions), nameof(Merchandise) });
+                    new[] {nameof(EventId), nameof(Functions), nameof(Merchandise)});
             }
         }
 

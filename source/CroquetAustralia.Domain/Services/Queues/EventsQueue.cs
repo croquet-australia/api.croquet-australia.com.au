@@ -6,7 +6,7 @@ namespace CroquetAustralia.Domain.Services.Queues
     {
         public const string QueueName = "events";
 
-        public EventsQueue(IAzureStorageConnectionString connectionString) 
+        public EventsQueue(IAzureStorageConnectionString connectionString)
             : base(QueueName, connectionString, new EventsQueueMessageSerializer())
         {
         }

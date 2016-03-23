@@ -17,14 +17,14 @@ namespace CroquetAustralia.Domain.Services.Serializers
 
         static QueueMessageSerializer()
         {
-            var domainAssembly = Assembly.GetAssembly(typeof (EventsQueue));
+            var domainAssembly = Assembly.GetAssembly(typeof(EventsQueue));
             var exportedTypes = domainAssembly.ExportedTypes;
 
             DomainAssemblyName = domainAssembly.FullName;
             DomainTypes = exportedTypes.ToDictionary(t => t.FullName, t => t);
         }
 
-        public QueueMessageSerializer() 
+        public QueueMessageSerializer()
             : this(new Enveloper())
         {
         }
@@ -59,7 +59,7 @@ namespace CroquetAustralia.Domain.Services.Serializers
         public TEvent Deserialize<TEvent>(string message) where TEvent : IEvent
         {
             var methodObject = Deserialize(message);
-            var @event = (TEvent) methodObject;
+            var @event = (TEvent)methodObject;
 
             return @event;
         }

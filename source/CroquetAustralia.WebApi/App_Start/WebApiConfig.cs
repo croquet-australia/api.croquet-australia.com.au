@@ -3,8 +3,12 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Filters;
 using Anotar.NLog;
+using CroquetAustralia.Domain.Core;
 using CroquetAustralia.WebApi.Filters;
 using CroquetAustralia.WebApi.Settings;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using NodaTime;
 
 namespace CroquetAustralia.WebApi
 {
@@ -31,6 +35,14 @@ namespace CroquetAustralia.WebApi
         {
             formatters.Clear();
             formatters.Add(new JsonMediaTypeFormatter());
+
+            var serializerSettings = formatters.JsonFormatter.SerializerSettings;
+
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            serializerSettings.Converters.Add(new ZonedDateTimeJsonConverter(DateTimeZoneProviders.Tzdb));
+
+            // todo: is this needed? 
+            serializerSettings.DateParseHandling = DateParseHandling.None;
         }
 
         private static void ConfigureFilters(HttpFilterCollection filters)

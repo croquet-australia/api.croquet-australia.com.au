@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CroquetAustralia.Domain.Core;
 
 namespace CroquetAustralia.Domain.Services.Repositories

@@ -14,14 +14,16 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Events
         {
         }
 
-        public SentEntrySubmittedEmail(EntrySubmitted @event, string emailId)
+        public SentEntrySubmittedEmail(string emailId, object emailMessage, EntrySubmitted @event)
         {
             EntityId = @event.EntityId;
             EmailId = emailId;
+            EmailMessage = emailMessage;
             EntrySubmitted = @event;
         }
 
         public string EmailId { get; set; }
+        public object EmailMessage { get; set; }
         public EntrySubmitted EntrySubmitted { get; set; }
 
         public Guid EntityId { get; set; }

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
-using EmptyStringGuard;
 
 namespace CroquetAustralia.WebApi.Settings
 {
@@ -31,9 +30,9 @@ namespace CroquetAustralia.WebApi.Settings
             }
             if (WebConfigurationManager.AppSettings.AllKeys.Any(c => c.StartsWith(_appSettingsPrefix)))
             {
-                throw new Exception(string.Format("Value for AppSetting {0} cannot be null.", _appSettingsPrefix + key));
+                throw new Exception($"Value for AppSetting {_appSettingsPrefix + key} cannot be null.");
             }
-            throw new Exception(string.Format("AppSettings[{0}] is empty. Maybe you need to create BaseAppSettings.config. See BaseAppSettings.Example.config.", _appSettingsPrefix));
+            throw new Exception($"AppSettings[{_appSettingsPrefix}] is empty. Maybe you need to create BaseAppSettings.config. See BaseAppSettings.Example.config.");
         }
 
         protected bool GetBoolean(string key)

@@ -1,0 +1,80 @@
+﻿From:
+  Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+To:
+- Email: tim@example.com
+  Name: Tim Murphy
+Bcc:
+- Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+Subject: Australian AC Men's Singles Entry
+BodyHtml: >-
+  <p>Dear Tim</p>
+
+
+  <p>Thank you for your request to attend —</p>
+
+
+  <p>1 * Eire Cup Presentation Dinner - 6:30pm Sunday 20 March $50.00</p>
+
+
+  <p>The total amount of $50.00 is to be paid by direct deposit —</p>
+
+
+  <p>BSB 063 208<br />
+
+  Account Number 1006 2783<br />
+
+  (Commonwealth Bank)</p>
+
+
+  <p>Please identify your payment by stating "Tim Murphy - AC Championship" as well as <a href="https://localhost:44302/tournaments/deposited?id=d99dd017-edab-46a6-bb58-fde7c6c619fa">clicking here</a> to advise payment has been made.</p>
+
+
+  <p>If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at <a href="mailto:events@croquet-australia.com.au">events@croquet-australia.com.au</a>.</p>
+
+
+  <p>Regards</p>
+
+
+  <p>Croquet Australia</p>
+BodyText: >-
+  Dear Tim
+
+
+
+  Thank you for your request to attend —
+
+
+
+  1 * Eire Cup Presentation Dinner - 6:30pm Sunday 20 March $50.00
+
+
+
+  The total amount of $50.00 is to be paid by direct deposit —
+
+
+
+  BSB 063 208
+
+  Account Number 1006 2783
+
+  (Commonwealth Bank)
+
+
+
+  Please identify your payment by stating "Tim Murphy - AC Championship" as well as clicking https://localhost:44302/tournaments/deposited?id=d99dd017-edab-46a6-bb58-fde7c6c619fa to advise payment has been made.
+
+
+
+  If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at events@croquet-australia.com.au.
+
+
+
+  Regards
+
+
+
+  Croquet Australia

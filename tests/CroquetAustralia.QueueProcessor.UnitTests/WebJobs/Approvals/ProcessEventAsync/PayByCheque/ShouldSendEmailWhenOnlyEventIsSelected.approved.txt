@@ -1,0 +1,49 @@
+﻿From:
+  Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+To:
+- Email: tim@example.com
+  Name: Tim Murphy
+Bcc:
+- Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+Subject: Australian AC Men's Singles Entry
+BodyHtml: >-
+  <p>Dear Tim</p>
+
+
+  <p>Thank you for your tournament registration to the Australian AC Men's Singles $85.00.</p>
+
+
+  <p>The total amount of $85.00 is to be paid by cheque payable to Australian Croquet Association Inc – </p>
+
+
+  <p>PO BOX 254<br />
+
+  DICKSON ACT 2602</p>
+
+
+  <p>If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at <a href="mailto:events@croquet-australia.com.au">events@croquet-australia.com.au</a>.</p>
+
+
+  <p>Wishing you all the best for the competition.</p>
+
+
+  <p>Croquet Australia</p>
+BodyText:
+Dear Tim
+
+Thank you for your tournament registration to the Australian AC Men's Singles $85.00.
+
+The total amount of $85.00 is to be paid by cheque payable to Australian Croquet Association Inc – 
+
+PO BOX 254
+DICKSON ACT 2602
+
+If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at events@croquet-australia.com.au.
+
+Wishing you all the best for the competition.
+
+Croquet Australia

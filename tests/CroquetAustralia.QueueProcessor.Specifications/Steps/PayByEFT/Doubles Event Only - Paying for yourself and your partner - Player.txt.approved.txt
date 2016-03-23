@@ -1,0 +1,90 @@
+﻿To:
+- Email: joe@example.com
+  Name: Joe Blow
+From:
+  Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+Subject: Australian GC Open Doubles Entry
+BodyAsText: >+
+  Dear Joe
+
+
+
+  Thank you for your tournament registration to the Australian GC Open Doubles that also included details of your doubles partner Jane Doe (jane@example.com).
+
+
+
+  The total entry fee of $160.00 for you and your doubles partner, is to be paid by direct deposit —
+
+
+
+  BSB 063 208
+
+  Account Number 1006 2783
+
+  (Commonwealth Bank)
+
+
+
+  and is to be received no later than Thursday, 21 April 2016.
+
+
+
+  Please identify your payment by stating "Joe Blow - GC Doubles" as well as clicking https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142 to advise payment has been made.
+
+
+
+  If you have any queries or realise that any of the above information is incorrect please contact Peter Freer, Chair, Events Committee at events@croquet-australia.com.au.
+
+
+
+  A confirmation email will be sent to your doubles partner Jane Doe.
+
+
+
+  Wishing you all the best for the competition.
+
+
+
+  Croquet Australia
+
+
+
+  NB If payment is not received by the closing date your entry to the tournament may not be accepted.
+
+BodyAsHtml: >-
+  <p>Dear Joe</p>
+
+
+  <p>Thank you for your tournament registration to the Australian GC Open Doubles that also included details of your doubles partner Jane Doe (jane@example.com).</p>
+
+
+  <p>The total entry fee of $160.00 for you and your doubles partner, is to be paid by direct deposit —</p>
+
+
+  <p>BSB 063 208<br />
+
+  Account Number 1006 2783<br />
+
+  (Commonwealth Bank)</p>
+
+
+  <p>and is to be received no later than Thursday, 21 April 2016.</p>
+
+
+  <p>Please identify your payment by stating "Joe Blow - GC Doubles" as well as <a href="https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142">clicking here</a> to advise payment has been made.</p>
+
+
+  <p>If you have any queries or realise that any of the above information is incorrect please contact Peter Freer, Chair, Events Committee at <a href="mailto:events@croquet-australia.com.au">events@croquet-australia.com.au</a>.</p>
+
+
+  <p>A confirmation email will be sent to your doubles partner Jane Doe.</p>
+
+
+  <p>Wishing you all the best for the competition.</p>
+
+
+  <p>Croquet Australia</p>
+
+
+  <p>NB If payment is not received by the closing date your entry to the tournament may not be accepted.</p>

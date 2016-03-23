@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
-using EmptyStringGuard;
 using NullGuard;
 
 namespace CroquetAustralia.Library.Settings

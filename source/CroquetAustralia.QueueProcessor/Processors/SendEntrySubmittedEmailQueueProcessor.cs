@@ -1,41 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using Anotar.NLog;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 using CroquetAustralia.Domain.Services.Queues;
 using CroquetAustralia.Domain.Services.Serializers;
-using CroquetAustralia.Library.Extensions;
 using CroquetAustralia.QueueProcessor.Email;
-using CroquetAustralia.QueueProcessor.Helpers;
 
 namespace CroquetAustralia.QueueProcessor.Processors
 {
     public class SendEntrySubmittedEmailQueueProcessor
     {
+        private readonly IEmailGenerator _emailGenerator;
         private readonly IEmailService _emailService;
         private readonly IEventsQueue _eventsQueue;
 
         private readonly QueueMessageSerializer _queueMessageSerializer;
 
-        // todo: proper dependency injection?
-        public SendEntrySubmittedEmailQueueProcessor() : this(
-            new QueueMessageSerializer(),
-            new EventsQueue(new AzureStorageConnectionString()),
-            new EmailService())
-        {
-        }
-
-        public SendEntrySubmittedEmailQueueProcessor(
-            QueueMessageSerializer queueMessageSerializer,
-            IEventsQueue eventsQueue,
-            IEmailService emailService)
+        public SendEntrySubmittedEmailQueueProcessor(QueueMessageSerializer queueMessageSerializer, IEventsQueue eventsQueue, IEmailService emailService, IEmailGenerator emailGenerator)
         {
             _queueMessageSerializer = queueMessageSerializer;
             _eventsQueue = eventsQueue;
             _emailService = emailService;
+            _emailGenerator = emailGenerator;
         }
 
         public async Task ProcessEventAsync(string message, TextWriter logger)
@@ -47,58 +36,41 @@ namespace CroquetAustralia.QueueProcessor.Processors
 
         public async Task ProcessEventAsync(EntrySubmitted @event, Type eventType, TextWriter logger)
         {
-            LogTo.Info($"Processing '{eventType.FullName}' event.");
+            LogInfo(logger, $"Processing event '{eventType.FullName}' from queue '{SendEntrySubmittedEmailQueue.QueueName}'...");
 
-            await logger.WriteLineAsync($"Received {eventType.FullName} from {SendEntrySubmittedEmailQueue.QueueName}...");
+            var sentResults = (await SendEmailAsync(@event)).ToArray();
 
-            var emailId = await SendEmailAsync(@event, logger);
+            LogInfo(logger, $"Sent {sentResults.Length:N0} emails.");
 
-            await logger.WriteLineAsync($"Adding {typeof (SentEntrySubmittedEmail).FullName} to events queue...");
-            var sentEntrySubmittedEmailEvent = new SentEntrySubmittedEmail(@event, emailId);
-            await _eventsQueue.AddMessageAsync(sentEntrySubmittedEmailEvent);
-
-            await logger.WriteLineAsync($"Successfully processed {eventType.FullName} from {SendEntrySubmittedEmailQueue.QueueName}...");
-        }
-
-        private async Task<string> SendEmailAsync(EntrySubmitted @event, TextWriter logger)
-        {
-            var templateNamespace = $"CroquetAustralia.QueueProcessor.Email.Templates.PayBy{@event.PaymentMethod}";
-            var templateName = GetTemplateName(@event);
-
-            await logger.WriteLineAsync($"Using email template {templateName}.");
-
-            var template = GetTemplate($"{templateNamespace}.{templateName}.txt");
-            var emailMessage = new EmailMessage(template, @event);
-            var emailId = await _emailService.SendAsync(emailMessage);
-
-            return emailId;
-        }
-
-        private string GetTemplate(string resourceName)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var template = assembly.GetResourceText(resourceName);
-
-            return template;
-        }
-
-        // ReSharper disable once SuggestBaseTypeForParameter
-        private string GetTemplateName(EntrySubmitted @event)
-        {
-            if (@event.EventId.HasValue)
+            foreach (var sentResult in sentResults)
             {
-                return @event.Functions.Any() ? "Event and Functions" : "Event Only";
+                LogInfo(logger, $"Adding event '{typeof(SentEntrySubmittedEmail).FullName}' to queue 'Events'...");
+
+                var emailId = sentResult.Key;
+                var emailMessage = sentResult.Value;
+                var sentEmailEvent = new SentEntrySubmittedEmail(emailId, emailMessage, @event);
+
+                await _eventsQueue.AddMessageAsync(sentEmailEvent);
+
+                LogInfo(logger, $"Successfully added event '{typeof(SentEntrySubmittedEmail).FullName}' to queue 'Events'.");
             }
 
-            if (@event.Functions.Any())
-            {
-                return "Functions Only";
-            }
+            LogInfo(logger, $"Successfully processed event '{eventType.FullName}' from queue '{SendEntrySubmittedEmailQueue.QueueName}'.");
+        }
 
-            throw new NotSupportedException("Received an EntrySumbitted event where we don't know what email template to use.")
-            {
-                Data = {{"Event", @event}}
-            };
+        private static void LogInfo(TextWriter logger, string message)
+        {
+            LogTo.Info(message);
+            logger.WriteLineAsync(message).Wait();
+        }
+
+        private async Task<IEnumerable<KeyValuePair<string, EmailMessage>>> SendEmailAsync(EntrySubmitted @event)
+        {
+            var emailMessages = await _emailGenerator.GenerateAsync(@event);
+            var sendingTasks = emailMessages.Select(async emailMessage => new KeyValuePair<string, EmailMessage>(await _emailService.SendAsync(emailMessage), emailMessage));
+            var sentResults = await Task.WhenAll(sendingTasks);
+
+            return sentResults;
         }
     }
 }

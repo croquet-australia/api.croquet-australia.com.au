@@ -1,0 +1,23 @@
+﻿Dear {{Player.FirstName}}
+
+Thank you for your tournament registration to the {{Tournament.Title}} that also included details of your doubles partner {{Partner.FirstName}} {{Partner.LastName}} ({{Partner.EmailAddress}}).
+
+The total entry fee of {{TotalPayable}} for you and your doubles partner, is to be paid by direct deposit —
+
+BSB 063 208
+Account Number 1006 2783
+(Commonwealth Bank)
+
+and is to be received no later than {{Tournament.EventsClose}}.
+
+Please identify your payment by stating "{{Stating}}" as well as clicking {{Deposited}} to advise payment has been made.
+
+If you have any queries or realise that any of the above information is incorrect please contact Peter Freer, Chair, Events Committee at events@croquet-australia.com.au.
+
+A confirmation email will be sent to your doubles partner {{Partner.FirstName}} {{Partner.LastName}}.
+
+Wishing you all the best for the competition.
+
+Croquet Australia
+
+NB If payment is not received by the closing date your entry to the tournament may not be accepted.

@@ -2,14 +2,15 @@ using System;
 using System.Reflection;
 using System.Web;
 using Anotar.NLog;
+using CroquetAustralia.Library;
 using CroquetAustralia.WebApi;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
 using WebActivatorEx;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof (NinjectWebCommon), "Start")]
-[assembly: ApplicationShutdownMethod(typeof (NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
 
 namespace CroquetAustralia.WebApi
 {
@@ -22,8 +23,8 @@ namespace CroquetAustralia.WebApi
         /// </summary>
         public static void Start()
         {
-            DynamicModuleUtility.RegisterModule(typeof (OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof (NinjectHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             Bootstrapper.Initialize(CreateKernel);
         }
 
@@ -65,6 +66,7 @@ namespace CroquetAustralia.WebApi
         {
             LogTo.Trace("RegisterServices(IKernel kernel)");
             kernel.Load(Assembly.GetExecutingAssembly());
+            ServiceFactory.SetServiceProvider(kernel);
         }
     }
 }

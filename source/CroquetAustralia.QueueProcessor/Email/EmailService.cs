@@ -13,25 +13,24 @@ namespace CroquetAustralia.QueueProcessor.Email
             return Task.FromResult(Send(emailMessage));
         }
 
-        private static string Send(EmailMessage emailMessage) { 
+        private static string Send(EmailMessage emailMessage)
+        {
             var mailInBlue = new MailInBlue(new MailInBlueSettings().AccessId);
 
             var to = emailMessage.To.ToDictionary(e => e.Email, e => e.Name);
-            var fromName = new List<string>(new [] {emailMessage.From.Email, emailMessage.From.Name});
+            var fromName = new List<string>(new[] {emailMessage.From.Email, emailMessage.From.Name});
             var bcc = emailMessage.Bcc.ToDictionary(e => e.Email, e => e.Name);
-            var bodyAsHtml = emailMessage.BodyAsHtml();
-            var bodyAsText = emailMessage.BodyAsText();
 
             JObject response = mailInBlue.send_email(
-                to, 
-                emailMessage.Subject, 
-                fromName, 
-                bodyAsHtml, 
-                bodyAsText, 
-                null, 
-                bcc, 
-                null, 
-                null, 
+                to,
+                emailMessage.Subject,
+                fromName,
+                emailMessage.BodyAsHtml,
+                emailMessage.BodyAsText,
+                null,
+                bcc,
+                null,
+                null,
                 null);
 
             var data = response["data"];

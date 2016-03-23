@@ -10,8 +10,8 @@ namespace CroquetAustralia.Domain.Services.Queues
     public abstract class QueueBase : IQueueBase
     {
         private readonly Lazy<CloudQueue> _lazyQueue;
-        private readonly QueueMessageSerializer _serializer;
         private readonly string _queueName;
+        private readonly QueueMessageSerializer _serializer;
 
         protected QueueBase(string queueName, IAzureStorageConnectionString connectionString)
             : this(queueName, connectionString, new QueueMessageSerializer())

@@ -21,7 +21,6 @@ namespace CroquetAustralia.Library.Extensions
                     return template;
                 }
             }
-
         }
     }
 }

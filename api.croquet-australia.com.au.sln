@@ -17,9 +17,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specifications and Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.Library", "source\CroquetAustralia.Library\CroquetAustralia.Library.csproj", "{828311E0-71C0-46EF-9BCE-4454CBD249C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.Domain.Tests", "tests\CroquetAustralia.Domain.UnitTests\CroquetAustralia.Domain.Tests.csproj", "{D875B471-F991-4074-9277-710ADA1B4FBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProcessor.UnitTests", "tests\CroquetAustralia.QueueProcessor.UnitTests\CroquetAustralia.QueueProcessor.UnitTests.csproj", "{1B56AB56-2616-4728-A46F-ED382619AF41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProcessor.Tests", "tests\CroquetAustralia.QueueProcessor.Tests\CroquetAustralia.QueueProcessor.Tests.csproj", "{1B56AB56-2616-4728-A46F-ED382619AF41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.Domain.UnitTests", "tests\CroquetAustralia.Domain.UnitTests\CroquetAustralia.Domain.UnitTests.csproj", "{D875B471-F991-4074-9277-710ADA1B4FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi.EndToEndTests", "tests\CroquetAustralia.WebApi.EndToEndTests\CroquetAustralia.WebApi.EndToEndTests.csproj", "{070191CD-03E1-4E25-A838-A467CCD7989E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi.Specifications", "tests\CroquetAustralia.WebApi.Specifications\CroquetAustralia.WebApi.Specifications.csproj", "{3D454B05-1979-4D35-81D7-6144FCCC9620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.TestHelpers", "tests\CroquetAustralia.TestHelpers\CroquetAustralia.TestHelpers.csproj", "{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi.UnitTests", "tests\CroquetAustralia.WebApi.UnitTests\CroquetAustralia.WebApi.UnitTests.csproj", "{03344FDC-5F35-498C-B98B-C429C8E1D4D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProcessor.Specifications", "tests\CroquetAustralia.QueueProcessor.Specifications\CroquetAustralia.QueueProcessor.Specifications.csproj", "{E778BF62-CE21-4666-96FF-FAA38101137D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +53,34 @@ Global
 		{828311E0-71C0-46EF-9BCE-4454CBD249C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{828311E0-71C0-46EF-9BCE-4454CBD249C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{828311E0-71C0-46EF-9BCE-4454CBD249C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D875B471-F991-4074-9277-710ADA1B4FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D875B471-F991-4074-9277-710ADA1B4FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D875B471-F991-4074-9277-710ADA1B4FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D875B471-F991-4074-9277-710ADA1B4FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B56AB56-2616-4728-A46F-ED382619AF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B56AB56-2616-4728-A46F-ED382619AF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B56AB56-2616-4728-A46F-ED382619AF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B56AB56-2616-4728-A46F-ED382619AF41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D875B471-F991-4074-9277-710ADA1B4FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D875B471-F991-4074-9277-710ADA1B4FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D875B471-F991-4074-9277-710ADA1B4FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D875B471-F991-4074-9277-710ADA1B4FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{070191CD-03E1-4E25-A838-A467CCD7989E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070191CD-03E1-4E25-A838-A467CCD7989E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070191CD-03E1-4E25-A838-A467CCD7989E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070191CD-03E1-4E25-A838-A467CCD7989E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D454B05-1979-4D35-81D7-6144FCCC9620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D454B05-1979-4D35-81D7-6144FCCC9620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D454B05-1979-4D35-81D7-6144FCCC9620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D454B05-1979-4D35-81D7-6144FCCC9620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03344FDC-5F35-498C-B98B-C429C8E1D4D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03344FDC-5F35-498C-B98B-C429C8E1D4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03344FDC-5F35-498C-B98B-C429C8E1D4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03344FDC-5F35-498C-B98B-C429C8E1D4D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E778BF62-CE21-4666-96FF-FAA38101137D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E778BF62-CE21-4666-96FF-FAA38101137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E778BF62-CE21-4666-96FF-FAA38101137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E778BF62-CE21-4666-96FF-FAA38101137D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,7 +90,12 @@ Global
 		{16452970-3D90-4595-9F04-38FF37991B68} = {454E4909-62BC-476A-8B78-30D4C058A2CB}
 		{15E06A79-66C1-438E-94D5-BCEDBE5494F0} = {89751C2D-8A75-4DC1-8564-CC1A3794A10B}
 		{828311E0-71C0-46EF-9BCE-4454CBD249C8} = {454E4909-62BC-476A-8B78-30D4C058A2CB}
-		{D875B471-F991-4074-9277-710ADA1B4FBF} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 		{1B56AB56-2616-4728-A46F-ED382619AF41} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{D875B471-F991-4074-9277-710ADA1B4FBF} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{070191CD-03E1-4E25-A838-A467CCD7989E} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{3D454B05-1979-4D35-81D7-6144FCCC9620} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{03344FDC-5F35-498C-B98B-C429C8E1D4D9} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{E778BF62-CE21-4666-96FF-FAA38101137D} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 	EndGlobalSection
 EndGlobal

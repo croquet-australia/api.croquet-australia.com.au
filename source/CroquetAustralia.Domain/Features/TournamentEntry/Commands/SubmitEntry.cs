@@ -1,44 +1,70 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using CroquetAustralia.Domain.Features.TournamentEntry.Models;
+using AutoMapper;
+using CroquetAustralia.Domain.Core;
+using CroquetAustralia.Domain.Features.TournamentEntry.Events;
+using EmptyStringGuard;
+using Newtonsoft.Json;
+using NullGuard;
+using ValidationFlags = NullGuard.ValidationFlags;
 
 namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
 {
-    public class SubmitEntry : EntryDto, IValidatableObject
+    [NullGuard(ValidationFlags.None)]
+    [EmptyStringGuard(EmptyStringGuard.ValidationFlags.None)]
+    public class SubmitEntry : CommandBase<SubmitEntryValidator>
     {
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        static SubmitEntry()
         {
-            if (EventId.HasValue == false && Functions.Any() == false && Merchandise.Any() == false)
-            {
-                yield return new ValidationResult(
-                    "An entry, function or Merchandise must be selected.",
-                    new[] {nameof(EventId), nameof(Functions), nameof(Merchandise)});
-            }
-
-            if (EventId.HasValue && Player.Handicap.HasValue == false)
-            {
-                yield return new ValidationResult(
-                    "Your handicap is required.",
-                    new[] {nameof(Player.Handicap)});
-            }
-
-            if (TournamentIsClosed())
-            {
-                yield return new ValidationResult(
-                    "Entries for this tournament have closed.",
-                    new[] {nameof(EventId), nameof(Functions), nameof(Merchandise)});
-            }
+            Mapper.Initialize(cfg => cfg.CreateMap<SubmitEntry, EntrySubmitted>()
+                .ForMember(entrySubmitted => entrySubmitted.Created, options => options.Ignore()));
         }
 
-        private static bool TournamentIsClosed()
-        {
-            // todo: tournament related
-            var closingTimeStampUtc = new DateTime(2016, 3, 4, 4, 0, 0);
-            var currentTimeUtc = DateTime.UtcNow;
+        public Guid TournamentId { get; set; }
+        public Guid? EventId { get; set; }
+        public string DietaryRequirements { get; set; }
+        public bool PayingForPartner { get; set; }
+        public LineItem[] Functions { get; set; }
+        public LineItem[] Merchandise { get; set; }
+        public PlayerClass Player { get; set; }
+        public PlayerClass Partner { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
-            return currentTimeUtc > closingTimeStampUtc;
+        public EntrySubmitted ToEntrySubmitted()
+        {
+            return Mapper.Map<EntrySubmitted>(this);
+        }
+
+        [NullGuard(ValidationFlags.None)]
+        [EmptyStringGuard(EmptyStringGuard.ValidationFlags.None)]
+        public class LineItem
+        {
+            public Guid Id { get; set; }
+
+            [Range(0, double.MaxValue)]
+            public decimal UnitPrice { get; set; }
+
+            [Range(1, int.MaxValue)]
+            public int Quantity { get; set; }
+
+            [Range(0, 100)]
+            public decimal DiscountPercentage { get; set; }
+
+            [JsonIgnore]
+            public decimal TotalPrice => Quantity * UnitPrice * (100 - DiscountPercentage) / 100;
+        }
+
+        [NullGuard(ValidationFlags.None)]
+        [EmptyStringGuard(EmptyStringGuard.ValidationFlags.None)]
+        public class PlayerClass
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public virtual string Email { get; set; }
+            public string Phone { get; set; }
+            public decimal? Handicap { get; set; }
+            public bool Under21 { get; set; }
+            public bool FullTimeStudentUnder25 { get; set; }
         }
     }
 }

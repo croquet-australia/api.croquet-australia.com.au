@@ -1,0 +1,40 @@
+﻿To:
+- Email: jane@example.com
+  Name: Jane Doe
+From:
+  Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+Subject: Australian GC Open Doubles Entry
+BodyAsText: >+
+  Dear Jane
+
+
+
+  Your doubles partner, Joe Blow, has registered you to play in the Australian GC Open Doubles and has nominated to pay your entry fee of $80.00. There is nothing more for you to do.
+
+
+
+  Wishing you all the best for the competition.
+
+
+
+  Croquet Australia
+
+
+
+  NB If payment is not received by the closing date your entry to the tournament may not be accepted
+
+BodyAsHtml: >-
+  <p>Dear Jane</p>
+
+
+  <p>Your doubles partner, Joe Blow, has registered you to play in the Australian GC Open Doubles and has nominated to pay your entry fee of $80.00. There is nothing more for you to do.</p>
+
+
+  <p>Wishing you all the best for the competition.</p>
+
+
+  <p>Croquet Australia</p>
+
+
+  <p>NB If payment is not received by the closing date your entry to the tournament may not be accepted</p>

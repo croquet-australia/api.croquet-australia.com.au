@@ -22,6 +22,12 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Models
 
         public Guid? EventId { get; set; }
 
+        public string DietaryRequirements { get; set; }
+
+        public bool IsDoubles { get; set; }
+
+        public bool PayingForPartner { get; set; }
+
         [Required]
         public LineItem[] Functions { get; set; }
 
@@ -30,6 +36,9 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Models
 
         [Required]
         public Player Player { get; set; }
+
+        [Required]
+        public Player Partner { get; set; }
 
         [Required]
         public PaymentMethod PaymentMethod { get; set; }

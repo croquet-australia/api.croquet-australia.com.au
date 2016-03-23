@@ -1,5 +1,4 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace CroquetAustralia.Domain.Services.Serializers
 {
@@ -17,7 +16,7 @@ namespace CroquetAustralia.Domain.Services.Serializers
 
         public object CreateEnvelope(string type, object message)
         {
-            return new { EventType = type, Event = message };
+            return new {EventType = type, Event = message};
         }
     }
 }

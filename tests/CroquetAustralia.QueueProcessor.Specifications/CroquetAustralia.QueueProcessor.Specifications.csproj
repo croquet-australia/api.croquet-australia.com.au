@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E778BF62-CE21-4666-96FF-FAA38101137D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CroquetAustralia.QueueProcessor.Specifications</RootNamespace>
+    <AssemblyName>CroquetAustralia.QueueProcessor.Specifications</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ApprovalTests, Version=3.0.0.0, Culture=neutral, PublicKeyToken=11bd7d124fc62e0f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ApprovalTests.3.0.11\lib\net40\ApprovalTests.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ApprovalUtilities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=11bd7d124fc62e0f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ApprovalUtilities.3.0.11\lib\net45\ApprovalUtilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ApprovalUtilities.Net45, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ApprovalUtilities.3.0.11\lib\net45\ApprovalUtilities.Net45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=4.3.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.3.2\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.3.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.3.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenMagic, Version=1.47.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenMagic.1.47.0\lib\net45\OpenMagic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="TechTalk.SpecFlow, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SpecFlow.2.0.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\source\CroquetAustralia.WebApi\Properties\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Features\Emails to 2016 GC Open Doubles Entries.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Emails to 2016 GC Open Doubles Entries.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers\ApprovalNamer.cs" />
+    <Compile Include="TestHelpers\DummyFactory.cs" />
+    <Compile Include="TestHelpers\ServiceProvider.cs" />
+    <Compile Include="TestHelpers\TestBase.cs" />
+    <Compile Include="TestHelpers\ActualData.cs" />
+    <Compile Include="Steps\EmailsTo_2016_GC_Open_Doubles_Entries_Steps.cs" />
+    <Compile Include="TestHelpers\GivenData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Features\Emails to 2016 GC Open Doubles Entries.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Emails to 2016 GC Open Doubles Entries.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\source\CroquetAustralia.Domain\CroquetAustralia.Domain.csproj">
+      <Project>{16452970-3D90-4595-9F04-38FF37991B68}</Project>
+      <Name>CroquetAustralia.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\source\CroquetAustralia.QueueProcessor\CroquetAustralia.QueueProcessor.csproj">
+      <Project>{15e06a79-66c1-438e-94d5-bcedbe5494f0}</Project>
+      <Name>CroquetAustralia.QueueProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CroquetAustralia.Domain.UnitTests\CroquetAustralia.Domain.UnitTests.csproj">
+      <Project>{d875b471-f991-4074-9277-710ada1b4fbf}</Project>
+      <Name>CroquetAustralia.Domain.UnitTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CroquetAustralia.TestHelpers\CroquetAustralia.TestHelpers.csproj">
+      <Project>{b521ea77-9196-4c7a-bb1b-49ad8afb12d7}</Project>
+      <Name>CroquetAustralia.TestHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CroquetAustralia.WebApi.Specifications\CroquetAustralia.WebApi.Specifications.csproj">
+      <Project>{3D454B05-1979-4D35-81D7-6144FCCC9620}</Project>
+      <Name>CroquetAustralia.WebApi.Specifications</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself and your partner - Partner.txt.approved.txt" />
+    <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself and your partner - Player.txt.approved.txt" />
+    <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />
+    <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself only - Player.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself and your partner - Partner.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself and your partner - Player.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Player.txt.approved.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,12 +1,10 @@
-﻿using System;
-using CroquetAustralia.Domain.Services;
-using CroquetAustralia.Domain.Features.TournamentEntry.Events;
+﻿using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 using CroquetAustralia.Domain.Services.Serializers;
 using CroquetAustralia.Domain.UnitTests.TestHelpers;
 using FluentAssertions;
 using Xunit;
 
-namespace CroquetAustralia.Domain.UnitTests.Services
+namespace CroquetAustralia.Domain.UnitTests.Services.Serializers
 {
     public class EventQueueMessageSerializerTests : TestBase
     {

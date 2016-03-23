@@ -1,0 +1,11 @@
+﻿Dear {{Partner.FirstName}}
+
+Your doubles partner, {{Player.FirstName}} {{Player.LastName}}, has registered you to play in the {{Tournament.Title}} and has advised that you will be paying for yourself. Therefore we ask you visit {{PartnerUrl}} to enter your details.
+
+The entry fee is {{IndividualPrice}}. Once you have selected your method of payment you will receive an email outlining the appropriate payment instructions.
+
+Wishing you all the best for the competition.
+
+Croquet Australia
+
+NB If final payment is not received by the closing date your entry to the tournament may not be accepted.

@@ -1,0 +1,9 @@
+﻿Dear {{Partner.FirstName}}
+
+Your doubles partner, {{Player.FirstName}} {{Player.LastName}}, has registered you to play in the {{Tournament.Title}} and has nominated to pay your entry fee of {{IndividualPrice}}. There is nothing more for you to do.
+
+Wishing you all the best for the competition.
+
+Croquet Australia
+
+NB If payment is not received by the closing date your entry to the tournament may not be accepted

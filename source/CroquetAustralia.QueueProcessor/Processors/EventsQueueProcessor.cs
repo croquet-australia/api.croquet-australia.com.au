@@ -17,8 +17,8 @@ namespace CroquetAustralia.QueueProcessor.Processors
         private readonly Dictionary<Type, Func<IEvent, Type, TextWriter, Task>> _eventProcessors;
         private readonly EventsQueueMessageSerializer _eventsQueueMessageSerializer;
         private readonly IEventsRepository _eventsRepository;
-        private readonly ISendEntrySubmittedEmailQueue _sendEntrySubmittedEmailQueue;
         private readonly IPaymentReceivedQueue _paymentReceivedQueue;
+        private readonly ISendEntrySubmittedEmailQueue _sendEntrySubmittedEmailQueue;
 
         // todo: proper dependency injection?
         public EventsQueueProcessor() : this(
@@ -42,15 +42,15 @@ namespace CroquetAustralia.QueueProcessor.Processors
 
             _eventProcessors = new Dictionary<Type, Func<IEvent, Type, TextWriter, Task>>
             {
-                {typeof (EntrySubmitted), EntrySubmittedProcessorAsync},
-                {typeof (SentEntrySubmittedEmail), NoOpProcessorAsync},
-                {typeof (PaymentReceived), PaymentReceivedProcessorAsync}
+                {typeof(EntrySubmitted), EntrySubmittedProcessorAsync},
+                {typeof(SentEntrySubmittedEmail), NoOpProcessorAsync},
+                {typeof(PaymentReceived), PaymentReceivedProcessorAsync}
             };
         }
 
         public async Task ProcessEventAsync(string message, TextWriter logger)
         {
-            var @event = (IEvent) _eventsQueueMessageSerializer.Deserialize(message);
+            var @event = (IEvent)_eventsQueueMessageSerializer.Deserialize(message);
 
             await ProcessEventAsync(@event, @event.GetType(), logger);
         }

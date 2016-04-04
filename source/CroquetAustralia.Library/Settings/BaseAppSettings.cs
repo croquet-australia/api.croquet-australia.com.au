@@ -23,7 +23,14 @@ namespace CroquetAustralia.Library.Settings
         public string Get(string key, bool allowNullOrEmptyValue = false)
         {
             var fullKey = _appSettingsPrefix + key;
-            var value = ConfigurationManager.AppSettings[fullKey];
+            var value = GetEnvironmentVariableValue(fullKey);
+
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                return value;
+            }
+
+            value = ConfigurationManager.AppSettings[fullKey];
 
             if (value != null)
             {
@@ -38,6 +45,14 @@ namespace CroquetAustralia.Library.Settings
                 return null;
             }
             throw new Exception($"AppSetting[{fullKey}] cannot be null.");
+        }
+
+        private string GetEnvironmentVariableValue(string appSettingsKey)
+        {
+            var environmentVariableName = $"APPSETTING_{appSettingsKey}";
+            var value = Environment.GetEnvironmentVariable(environmentVariableName);
+
+            return value;
         }
 
         protected bool GetBoolean(string key)

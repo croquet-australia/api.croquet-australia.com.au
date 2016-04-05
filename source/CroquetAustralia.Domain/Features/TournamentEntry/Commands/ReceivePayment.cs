@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using CroquetAustralia.Domain.Core;
 using EmptyStringGuard;
 using NullGuard;
@@ -17,7 +18,8 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            throw new NotImplementedException();
+            // todo
+            return Enumerable.Empty<ValidationResult>();
         }
     }
 }

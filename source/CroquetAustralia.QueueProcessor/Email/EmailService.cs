@@ -33,6 +33,7 @@ namespace CroquetAustralia.QueueProcessor.Email
                 null,
                 null);
 
+            // todo: check response for error
             var data = response["data"];
             var messageId = data["message-id"];
 

@@ -60,7 +60,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
-            public virtual string Email { get; set; }
+            public string Email { get; set; }
             public string Phone { get; set; }
             public decimal? Handicap { get; set; }
             public bool Under21 { get; set; }

@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Azure.WebJobs.Host;
 
 namespace CroquetAustralia.QueueProcessor

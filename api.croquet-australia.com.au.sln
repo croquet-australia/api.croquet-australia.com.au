@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi", "source\CroquetAustralia.WebApi\CroquetAustralia.WebApi.csproj", "{116B0FF3-C479-4C6D-A29A-A729A7D1E3BD}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi.UnitTests", "tests\CroquetAustralia.WebApi.UnitTests\CroquetAustralia.WebApi.UnitTests.csproj", "{03344FDC-5F35-498C-B98B-C429C8E1D4D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProcessor.Specifications", "tests\CroquetAustralia.QueueProcessor.Specifications\CroquetAustralia.QueueProcessor.Specifications.csproj", "{E778BF62-CE21-4666-96FF-FAA38101137D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.DownloadTournamentEntries", "source\CroquetAustralia.DownloadTournamentEntries\CroquetAustralia.DownloadTournamentEntries.csproj", "{22ED3A26-6B63-460B-A44F-1C9F8EB85152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{E778BF62-CE21-4666-96FF-FAA38101137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E778BF62-CE21-4666-96FF-FAA38101137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E778BF62-CE21-4666-96FF-FAA38101137D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +103,6 @@ Global
 		{B521EA77-9196-4C7A-BB1B-49AD8AFB12D7} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 		{03344FDC-5F35-498C-B98B-C429C8E1D4D9} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 		{E778BF62-CE21-4666-96FF-FAA38101137D} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{22ED3A26-6B63-460B-A44F-1C9F8EB85152} = {89751C2D-8A75-4DC1-8564-CC1A3794A10B}
 	EndGlobalSection
 EndGlobal

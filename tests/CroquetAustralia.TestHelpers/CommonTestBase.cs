@@ -15,6 +15,11 @@ namespace CroquetAustralia.TestHelpers
 
         protected IDummy Dummy => ServiceFactory.Get<IDummy>();
 
+        protected T Get<T>()
+        {
+            return ServiceFactory.Get<T>();
+        }
+
         protected T Invalid<T>(string propertyName, object propertyValue) where T : class
         {
             return Valid<T>().SetProperty(propertyName, propertyValue);

@@ -30,5 +30,7 @@ App_Data/
 # This solution
 ###########################################################
 
+examples/
+
 AppSettings.config
 NuGet.exe

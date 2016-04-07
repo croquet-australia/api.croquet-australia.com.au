@@ -14,18 +14,18 @@ namespace CroquetAustralia.WebApi
 {
     public static class WebApiConfig
     {
-        public static void Register(HttpConfiguration config)
+        public static void Configure(HttpConfiguration config, WebApiSettings webApiSettings, WebAppSettings webAppSettings)
         {
             config.MapHttpAttributeRoutes();
 
-            ConfigureCors(config);
+            ConfigureCors(config, webAppSettings);
             ConfigureFormatters(config.Formatters);
-            ConfigureFilters(config.Filters);
+            ConfigureFilters(config.Filters, webApiSettings);
         }
 
-        private static void ConfigureCors(HttpConfiguration config)
+        private static void ConfigureCors(HttpConfiguration config, WebAppSettings webAppSettings)
         {
-            var cors = new EnableCorsAttribute(new WebAppSettings().BaseUri, "*", "*");
+            var cors = new EnableCorsAttribute(webAppSettings.BaseUri, "*", "*");
             config.EnableCors(cors);
 
             LogTo.Info($"Enable CORS with origins '{string.Join(",", cors.Origins)}'.");
@@ -45,9 +45,13 @@ namespace CroquetAustralia.WebApi
             serializerSettings.DateParseHandling = DateParseHandling.None;
         }
 
-        private static void ConfigureFilters(HttpFilterCollection filters)
+        private static void ConfigureFilters(HttpFilterCollection filters, WebApiSettings webApiSettings)
         {
-            filters.Add(new RequireHttpsAttribute());
+            if (!webApiSettings.RunningTests)
+            {
+                filters.Add(new RequireHttpsAttribute());
+            }
+
             filters.Add(new ValidateModelAttribute());
         }
     }

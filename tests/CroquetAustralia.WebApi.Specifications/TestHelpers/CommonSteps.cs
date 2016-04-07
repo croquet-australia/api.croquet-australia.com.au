@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using CroquetAustralia.WebApi.CommonTestHelpers;
 using FluentAssertions.Execution;
 using Newtonsoft.Json.Linq;
 using OpenMagic.Exceptions;
@@ -13,13 +14,11 @@ namespace CroquetAustralia.WebApi.Specifications.TestHelpers
     {
         private readonly ActualData _actual;
         private readonly GivenData _given;
-        private readonly WebApiClient _webApiClient;
 
-        public CommonSteps(GivenData given, ActualData actual, WebApiClient webApiClient)
+        public CommonSteps(GivenData given, ActualData actual)
         {
             _given = given;
             _actual = actual;
-            _webApiClient = webApiClient;
         }
 
         [Given(@"todo")]
@@ -37,7 +36,7 @@ namespace CroquetAustralia.WebApi.Specifications.TestHelpers
         [When(@"the command is posted to '(.*)'")]
         public void WhenTheCommandIsPostedTo(string resource)
         {
-            _actual.Response = _webApiClient.Post(resource, _given.Command);
+            _actual.Response = Get<WebApiClient>().Post(resource, _given.Command);
         }
 
         [Then(@"the response status code should be '(.*)'")]

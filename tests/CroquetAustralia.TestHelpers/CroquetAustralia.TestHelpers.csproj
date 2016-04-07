@@ -32,6 +32,10 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IISExpressMagic, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\IISExpressMagic.0.2.0\lib\net45\IISExpressMagic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="OpenMagic, Version=1.47.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\OpenMagic.1.47.0\lib\net45\OpenMagic.dll</HintPath>
       <Private>True</Private>

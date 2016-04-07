@@ -3,22 +3,21 @@ using System.Net;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using OpenMagic.Extensions;
 
-namespace CroquetAustralia.WebApi.Specifications.TestHelpers
+namespace CroquetAustralia.WebApi.CommonTestHelpers
 {
     public class WebApiClient
     {
         private readonly Uri _uri;
 
-        public WebApiClient()
+        public WebApiClient(WebApiServer webApiServer)
+            : this(webApiServer.Url)
         {
-            _uri = new Uri("https://localhost:44300/");
+        }
 
-            if (!_uri.IsResponding())
-            {
-                throw new Exception("Cannot run CroquetAustralia.WebApi.EndToEndTests until CroquetAustralia.WebApi is running.");
-            }
+        public WebApiClient(string url)
+        {
+            _uri = new Uri(url);
         }
 
         public HttpResponseMessage Post(string resource, object command)

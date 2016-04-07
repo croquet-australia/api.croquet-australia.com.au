@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.DownloadTournamentEntries", "source\CroquetAustralia.DownloadTournamentEntries\CroquetAustralia.DownloadTournamentEntries.csproj", "{22ED3A26-6B63-460B-A44F-1C9F8EB85152}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi.CommonTestHelpers", "tests\CroquetAustralia.WebApi.CommonTestHelpers\CroquetAustralia.WebApi.CommonTestHelpers.csproj", "{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22ED3A26-6B63-460B-A44F-1C9F8EB85152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,5 +110,6 @@ Global
 		{03344FDC-5F35-498C-B98B-C429C8E1D4D9} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 		{E778BF62-CE21-4666-96FF-FAA38101137D} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 		{22ED3A26-6B63-460B-A44F-1C9F8EB85152} = {89751C2D-8A75-4DC1-8564-CC1A3794A10B}
+		{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 	EndGlobalSection
 EndGlobal

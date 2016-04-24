@@ -13,13 +13,15 @@ namespace CroquetAustralia.DownloadTournamentEntries
         {
             try
             {
+                var tournamentIds = new[] { Guid.Parse(TournamentsRepository.TournamentIdGcOpenDoubles2016), Guid.Parse(TournamentsRepository.TournamentIdGcOpenSingles2016) };
                 var tournamentsRepository = new TournamentsRepository();
                 var connectionString = ConfigurationManager.AppSettings["ConnectionString:AzureStorage"];
                 var storage = CloudStorageAccount.Parse(connectionString);
                 var client = storage.CreateCloudTableClient();
                 var table = client.GetTableReference("Events");
+                var tableQuery = new TableQuery();
                 var tableEntities = (
-                    from e in table.ExecuteQuery(new TableQuery())
+                    from e in table.ExecuteQuery(tableQuery)
                     group e by e.PartitionKey
                     into g
                     orderby g.Key
@@ -29,6 +31,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
                 var models = tableEntities
                     .Select(group => new Model(group.Key, group.AsEnumerable(), tournamentsRepository))
+                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id))
                     .ToArray();
 
                 var orderedModels = models

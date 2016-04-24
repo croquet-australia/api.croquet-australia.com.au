@@ -11,6 +11,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
 {
     public class TournamentsRepository : ITournamentsRepository
     {
+        public const string TournamentIdGcOpenDoubles2016 = "648CA595-184D-4966-A978-D09B510EF371";
+        public const string TournamentIdGcOpenSingles2016 = "729A6539-40AD-40B9-BB77-257DCFC47D75";
+
         private static readonly Tournament[] Tournaments;
 
         static TournamentsRepository()
@@ -118,7 +121,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetGcOpenSingles()
         {
-            const string tournamentId = "729A6539-40AD-40B9-BB77-257DCFC47D75";
             const string tournamentTitle = "Australian GC Open Singles";
             const string slug = "open-singles";
             const bool isDoubles = false;
@@ -132,12 +134,11 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "16836a4f-9b25-43c9-9e30-26f7f7e6879b", "Plate Only", 66)
             };
 
-            return GetGcOpenTournament(tournamentId, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+            return GetGcOpenTournament(TournamentIdGcOpenSingles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
         }
 
         private static Tournament GetGcOpenDoubles()
         {
-            const string tournamentId = "648CA595-184D-4966-A978-D09B510EF371";
             const string tournamentTitle = "Australian GC Open Doubles";
             const string slug = "open-doubles";
             const bool isDoubles = true;
@@ -151,7 +152,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "1497b1db-86c0-47e3-adac-700110c6a0fa", "Plate Only", 40)
             };
 
-            return GetGcOpenTournament(tournamentId, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+            return GetGcOpenTournament(TournamentIdGcOpenDoubles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
         }
 
         private static Tournament GetGcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)

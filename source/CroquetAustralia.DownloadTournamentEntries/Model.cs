@@ -59,6 +59,8 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Entry Submitted (AEST)",
             "Payment Sent (AEST)",
             "Handicap",
+            "Paying for Partner",
+            "Partner",
             "Entry Email Sent (AEST)",
             "Entry Email Id");
 
@@ -101,6 +103,8 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 FormatTimeStamp(EntrySubmitted.Created),
                 FormatTimeStamp(PaymentReceived?.Created),
                 EntrySubmitted.Player.Handicap,
+                EntrySubmitted.Tournament.IsDoubles ? EntrySubmitted.PayingForPartner.ToString() : "",
+                EntrySubmitted.Partner == null ? null : string.Format($"{EntrySubmitted.Partner.FirstName} {EntrySubmitted.Partner.LastName}"),
                 FormatTimeStamp(SentEntrySubmittedEmail?.Created),
                 SentEntrySubmittedEmail?.EmailId
             };

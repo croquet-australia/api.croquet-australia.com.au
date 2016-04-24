@@ -11,9 +11,11 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
         {
             Id = tournament.Id;
             Title = tournament.Title;
+            IsDoubles = tournament.IsDoubles;
         }
 
         public Guid Id { get; }
         public string Title { get; }
+        public bool IsDoubles { get; }
     }
 }

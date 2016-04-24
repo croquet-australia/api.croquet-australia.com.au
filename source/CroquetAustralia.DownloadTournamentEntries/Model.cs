@@ -56,11 +56,11 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Event",
             "Under 21",
             "Full Time Student Under 25",
-            "Eire Cup Teams Reception",
-            "Eire Cup Presentation Dinner",
             "Entry Submitted (AEST)",
             "Payment Sent (AEST)",
             "Handicap",
+            "Paying for Partner",
+            "Partner",
             "Entry Email Sent (AEST)",
             "Entry Email Id");
 
@@ -100,11 +100,11 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 EntrySubmitted.Event?.Title,
                 EntrySubmitted.Player.Under21,
                 EntrySubmitted.Player.FullTimeStudentUnder25,
-                EntrySubmitted.EireCupTeamsReception?.Quantity,
-                EntrySubmitted.EireCupPresentationDinner?.Quantity,
                 FormatTimeStamp(EntrySubmitted.Created),
                 FormatTimeStamp(PaymentReceived?.Created),
                 EntrySubmitted.Player.Handicap,
+                EntrySubmitted.Tournament.IsDoubles ? EntrySubmitted.PayingForPartner.ToString() : "",
+                EntrySubmitted.Partner == null ? null : string.Format($"{EntrySubmitted.Partner.FirstName} {EntrySubmitted.Partner.LastName}"),
                 FormatTimeStamp(SentEntrySubmittedEmail?.Created),
                 SentEntrySubmittedEmail?.EmailId
             };

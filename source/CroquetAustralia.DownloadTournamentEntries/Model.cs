@@ -61,6 +61,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Handicap",
             "Paying for Partner",
             "Partner",
+            "Partner Handicap",
             "Entry Email Sent (AEST)",
             "Entry Email Id");
 
@@ -105,6 +106,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 EntrySubmitted.Player.Handicap,
                 EntrySubmitted.Tournament.IsDoubles ? EntrySubmitted.PayingForPartner.ToString() : "",
                 EntrySubmitted.Partner == null ? null : string.Format($"{EntrySubmitted.Partner.FirstName} {EntrySubmitted.Partner.LastName}"),
+                EntrySubmitted.Partner?.Handicap,
                 FormatTimeStamp(SentEntrySubmittedEmail?.Created),
                 SentEntrySubmittedEmail?.EmailId
             };

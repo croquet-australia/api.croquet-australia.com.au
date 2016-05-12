@@ -23,7 +23,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcMensOpen(),
                 GetAcWomensOpen(),
                 GetGcOpenDoubles(),
-                GetGcOpenSingles()
+                GetGcOpenSingles(),
+                GetAcPatronsTrophy()
             };
         }
 
@@ -115,6 +116,48 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 "ac",
                 slug,
                 "AC Championship");
+
+            return tournament;
+        }
+
+        private static Tournament GetAcPatronsTrophy()
+        {
+            const string tournamentId = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
+            const string tournamentTitle = "Australian AC Patron's Trophy";
+            const string location = "Moorabinda, Bunbury, Western Australia";
+            const string slug = "patrons-trophy";
+            const string depositStating = "Patron's Trophy";
+            const string discipline = "ac";
+            var starts = "11 Jun 2016 Australia/Perth".ToZonedDateTime();
+            var finishes = "13 Jun 2016 Australia/Perth".ToZonedDateTime();
+            var eventsClose = "02 Jun 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new[]
+            {
+                new TournamentItem("event", "379d333b-afe1-4efd-bf89-4c30c4fd2c0c", "Main Event", 90)
+            };
+
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                false,
+                discipline,
+                slug,
+                depositStating);
 
             return tournament;
         }

@@ -13,6 +13,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
     {
         public const string TournamentIdGcOpenDoubles2016 = "648CA595-184D-4966-A978-D09B510EF371";
         public const string TournamentIdGcOpenSingles2016 = "729A6539-40AD-40B9-BB77-257DCFC47D75";
+        public const string TournamentIdAcPatronsTrophy2016 = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
 
         private static readonly Tournament[] Tournaments;
 
@@ -122,7 +123,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetAcPatronsTrophy()
         {
-            const string tournamentId = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
+            const string tournamentId = TournamentIdAcPatronsTrophy2016;
             const string tournamentTitle = "Australian AC Patron's Trophy";
             const string location = "Moorabinda, Bunbury, Western Australia";
             const string slug = "patrons-trophy";

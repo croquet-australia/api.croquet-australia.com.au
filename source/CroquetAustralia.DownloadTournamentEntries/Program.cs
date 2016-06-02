@@ -13,7 +13,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
         {
             try
             {
-                var tournamentIds = new[] { Guid.Parse(TournamentsRepository.TournamentIdGcOpenDoubles2016), Guid.Parse(TournamentsRepository.TournamentIdGcOpenSingles2016) };
+                var tournamentIds = new[] { Guid.Parse(TournamentsRepository.TournamentIdAcPatronsTrophy2016) };
                 var tournamentsRepository = new TournamentsRepository();
                 var connectionString = ConfigurationManager.AppSettings["ConnectionString:AzureStorage"];
                 var storage = CloudStorageAccount.Parse(connectionString);
@@ -31,7 +31,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
                 var models = tableEntities
                     .Select(group => new Model(group.Key, group.AsEnumerable(), tournamentsRepository))
-                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id))
+                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id) && !IsTestRecord(m))
                     .ToArray();
 
                 var orderedModels = models
@@ -54,6 +54,12 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 Console.WriteLine(exception);
                 Console.ForegroundColor = ConsoleColor.Gray;
             }
+        }
+
+        private static bool IsTestRecord(Model model)
+        {
+            return model.EntrySubmitted.Tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdAcPatronsTrophy2016)
+                   && model.EntrySubmitted.Player.Email == "pfreer@netspeed.com.au";
         }
     }
 }

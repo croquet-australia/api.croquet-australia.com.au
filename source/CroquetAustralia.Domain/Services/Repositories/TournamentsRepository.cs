@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CroquetAustralia.Domain.Core;
 using CroquetAustralia.Domain.Data;
+using CroquetAustralia.Domain.Exceptions;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using NodaTime;
 
@@ -36,12 +37,12 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public Task<Tournament> GetByIdAsync(Guid tournamentId)
         {
-            return Task.FromResult(Tournaments.Single(t => t.Id == tournamentId));
+            return GetTournamentAsync(t => t.Id == tournamentId);
         }
 
         public Task<Tournament> GetBySlugAsync(int year, string discipline, string slug)
         {
-            return Task.FromResult(Tournaments.Single(t => t.Starts.Year == year && t.Discipline == discipline && t.Slug == slug));
+            return GetTournamentAsync(t => t.Starts.Year == year && t.Discipline == discipline && t.Slug == slug);
         }
 
         public Task<Tournament> GetByUrlAsync(string url)
@@ -59,6 +60,23 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public Task<IEnumerable<Tournament>> GetAllAsync()
         {
             return Task.FromResult(Tournaments.AsEnumerable());
+        }
+
+        private static Task<Tournament> GetTournamentAsync(Func<Tournament, bool> where)
+        {
+            return Task.FromResult(GetTournament(where));
+        }
+
+        private static Tournament GetTournament(Func<Tournament, bool> where)
+        {
+            var tournament = Tournaments.SingleOrDefault(where);
+
+            if (tournament == null)
+            {
+                throw new TournamentNotFoundException(where);
+            }
+
+            return tournament;
         }
 
         private static Tournament GetAcMensOpen()

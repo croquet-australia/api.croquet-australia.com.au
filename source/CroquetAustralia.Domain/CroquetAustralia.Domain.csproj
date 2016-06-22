@@ -149,6 +149,8 @@
     <Compile Include="Core\ZonedDateTimeJsonConverter.cs" />
     <Compile Include="Data\Tournament.cs" />
     <Compile Include="Data\TournamentItem.cs" />
+    <Compile Include="Exceptions\EntityNotFoundException.cs" />
+    <Compile Include="Exceptions\TournamentNotFoundException.cs" />
     <Compile Include="Services\Repositories\TournamentsRepository.cs" />
     <Compile Include="Core\FluentValidator.cs" />
     <Compile Include="Features\TournamentEntry\Commands\ITournamentsRepository.cs" />

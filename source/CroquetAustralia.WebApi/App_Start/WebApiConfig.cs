@@ -52,6 +52,7 @@ namespace CroquetAustralia.WebApi
                 filters.Add(new RequireHttpsAttribute());
             }
 
+            filters.Add(new EntityNotFoundFilterAttribute());
             filters.Add(new ValidateModelAttribute());
         }
     }

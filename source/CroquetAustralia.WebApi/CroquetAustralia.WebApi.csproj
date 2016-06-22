@@ -190,6 +190,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\TournamentsController.cs" />
+    <Compile Include="Filters\EntityNotFoundFilterAttribute.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="Filters\ValidateModelAttribute.cs" />
     <Compile Include="Properties\CommonAssemblyInfo.cs" />

@@ -43,11 +43,6 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
         // ReSharper disable once InconsistentNaming
         public abstract class ProcessEventAsync_PayByType : SendEntrySubmittedEmailQueueProcessorTests
         {
-            private readonly InMemoryEmailService _emailService;
-            private readonly PaymentMethod _paymentMethod;
-            private readonly SendEntrySubmittedEmailQueueProcessor _processor;
-            private readonly TournamentsRepository _tournamentsRepository;
-
             protected ProcessEventAsync_PayByType(PaymentMethod paymentMethod)
             {
                 _paymentMethod = paymentMethod;
@@ -71,23 +66,10 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     emailGenerator);
             }
 
-            [Fact]
-            public void ShouldSendEmailWhenEventAndFunctionsAreSelected()
-            {
-                ShouldSendEmail(true, Functions());
-            }
-
-            [Fact]
-            public void ShouldSendEmailWhenOnlyEventIsSelected()
-            {
-                ShouldSendEmail(true, new SubmitEntry.LineItem[] {});
-            }
-
-            [Fact]
-            public void ShouldSendEmailWhenOnlyFunctionsAreSelected()
-            {
-                ShouldSendEmail(false, Functions());
-            }
+            private readonly InMemoryEmailService _emailService;
+            private readonly PaymentMethod _paymentMethod;
+            private readonly SendEntrySubmittedEmailQueueProcessor _processor;
+            private readonly TournamentsRepository _tournamentsRepository;
 
             private void ShouldSendEmail(bool eventSelected, SubmitEntry.LineItem[] functions)
             {
@@ -164,6 +146,24 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                         UnitPrice = 50
                     }
                 };
+            }
+
+            [Fact]
+            public void ShouldSendEmailWhenEventAndFunctionsAreSelected()
+            {
+                ShouldSendEmail(true, Functions());
+            }
+
+            [Fact]
+            public void ShouldSendEmailWhenOnlyEventIsSelected()
+            {
+                ShouldSendEmail(true, new SubmitEntry.LineItem[] {});
+            }
+
+            [Fact]
+            public void ShouldSendEmailWhenOnlyFunctionsAreSelected()
+            {
+                ShouldSendEmail(false, Functions());
             }
         }
     }

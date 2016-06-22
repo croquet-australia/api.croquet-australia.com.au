@@ -13,39 +13,6 @@ namespace CroquetAustralia.WebApi.EndToEndTests.Controllers
     {
         public class AddEntryAsync : TournamentEntryControllerTests
         {
-            [Fact]
-            public void Response_StatusCode_ShouldBe_BadRequest_WhenInvalid_SubmitEntry_Command_IsPosted()
-            {
-                PostInvalid_SubmitEntry_Command()
-                    .StatusCode.Should().Be(HttpStatusCode.BadRequest);
-            }
-
-            [Fact]
-            public void Response_Content_ShouldHaveProperties_Message_And_ModelState_WhenInvalid_SubmitEntry_Command_IsPosted()
-            {
-                // When
-                var response = PostInvalid_SubmitEntry_Command();
-
-                // Then
-                var content = response.Content.ReadAsAsync<JObject>().Result;
-                var propertyNames = content.Properties().Select(p => p.Name);
-
-                propertyNames.Should().BeEquivalentTo("message", "modelState");
-            }
-
-            [Fact]
-            public void Response_Content_ModelState_ShouldHaveOneOrMoreProperties_WhenInvalid_SubmitEntry_Command_IsPosted()
-            {
-                // When
-                var response = PostInvalid_SubmitEntry_Command();
-
-                // Then
-                var content = response.Content.ReadAsAsync<JObject>().Result;
-                var modelState = content["modelState"];
-
-                modelState.Count().Should().BeGreaterThan(0);
-            }
-
             private HttpResponseMessage PostInvalid_SubmitEntry_Command()
             {
                 var command = InvalidSubmitEntryCommand();
@@ -67,6 +34,39 @@ namespace CroquetAustralia.WebApi.EndToEndTests.Controllers
             {
                 var command = new SubmitEntry {Player = new SubmitEntry.PlayerClass()};
                 return command;
+            }
+
+            [Fact]
+            public void Response_Content_ModelState_ShouldHaveOneOrMoreProperties_WhenInvalid_SubmitEntry_Command_IsPosted()
+            {
+                // When
+                var response = PostInvalid_SubmitEntry_Command();
+
+                // Then
+                var content = response.Content.ReadAsAsync<JObject>().Result;
+                var modelState = content["modelState"];
+
+                modelState.Count().Should().BeGreaterThan(0);
+            }
+
+            [Fact]
+            public void Response_Content_ShouldHaveProperties_Message_And_ModelState_WhenInvalid_SubmitEntry_Command_IsPosted()
+            {
+                // When
+                var response = PostInvalid_SubmitEntry_Command();
+
+                // Then
+                var content = response.Content.ReadAsAsync<JObject>().Result;
+                var propertyNames = content.Properties().Select(p => p.Name);
+
+                propertyNames.Should().BeEquivalentTo("message", "modelState");
+            }
+
+            [Fact]
+            public void Response_StatusCode_ShouldBe_BadRequest_WhenInvalid_SubmitEntry_Command_IsPosted()
+            {
+                PostInvalid_SubmitEntry_Command()
+                    .StatusCode.Should().Be(HttpStatusCode.BadRequest);
             }
         }
     }

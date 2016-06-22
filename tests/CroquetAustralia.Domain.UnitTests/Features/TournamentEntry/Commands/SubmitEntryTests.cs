@@ -57,20 +57,6 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
                 return new[] {property, emptyValue, expectedErrorMessage};
             }
 
-            [Fact]
-            public void Should_not_return_any_ValidationResult_objects_when_command_is_valid()
-            {
-                // Given
-                var command = Valid<SubmitEntry>();
-                var validationContext = new ValidationContext(command);
-
-                // When
-                var results = command.Validate(validationContext);
-
-                // Then
-                results.Should().BeEmpty();
-            }
-
             [Theory, MemberData(nameof(RequiredProperties))]
             public void Should_return_ValidationResult_when_required_property_is_empty(string propertyName, object emptyValue, string expectedErrorMessage)
             {
@@ -113,6 +99,20 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
                         throw new Exception($"Exception thrown by validationRule '{validationRuleIndex}'.", exception);
                     }
                 }
+            }
+
+            [Fact]
+            public void Should_not_return_any_ValidationResult_objects_when_command_is_valid()
+            {
+                // Given
+                var command = Valid<SubmitEntry>();
+                var validationContext = new ValidationContext(command);
+
+                // When
+                var results = command.Validate(validationContext);
+
+                // Then
+                results.Should().BeEmpty();
             }
         }
     }

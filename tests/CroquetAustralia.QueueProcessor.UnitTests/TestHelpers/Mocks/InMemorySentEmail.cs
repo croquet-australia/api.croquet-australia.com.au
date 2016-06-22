@@ -5,9 +5,9 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.TestHelpers.Mocks
 {
     internal class InMemorySentEmail
     {
-        public InMemorySentEmail(EmailAddress @from, IEnumerable<EmailAddress> to, IEnumerable<EmailAddress> bcc, string subject, string bodyHtml, string bodyText)
+        public InMemorySentEmail(EmailAddress from, IEnumerable<EmailAddress> to, IEnumerable<EmailAddress> bcc, string subject, string bodyHtml, string bodyText)
         {
-            From = @from;
+            From = from;
             To = to;
             Bcc = bcc;
             Subject = subject;

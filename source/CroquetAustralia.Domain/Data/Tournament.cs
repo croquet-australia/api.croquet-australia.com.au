@@ -1,12 +1,21 @@
 ﻿using System;
 using NodaTime;
+using NullGuard;
 
 namespace CroquetAustralia.Domain.Data
 {
     public class Tournament
     {
-        public Tournament(string id, string title, ZonedDateTime starts, ZonedDateTime finishes, string location, TournamentItem[] events, ZonedDateTime eventsClose, TournamentItem[] functions, ZonedDateTime functionsClose, TournamentItem[] merchandise, ZonedDateTime merchandiseClose, bool isDoubles, string discipline, string slug, string depositStating)
+        public Tournament(string id, string title, ZonedDateTime starts, ZonedDateTime finishes, string location, TournamentItem[] events, ZonedDateTime eventsClose, TournamentItem[] functions, ZonedDateTime functionsClose, TournamentItem[] merchandise, ZonedDateTime merchandiseClose, bool isDoubles, string discipline, string slug, [AllowNull] string depositStating, bool isEOI = false)
         {
+            string validationMessage;
+
+            // todo: Apply validation rule to deserialization
+            if (!IsDepositStatingValid(depositStating, isEOI, out validationMessage))
+            {
+                throw new ArgumentNullException(nameof(depositStating), validationMessage);
+            }
+
             Id = new Guid(id);
             Title = title;
             Starts = starts;
@@ -22,6 +31,7 @@ namespace CroquetAustralia.Domain.Data
             Discipline = discipline;
             Slug = slug;
             DepositStating = depositStating;
+            IsEOI = isEOI;
         }
 
         public Guid Id { get; }
@@ -38,6 +48,19 @@ namespace CroquetAustralia.Domain.Data
         public bool IsDoubles { get; }
         public string Discipline { get; }
         public string Slug { get; }
-        public string DepositStating { get; }
+        public string DepositStating { [return: AllowNull] get; }
+        public bool IsEOI { get; }
+
+        private static bool IsDepositStatingValid(string depositStating, bool isEOI, out string validationMessage)
+        {
+            if (!string.IsNullOrWhiteSpace(depositStating) || isEOI)
+            {
+                validationMessage = null;
+                return true;
+            }
+
+            validationMessage = "Value cannot be null when isEOI is false.";
+            return false;
+        }
     }
 }

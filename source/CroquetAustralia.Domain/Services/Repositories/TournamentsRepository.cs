@@ -12,9 +12,11 @@ namespace CroquetAustralia.Domain.Services.Repositories
 {
     public class TournamentsRepository : ITournamentsRepository
     {
-        public const string TournamentIdGcOpenDoubles2016 = "648CA595-184D-4966-A978-D09B510EF371";
-        public const string TournamentIdGcOpenSingles2016 = "729A6539-40AD-40B9-BB77-257DCFC47D75";
+        public const string TournamentIdGcOpenDoubles2016 = "648ca595-184d-4966-a978-d09b510ef371";
+        public const string TournamentIdGcOpenSingles2016 = "729a6539-40ad-40b9-bb77-257dcfc47d75";
         public const string TournamentIdAcPatronsTrophy2016 = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
+        public const string TournamentIdAcPresidentsEightsEOI2016 = "35ac72fe-e3c3-402b-b48b-022412922cbc";
+        public const string TournamentIdGcWorldsEOI2016 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
 
         private static readonly Tournament[] Tournaments;
 
@@ -26,7 +28,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcWomensOpen(),
                 GetGcOpenDoubles(),
                 GetGcOpenSingles(),
-                GetAcPatronsTrophy()
+                GetAcPatronsTrophy(),
+                GetAcPresidentsEightsEOI(),
+                GetGcWorldsEOI()
             };
         }
 
@@ -117,7 +121,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("function", "40b86428-7a89-48b1-ac29-9f468440bc84", "Eire Cup Presentation Dinner - 6:30pm Sunday 20 March", 50)
             };
 
-            var merchandise = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] { };
 
             var tournament = new Tournament(
                 tournamentId,
@@ -158,8 +162,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "379d333b-afe1-4efd-bf89-4c30c4fd2c0c", "Main Event", 90)
             };
 
-            var functions = new TournamentItem[] {};
-            var merchandise = new TournamentItem[] {};
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
 
             var tournament = new Tournament(
                 tournamentId,
@@ -177,6 +181,86 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 discipline,
                 slug,
                 depositStating);
+
+            return tournament;
+        }
+
+        private static Tournament GetAcPresidentsEightsEOI()
+        {
+            const string tournamentId = TournamentIdAcPresidentsEightsEOI2016;
+            const string tournamentTitle = "Australian AC President's Eights - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "presidents-eights-expressions-of-interest";
+            const string depositStating = null;
+            const string discipline = "ac";
+            const bool isEOI = true;
+            var starts = "07 Oct 2016 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "10 Oct 2016 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "25 Jul 2016 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                false,
+                discipline,
+                slug,
+                depositStating,
+                isEOI);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcWorldsEOI()
+        {
+            const string tournamentId = TournamentIdGcWorldsEOI2016;
+            const string tournamentTitle = "WCF Golf Croquet World Championship - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "wcf-world-championship-expressions-of-interest";
+            const string depositStating = null;
+            const string discipline = "gc";
+            const bool isEOI = true;
+            var starts = "25 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "05 Mar 2017 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "15 Jul 2016 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                false,
+                discipline,
+                slug,
+                depositStating,
+                isEOI);
 
             return tournament;
         }
@@ -219,9 +303,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetGcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
         {
-            var functions = new TournamentItem[] {};
+            var functions = new TournamentItem[] { };
             var functionsClose = eventsClose;
-            var merchandise = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] { };
             var merchandiseClose = eventsClose;
 
             var tournament = new Tournament(

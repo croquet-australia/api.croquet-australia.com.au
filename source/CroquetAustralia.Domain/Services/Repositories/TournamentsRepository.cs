@@ -28,9 +28,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcWomensOpen(),
                 GetGcOpenDoubles(),
                 GetGcOpenSingles(),
-                GetAcPatronsTrophy(),
-                GetAcPresidentsEightsEOI(),
-                GetGcWorldsEOI()
+                GetAcPatronsTrophy()
             };
         }
 

@@ -6,7 +6,7 @@ namespace CroquetAustralia.Domain.Data
 {
     public class Tournament
     {
-        public Tournament(string id, string title, ZonedDateTime starts, ZonedDateTime finishes, string location, TournamentItem[] events, ZonedDateTime eventsClose, TournamentItem[] functions, ZonedDateTime functionsClose, TournamentItem[] merchandise, ZonedDateTime merchandiseClose, bool isDoubles, string discipline, string slug, [AllowNull] string depositStating, bool isEOI = false)
+        public Tournament(string id, string title, ZonedDateTime starts, ZonedDateTime finishes, string location, TournamentItem[] events, ZonedDateTime eventsClose, TournamentItem[] functions, ZonedDateTime functionsClose, TournamentItem[] merchandise, ZonedDateTime merchandiseClose, bool isDoubles, string discipline, string slug, [AllowNull] string depositStating, [AllowNull] string[] relatedTournamentIds = null, bool isEOI = false)
         {
             string validationMessage;
 
@@ -31,6 +31,7 @@ namespace CroquetAustralia.Domain.Data
             Discipline = discipline;
             Slug = slug;
             DepositStating = depositStating;
+            RelatedTournamentIds = relatedTournamentIds ?? new string[] {};
             IsEOI = isEOI;
         }
 
@@ -49,6 +50,7 @@ namespace CroquetAustralia.Domain.Data
         public string Discipline { get; }
         public string Slug { get; }
         public string DepositStating { [return: AllowNull] get; }
+        public string[] RelatedTournamentIds { get; }
         public bool IsEOI { get; }
 
         private static bool IsDepositStatingValid(string depositStating, bool isEOI, out string validationMessage)

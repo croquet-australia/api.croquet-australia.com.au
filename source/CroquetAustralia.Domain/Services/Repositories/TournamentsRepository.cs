@@ -121,7 +121,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("function", "40b86428-7a89-48b1-ac29-9f468440bc84", "Eire Cup Presentation Dinner - 6:30pm Sunday 20 March", 50)
             };
 
-            var merchandise = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -162,8 +162,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "379d333b-afe1-4efd-bf89-4c30c4fd2c0c", "Main Event", 90)
             };
 
-            var functions = new TournamentItem[] { };
-            var merchandise = new TournamentItem[] { };
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -200,9 +200,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 
-            var events = new TournamentItem[] { };
-            var functions = new TournamentItem[] { };
-            var merchandise = new TournamentItem[] { };
+            var events = new TournamentItem[] {};
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -240,9 +240,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 
-            var events = new TournamentItem[] { };
-            var functions = new TournamentItem[] { };
-            var merchandise = new TournamentItem[] { };
+            var events = new TournamentItem[] {};
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -303,9 +303,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetGcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
         {
-            var functions = new TournamentItem[] { };
+            var functions = new TournamentItem[] {};
             var functionsClose = eventsClose;
-            var merchandise = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] {};
             var merchandiseClose = eventsClose;
 
             var tournament = new Tournament(

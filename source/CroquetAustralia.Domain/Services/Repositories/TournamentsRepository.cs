@@ -17,6 +17,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcPatronsTrophy2016 = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
         public const string TournamentIdAcPresidentsEightsEOI2016 = "35ac72fe-e3c3-402b-b48b-022412922cbc";
         public const string TournamentIdGcWorldsEOI2016 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
+        public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
+        public const string TournamentIdGcWomensOpen2016 = "2ced7cd7-a505-497e-b628-1c31860d102b";
 
         private static readonly Tournament[] Tournaments;
 
@@ -29,8 +31,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcOpenDoubles(),
                 GetGcOpenSingles(),
                 GetAcPatronsTrophy(),
-                GetAcPresidentsEightsEOI(),
-                GetGcWorldsEOI()
+                GetGcMensOpen(),
+                GetGcWomensOpen()
             };
         }
 
@@ -121,7 +123,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("function", "40b86428-7a89-48b1-ac29-9f468440bc84", "Eire Cup Presentation Dinner - 6:30pm Sunday 20 March", 50)
             };
 
-            var merchandise = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -162,8 +164,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "379d333b-afe1-4efd-bf89-4c30c4fd2c0c", "Main Event", 90)
             };
 
-            var functions = new TournamentItem[] { };
-            var merchandise = new TournamentItem[] { };
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -200,9 +202,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 
-            var events = new TournamentItem[] { };
-            var functions = new TournamentItem[] { };
-            var merchandise = new TournamentItem[] { };
+            var events = new TournamentItem[] {};
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -220,7 +222,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 discipline,
                 slug,
                 depositStating,
-                isEOI);
+                isEOI: isEOI);
 
             return tournament;
         }
@@ -240,9 +242,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 
-            var events = new TournamentItem[] { };
-            var functions = new TournamentItem[] { };
-            var merchandise = new TournamentItem[] { };
+            var events = new TournamentItem[] {};
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
 
             var tournament = new Tournament(
                 tournamentId,
@@ -260,7 +262,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 discipline,
                 slug,
                 depositStating,
-                isEOI);
+                isEOI: isEOI);
 
             return tournament;
         }
@@ -303,9 +305,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetGcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
         {
-            var functions = new TournamentItem[] { };
+            var functions = new TournamentItem[] {};
             var functionsClose = eventsClose;
-            var merchandise = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] {};
             var merchandiseClose = eventsClose;
 
             var tournament = new Tournament(
@@ -324,6 +326,78 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 "gc",
                 slug,
                 "GC " + (isDoubles ? "Doubles" : "Singles"));
+
+            return tournament;
+        }
+
+        private static Tournament GetGcMensOpen()
+        {
+            const string tournamentId = TournamentIdGcMensOpen2016;
+            const string tournamentTitle = "Australian GC Men's Singles";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "cc26f39f-c13c-43e7-9f0d-e171bdfcd53f", "Main and Consolation Events", 85),
+                new TournamentItem("event", "9199c52d-faa2-40b9-82d8-68dfa2ac32fc", "Main Event Only", 85),
+                new TournamentItem("event", "b89fa7d6-8a80-49d9-ad5a-fd40ed27966a", "Plate Only", 42.50m)
+            };
+
+            return GetGcGenderTournament(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2016});
+        }
+
+        private static Tournament GetGcWomensOpen()
+        {
+            const string tournamentId = TournamentIdGcWomensOpen2016;
+            const string tournamentTitle = "Australian GC Women's Singles";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "77a8e980-619a-40e0-b68e-a78b7d125e43", "Main and Consolation events", 85),
+                new TournamentItem("event", "cb8390ad-6911-4885-af68-0d1cec84329e", "Main Event Only", 85),
+                new TournamentItem("event", "4a492460-a1a8-4dfa-a952-21ff20b81ce8", "Plate Only", 42.50m)
+            };
+
+            return GetGcGenderTournament(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2016});
+        }
+
+        private static Tournament GetGcGenderTournament(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
+        {
+            var functions = new[]
+            {
+                new TournamentItem("function", "4d80520d-e8f2-4424-bdaf-164c774b8acd", "Welcome Men's & Women's Singles - 4:00pm Friday 2 September", 0),
+                new TournamentItem("function", "7dbda0ca-7c20-4554-986e-77bce9bcd8dd", "Presentations and ISS Teams Reception - 6:00pm Tuesday 6 September by invitation", 0),
+                new TournamentItem("function", "e81cf11f-fc5a-4d26-ba27-9792078c8ef0", "ISS Presentation Dinner - 7:00pm Sunday 11 September", 65)
+            };
+
+            var merchandise = new TournamentItem[] {};
+
+            var starts = "03 Sep 2016 Australia/Perth".ToZonedDateTime();
+            var finishes = "06 Sep 2016 Australia/Perth".ToZonedDateTime();
+            var eventsClose = "05 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+            const string location = "Perth, WA";
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const string depositStating = "GC Championship";
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                relatedTournamentIds);
 
             return tournament;
         }

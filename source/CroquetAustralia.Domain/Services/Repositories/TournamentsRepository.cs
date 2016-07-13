@@ -365,7 +365,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functions = new[]
             {
                 new TournamentItem("function", "4d80520d-e8f2-4424-bdaf-164c774b8acd", "Welcome Men's & Women's Singles - 4:00pm Friday 2 September", 0),
-                new TournamentItem("function", "7dbda0ca-7c20-4554-986e-77bce9bcd8dd", "Presentations and ISS Teams Reception - 6:00pm Tuesday 6 September by invitation", 0),
+                new TournamentItem("function", "7dbda0ca-7c20-4554-986e-77bce9bcd8dd", "Presentations and ISS Teams Reception - 6:00pm Tuesday 6 September by invitation", 0, true),
                 new TournamentItem("function", "e81cf11f-fc5a-4d26-ba27-9792078c8ef0", "ISS Presentation Dinner - 7:00pm Sunday 11 September", 65)
             };
 

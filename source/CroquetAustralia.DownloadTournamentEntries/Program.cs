@@ -13,7 +13,12 @@ namespace CroquetAustralia.DownloadTournamentEntries
         {
             try
             {
-                var tournamentIds = new[] {Guid.Parse(TournamentsRepository.TournamentIdAcPatronsTrophy2016)};
+                var tournamentIds = new[]
+                {
+                    Guid.Parse(TournamentsRepository.TournamentIdGcWomensOpen2016),
+                    Guid.Parse(TournamentsRepository.TournamentIdGcMensOpen2016)
+                };
+
                 var tournamentsRepository = new TournamentsRepository();
                 var connectionString = ConfigurationManager.AppSettings["ConnectionString:AzureStorage"];
                 var storage = CloudStorageAccount.Parse(connectionString);

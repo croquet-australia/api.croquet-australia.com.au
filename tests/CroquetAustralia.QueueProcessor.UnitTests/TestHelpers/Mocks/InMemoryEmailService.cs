@@ -21,7 +21,8 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.TestHelpers.Mocks
                 emailMessage.Bcc,
                 emailMessage.Subject,
                 emailMessage.BodyAsHtml,
-                emailMessage.BodyAsText);
+                emailMessage.BodyAsText,
+                emailMessage.Attachments);
 
             _sentEmails.Add(id, sentEmail);
 

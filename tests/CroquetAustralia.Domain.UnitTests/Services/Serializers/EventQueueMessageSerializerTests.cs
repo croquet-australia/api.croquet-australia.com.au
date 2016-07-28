@@ -21,7 +21,7 @@ namespace CroquetAustralia.Domain.UnitTests.Services.Serializers
             public void CanDeserializeEventQueueMessageWhenEventTypeIsEntrySubmitted()
             {
                 // Arrange
-                var expected = Dummy.Object<EntrySubmitted>();
+                var expected = Dummy.Value<EntrySubmitted>();
                 var message = Serializer.Serialize(expected);
 
                 // Act

@@ -8,8 +8,11 @@ using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.QueueProcessor.Email;
 using CroquetAustralia.QueueProcessor.Specifications.TestHelpers;
+using CroquetAustralia.QueueProcessor.UnitTests.TestHelpers;
 using CroquetAustralia.TestHelpers;
 using TechTalk.SpecFlow;
+using ApprovalNamer = CroquetAustralia.QueueProcessor.Specifications.TestHelpers.ApprovalNamer;
+using TestBase = CroquetAustralia.QueueProcessor.Specifications.TestHelpers.TestBase;
 
 namespace CroquetAustralia.QueueProcessor.Specifications.Steps
 {
@@ -70,7 +73,9 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
             {
                 Email = "joe@example.com",
                 FirstName = "Joe",
-                LastName = "Blow"
+                LastName = "Blow",
+                YearOfBirth = _given.YearOfBirth,
+                NonResident = _given.NonResident
             };
 
             submitEntry.Partner = new SubmitEntry.PlayerClass
@@ -81,7 +86,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
             };
 
             _given.EntrySubmitted = submitEntry.ToEntrySubmitted();
-            _actual.Emails = _services.Get<IEmailGenerator>().GenerateAsync(_given.EntrySubmitted).Result.ToArray();
+            _actual.TournamentEntryEmails = _services.Get<IEmailGenerator>().GenerateAsync(_given.EntrySubmitted).Result.ToArray();
         }
 
         [Then(@"an email using '(.*)' template is sent to the player")]
@@ -98,8 +103,8 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
 
         private void VerifyEmailMessageTo(SubmitEntry.PlayerClass player, string templateFileName)
         {
-            var emailMessage = _actual.Emails.Single(e => e.To.Single().Email == player.Email);
-            var actual = emailMessage.ToApprovalText();
+            var emailMessage = _actual.TournamentEntryEmails.Single(e => e.To.Single().Email == player.Email);
+            var actual = emailMessage.ToApprovalText(new[] {new InMemoryAttachmentsConverter()});
 
             var writer = WriterFactory.CreateTextWriter(actual);
             var namer = new ApprovalNamer(Path.Combine(Directory.GetCurrentDirectory(), $@"..\..\Steps\PayBy{_given.PaymentMethod}"), templateFileName);

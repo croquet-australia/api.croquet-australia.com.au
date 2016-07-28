@@ -40,7 +40,9 @@ namespace CroquetAustralia.QueueProcessor.UnitTests
                     typeof(BaseEmailGenerator),
                     typeof(EmailAddress),
                     typeof(EmailMessage),
-                    typeof(MailInBlue)
+                    typeof(MailInBlue),
+                    typeof(SendEmailException),
+                    typeof(TournamentEntryEmailMessage)
                 };
 
                 return typeof(Program).Assembly

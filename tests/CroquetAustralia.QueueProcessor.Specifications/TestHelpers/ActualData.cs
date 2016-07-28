@@ -4,6 +4,6 @@ namespace CroquetAustralia.QueueProcessor.Specifications.TestHelpers
 {
     public class ActualData
     {
-        public EmailMessage[] Emails { get; set; }
+        public EmailMessage[] TournamentEntryEmails { get; set; }
     }
 }

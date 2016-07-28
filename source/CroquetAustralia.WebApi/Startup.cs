@@ -1,5 +1,7 @@
 ﻿using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using CroquetAustralia.WebApi;
+using CroquetAustralia.WebApi.Services;
 using CroquetAustralia.WebApi.Settings;
 using Microsoft.Owin;
 using Ninject;
@@ -20,6 +22,8 @@ namespace CroquetAustralia.WebApi
             var kernel = IoC.Configure();
 
             WebApiConfig.Configure(config, kernel.Get<WebApiSettings>(), kernel.Get<WebAppSettings>());
+
+            config.Services.Add(typeof(IExceptionLogger), new NLogExceptionLogger());
 
             app.UseNinjectMiddleware(() => kernel)
                 .UseNinjectWebApi(config);

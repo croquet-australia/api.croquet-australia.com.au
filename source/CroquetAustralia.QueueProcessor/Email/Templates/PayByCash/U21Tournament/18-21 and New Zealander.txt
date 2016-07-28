@@ -1,0 +1,11 @@
+﻿Dear {{Player.FirstName}}
+ 
+Thank you for your tournament registration to the {{Tournament.Title}}.
+ 
+In this instance the entry fee of AUD {{TotalPayable}} can paid in Australian currency at the time of registration at Cairnlea on Friday 23 September.
+ 
+If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.
+ 
+Wishing you all the best for the competition.
+ 
+Croquet Australia

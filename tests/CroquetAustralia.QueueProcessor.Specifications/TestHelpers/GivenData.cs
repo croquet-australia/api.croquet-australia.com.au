@@ -9,5 +9,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.TestHelpers
         public bool PayingForPartner { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public EntrySubmitted EntrySubmitted { get; set; }
+        public int? YearOfBirth { get; set; }
+        public bool? NonResident { get; set; }
     }
 }

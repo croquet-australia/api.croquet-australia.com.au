@@ -4,12 +4,13 @@ namespace CroquetAustralia.Domain.Data
 {
     public class TournamentItem
     {
-        public TournamentItem(string itemType, string id, string title, decimal unitPrice, bool isInformationOnly = false)
+        public TournamentItem(string itemType, string id, string title, decimal unitPrice, string currency = "AUD", bool isInformationOnly = false)
         {
             ItemType = itemType;
             Id = new Guid(id);
             Title = title;
             UnitPrice = unitPrice;
+            Currency = currency;
             IsInformationOnly = isInformationOnly;
         }
 
@@ -17,6 +18,7 @@ namespace CroquetAustralia.Domain.Data
         public string ItemType { get; }
         public string Title { get; }
         public decimal UnitPrice { get; }
-        public bool IsInformationOnly { get; set; }
+        public string Currency { get; }
+        public bool IsInformationOnly { get; }
     }
 }

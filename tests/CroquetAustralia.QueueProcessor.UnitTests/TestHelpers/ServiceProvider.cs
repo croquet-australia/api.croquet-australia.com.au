@@ -1,7 +1,9 @@
 ﻿using System;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Services.Repositories;
+using CroquetAustralia.Domain.UnitTests.TestHelpers;
 using Ninject;
+using OpenMagic;
 
 namespace CroquetAustralia.QueueProcessor.UnitTests.TestHelpers
 {
@@ -13,6 +15,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.TestHelpers
         {
             var kernel = new StandardKernel();
 
+            kernel.Bind<IDummy>().To<DummyFactory>();
             kernel.Bind<ITournamentsRepository>().To<TournamentsRepository>();
 
             return kernel;

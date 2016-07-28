@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CroquetAustralia.QueueProcessor.Specifications</RootNamespace>
     <AssemblyName>CroquetAustralia.QueueProcessor.Specifications</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,20 +43,20 @@
       <HintPath>..\..\packages\ApprovalUtilities.3.0.11\lib\net45\ApprovalUtilities.Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions, Version=4.3.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.3.2\lib\net45\FluentAssertions.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=4.12.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.12.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.3.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.3.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+    <Reference Include="FluentAssertions.Core, Version=4.12.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.12.0\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenMagic, Version=1.47.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\OpenMagic.1.47.0\lib\net45\OpenMagic.dll</HintPath>
+    <Reference Include="OpenMagic, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OpenMagic.3.8.0\lib\net45\OpenMagic.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -63,8 +64,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="TechTalk.SpecFlow, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SpecFlow.2.0.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+    <Reference Include="TechTalk.SpecFlow, Version=2.1.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
@@ -83,6 +84,10 @@
       <HintPath>..\..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="YamlDotNet, Version=3.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YamlDotNet.3.9.0\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\source\CroquetAustralia.WebApi\Properties\CommonAssemblyInfo.cs">
@@ -93,7 +98,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Emails to 2016 GC Open Doubles Entries.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Emails to 2016 GC U21 Entries.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Emails to 2016 GC U21 Entries.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\EmailsTo_2016_GC_U21_Entries_Steps.cs" />
     <Compile Include="TestHelpers\ApprovalNamer.cs" />
     <Compile Include="TestHelpers\DummyFactory.cs" />
     <Compile Include="TestHelpers\ServiceProvider.cs" />
@@ -108,7 +119,13 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Emails to 2016 GC Open Doubles Entries.feature.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="Features\Emails to 2016 GC U21 Entries.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Emails to 2016 GC U21 Entries.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\source\CroquetAustralia.Domain\CroquetAustralia.Domain.csproj">
@@ -123,6 +140,10 @@
       <Project>{d875b471-f991-4074-9277-710ada1b4fbf}</Project>
       <Name>CroquetAustralia.Domain.UnitTests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CroquetAustralia.QueueProcessor.UnitTests\CroquetAustralia.QueueProcessor.UnitTests.csproj">
+      <Project>{1B56AB56-2616-4728-A46F-ED382619AF41}</Project>
+      <Name>CroquetAustralia.QueueProcessor.UnitTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CroquetAustralia.TestHelpers\CroquetAustralia.TestHelpers.csproj">
       <Project>{b521ea77-9196-4c7a-bb1b-49ad8afb12d7}</Project>
       <Name>CroquetAustralia.TestHelpers</Name>
@@ -133,14 +154,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Steps\PayByCash\18-21 and New Zealander.txt.approved.txt" />
+    <Content Include="Steps\PayByCash\Under 18 and New Zealander.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself and your partner - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself and your partner - Player.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself only - Player.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\18-21 and Australian.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself and your partner - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself and your partner - Player.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Player.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\Under 18 and Australian.txt.approved.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,5 +10,10 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         public string Email { get; }
         public string Name { get; }
+
+        public override string ToString()
+        {
+            return $"{Name} <{Email}>";
+        }
     }
 }

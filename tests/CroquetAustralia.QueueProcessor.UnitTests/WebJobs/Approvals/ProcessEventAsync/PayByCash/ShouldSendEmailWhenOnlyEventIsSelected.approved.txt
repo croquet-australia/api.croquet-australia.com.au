@@ -1,0 +1,59 @@
+﻿From:
+  Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+To:
+- Email: tim@example.com
+  Name: Tim Murphy
+Bcc:
+- Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+Subject: Australian Under 21 Golf Croquet Championship Entry
+BodyHtml: >-
+  <p>Dear Tim</p>
+
+
+  <p>Thank you for your tournament registration to the Australian Under 21 Golf Croquet Championship.</p>
+
+
+  <p>As you have indicated that you are under 18 it is necessary for a parent or guardian to complete the attached consent form which is to be emailed to Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au by Thursday 1 September, the closing date for entries.</p>
+
+
+  <p>In this instance the entry fee of AUD $35.00 can paid in Australian currency at the time of registration at Cairnlea on Friday 23 September.</p>
+
+
+  <p>If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.</p>
+
+
+  <p>Wishing you all the best for the competition.</p>
+
+
+  <p>Croquet Australia</p>
+BodyText: >-
+  Dear Tim
+
+
+
+  Thank you for your tournament registration to the Australian Under 21 Golf Croquet Championship.
+
+
+
+  As you have indicated that you are under 18 it is necessary for a parent or guardian to complete the attached consent form which is to be emailed to Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au by Thursday 1 September, the closing date for entries.
+
+
+
+  In this instance the entry fee of AUD $35.00 can paid in Australian currency at the time of registration at Cairnlea on Friday 23 September.
+
+
+
+  If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.
+
+
+
+  Wishing you all the best for the competition.
+
+
+
+  Croquet Australia
+Attachments: U21Tournament.Under 18 Consent Form NZ.pdf

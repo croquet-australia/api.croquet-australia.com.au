@@ -1,11 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using Anotar.NLog;
+using YamlDotNet.Serialization;
 
 namespace CroquetAustralia.TestHelpers
 {
     public static class ObjectExtensions
     {
+        public static string ToYaml(this object value)
+        {
+            return value.ToYaml(Enumerable.Empty<IYamlTypeConverter>());
+        }
+
+        public static string ToYaml(this object value, IEnumerable<IYamlTypeConverter> typeConverters)
+        {
+            LogTo.Trace($"{nameof(ToYaml)}(object {value})");
+
+            var serializer = CreateSerializer(typeConverters);
+
+            using (var sw = new StringWriter())
+            {
+                Serialize(value, sw, serializer);
+
+                return sw.ToString();
+            }
+        }
+
         public static T SetProperty<T>(this T obj, string propertyName, object propertyValue)
         {
             var propertyNames = propertyName.Split('.');
@@ -34,6 +57,39 @@ namespace CroquetAustralia.TestHelpers
             }
 
             return propertyInfo;
+        }
+
+        private static void Serialize(object value, StringWriter sw, Serializer serializer)
+        {
+            LogTo.Trace($"{nameof(Serialize)}(object {value}, {nameof(StringWriter)})");
+
+            try
+            {
+                serializer.Serialize(sw, value);
+            }
+            catch (Exception exception)
+            {
+                var message = $"Cannot serialize '{value}' as YAML.";
+                LogTo.ErrorException(message, exception);
+                throw new Exception(message, exception);
+            }
+        }
+
+        private static Serializer CreateSerializer(IEnumerable<IYamlTypeConverter> typeConverters)
+        {
+            return CreateSerializer(typeConverters.ToArray());
+        }
+
+        private static Serializer CreateSerializer(IYamlTypeConverter[] typeConverters)
+        {
+            var serializer = new Serializer(SerializationOptions.DisableAliases);
+
+            foreach (var yamlTypeConverter in typeConverters)
+            {
+                serializer.RegisterTypeConverter(yamlTypeConverter);
+            }
+
+            return serializer;
         }
     }
 }

@@ -19,6 +19,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWorldsEOI2016 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
         public const string TournamentIdGcWomensOpen2016 = "2ced7cd7-a505-497e-b628-1c31860d102b";
+        public const string TournamentIdGcU21 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
 
         private static readonly Tournament[] Tournaments;
 
@@ -32,7 +33,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcOpenSingles(),
                 GetAcPatronsTrophy(),
                 GetGcMensOpen(),
-                GetGcWomensOpen()
+                GetGcWomensOpen(),
+                GetGcAusU21()
             };
         }
 
@@ -66,6 +68,52 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public Task<IEnumerable<Tournament>> GetAllAsync()
         {
             return Task.FromResult(Tournaments.AsEnumerable());
+        }
+
+        private static Tournament GetGcAusU21()
+        {
+            const string tournamentId = TournamentIdGcU21;
+            const string tournamentTitle = "Australian Under 21 Golf Croquet Championship";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "353d908c-f9a3-4d5f-98c3-ae400408debd", "Main Event", 35)
+            };
+
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
+
+            var starts = "24 Sep 2016 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "26 Sep 2016 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "01 Sep 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+            const string location = "Victorian Croquet Centre, Cairnlea, Victoria";
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const string depositStating = "AUS U21";
+            const string slug = "u21";
+            var relatedTournamentIds = new string[] {};
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                relatedTournamentIds);
+
+            return tournament;
         }
 
         private static Task<Tournament> GetTournamentAsync(Func<Tournament, bool> where)
@@ -365,7 +413,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functions = new[]
             {
                 new TournamentItem("function", "4d80520d-e8f2-4424-bdaf-164c774b8acd", "Welcome Men's & Women's Singles - 4:00pm Friday 2 September", 0),
-                new TournamentItem("function", "7dbda0ca-7c20-4554-986e-77bce9bcd8dd", "Presentations and ISS Teams Reception - 6:00pm Tuesday 6 September by invitation", 0, true),
+                new TournamentItem("function", "7dbda0ca-7c20-4554-986e-77bce9bcd8dd", "Presentations and ISS Teams Reception - 6:00pm Tuesday 6 September by invitation", 0, isInformationOnly: true),
                 new TournamentItem("function", "e81cf11f-fc5a-4d26-ba27-9792078c8ef0", "ISS Presentation Dinner - 7:00pm Sunday 11 September", 65)
             };
 

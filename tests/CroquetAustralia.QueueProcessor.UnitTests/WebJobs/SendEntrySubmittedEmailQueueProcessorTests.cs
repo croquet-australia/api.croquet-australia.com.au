@@ -6,6 +6,7 @@ using ApprovalTests;
 using ApprovalTests.Namers;
 using ApprovalTests.Reporters;
 using ApprovalTests.Writers;
+using CroquetAustralia.Domain.Data;
 using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
@@ -13,6 +14,7 @@ using CroquetAustralia.Domain.Services.Repositories;
 using CroquetAustralia.Domain.Services.Serializers;
 using CroquetAustralia.QueueProcessor.Email;
 using CroquetAustralia.QueueProcessor.Email.EmailGenerators;
+using CroquetAustralia.QueueProcessor.Email.EmailGenerators.U21Tournament;
 using CroquetAustralia.QueueProcessor.Processors;
 using CroquetAustralia.QueueProcessor.UnitTests.TestHelpers;
 using CroquetAustralia.QueueProcessor.UnitTests.TestHelpers.Mocks;
@@ -39,6 +41,31 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
             }
         }
 
+        // ReSharper disable once InconsistentNaming
+        public class ProcessEventAsync_PayByCash : ProcessEventAsync_PayByType
+        {
+            public ProcessEventAsync_PayByCash()
+                : base(PaymentMethod.Cash)
+            {
+                CanSendEmailWhenEventAndFunctionsAreSelected = false;
+                CanSendEmailWhenOnlyFunctionsAreSelected = false;
+            }
+
+            protected override Tournament CreateTournament()
+            {
+                return TournamentsRepository.GetAllAsync().Result.Single(tournament => tournament.IsUnder21);
+            }
+
+            protected override EntrySubmitted CreateEntrySubmitted(bool eventSelected, SubmitEntry.LineItem[] functions, Tournament tournament)
+            {
+                var entrySubmitted = base.CreateEntrySubmitted(eventSelected, functions, tournament);
+
+                entrySubmitted.Player.YearOfBirth = tournament.Starts.Year - 16;
+
+                return entrySubmitted;
+            }
+        }
+
         [UseReporter(typeof(DiffReporter))]
         // ReSharper disable once InconsistentNaming
         public abstract class ProcessEventAsync_PayByType : SendEntrySubmittedEmailQueueProcessorTests
@@ -49,15 +76,21 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                 _emailService = new InMemoryEmailService();
 
                 // todo: InMemory repository
-                _tournamentsRepository = new TournamentsRepository();
+                TournamentsRepository = new TournamentsRepository();
 
                 var queueMessageSerializer = new QueueMessageSerializer();
                 var eventsQueue = new InMemoryEventQueue();
                 var emailMessageSettings = new EmailMessageSettings();
-                var singlesEmailGenerator = new SinglesEmailGenerator(emailMessageSettings);
-                var doublesPlayerEmailGenerator = new DoublesPlayerEmailGenerator(emailMessageSettings);
-                var doublesPartnerEmailGenerator = new DoublesPartnerEmailGenerator(emailMessageSettings);
-                var emailGenerator = new EmailGenerator(_tournamentsRepository, singlesEmailGenerator, doublesPlayerEmailGenerator, doublesPartnerEmailGenerator);
+
+                var emailGenerator = new EmailGenerator(
+                    TournamentsRepository,
+                    new SinglesEmailGenerator(emailMessageSettings),
+                    new DoublesPlayerEmailGenerator(emailMessageSettings),
+                    new DoublesPartnerEmailGenerator(emailMessageSettings),
+                    new Over18AndAustralianEmailGenerator(emailMessageSettings),
+                    new Under18AndAustralianEmailGenerator(emailMessageSettings),
+                    new Over18AndNewZealanderEmailGenerator(emailMessageSettings),
+                    new Under18AndNewZealanderEmailGenerator(emailMessageSettings));
 
                 _processor = new SendEntrySubmittedEmailQueueProcessor(
                     queueMessageSerializer,
@@ -66,15 +99,38 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     emailGenerator);
             }
 
+            protected bool CanSendEmailWhenEventAndFunctionsAreSelected = true;
+            protected bool CanSendEmailWhenOnlyFunctionsAreSelected = true;
+
             private readonly InMemoryEmailService _emailService;
             private readonly PaymentMethod _paymentMethod;
             private readonly SendEntrySubmittedEmailQueueProcessor _processor;
-            private readonly TournamentsRepository _tournamentsRepository;
+            protected readonly TournamentsRepository TournamentsRepository;
 
             private void ShouldSendEmail(bool eventSelected, SubmitEntry.LineItem[] functions)
             {
                 // Given
-                var tournament = _tournamentsRepository.GetAllAsync().Result.First();
+                var tournament = CreateTournament();
+                var @event = CreateEntrySubmitted(eventSelected, functions, tournament);
+
+                // When
+                Invoke(() => _processor.ProcessEventAsync(@event, @event.GetType(), new StringWriter()).Wait());
+
+                // Then
+                var sentEmail = _emailService.SentEmails.Single().Value;
+                var approvalName = GetApprovalName(eventSelected, functions);
+
+                Verify(approvalName, sentEmail);
+            }
+
+            protected virtual Tournament CreateTournament()
+            {
+                var tournament = TournamentsRepository.GetAllAsync().Result.First();
+                return tournament;
+            }
+
+            protected virtual EntrySubmitted CreateEntrySubmitted(bool eventSelected, SubmitEntry.LineItem[] functions, Tournament tournament)
+            {
                 var @event = new EntrySubmitted
                 {
                     EntityId = new Guid("d99dd017-edab-46a6-bb58-fde7c6c619fa"),
@@ -91,15 +147,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     },
                     Functions = functions
                 };
-
-                // When
-                Invoke(() => _processor.ProcessEventAsync(@event, @event.GetType(), new StringWriter()).Wait());
-
-                // Then
-                var sentEmail = _emailService.SentEmails.Single().Value;
-                var approvalName = GetApprovalName(eventSelected, functions);
-
-                Verify(approvalName, sentEmail);
+                return @event;
             }
 
             private static string GetApprovalName(bool eventSelected, IEnumerable<SubmitEntry.LineItem> functions)
@@ -119,7 +167,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
 
             private void Verify(string name, InMemorySentEmail sentEmail)
             {
-                var sentEmailText = sentEmail.ToApprovalText();
+                var sentEmailText = sentEmail.ToApprovalText(new[] {new InMemoryAttachmentsConverter()});
 
                 var writer = WriterFactory.CreateTextWriter(sentEmailText);
                 var namer = new ApprovalNamer(GetApprovalSourcePath(), name);
@@ -141,7 +189,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     new SubmitEntry.LineItem
                     {
                         DiscountPercentage = 0,
-                        Id = _tournamentsRepository.GetAllAsync().Result.First().Functions.Last().Id,
+                        Id = TournamentsRepository.GetAllAsync().Result.First().Functions.Last().Id,
                         Quantity = 1,
                         UnitPrice = 50
                     }
@@ -149,21 +197,27 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
             }
 
             [Fact]
-            public void ShouldSendEmailWhenEventAndFunctionsAreSelected()
+            public virtual void ShouldSendEmailWhenEventAndFunctionsAreSelected()
             {
-                ShouldSendEmail(true, Functions());
+                if (CanSendEmailWhenEventAndFunctionsAreSelected)
+                {
+                    ShouldSendEmail(true, Functions());
+                }
             }
 
             [Fact]
-            public void ShouldSendEmailWhenOnlyEventIsSelected()
+            public virtual void ShouldSendEmailWhenOnlyEventIsSelected()
             {
                 ShouldSendEmail(true, new SubmitEntry.LineItem[] {});
             }
 
             [Fact]
-            public void ShouldSendEmailWhenOnlyFunctionsAreSelected()
+            public virtual void ShouldSendEmailWhenOnlyFunctionsAreSelected()
             {
-                ShouldSendEmail(false, Functions());
+                if (CanSendEmailWhenOnlyFunctionsAreSelected)
+                {
+                    ShouldSendEmail(false, Functions());
+                }
             }
         }
     }

@@ -1,6 +1,12 @@
 ﻿To:
 - Email: joe@example.com
   Name: Joe Blow
+Cc: []
+Bcc:
+- Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
 From:
   Email: events@croquet-australia.com.au
   Name: Croquet Australia - Events Committee
@@ -88,3 +94,4 @@ BodyAsHtml: >-
 
 
   <p>NB If payment is not received by the closing date your entry to the tournament may not be accepted.</p>
+Attachments: ''

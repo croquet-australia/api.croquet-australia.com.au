@@ -1,4 +1,5 @@
 ﻿using System;
+using CroquetAustralia.Domain.Services.Repositories;
 using NodaTime;
 using NullGuard;
 
@@ -52,6 +53,8 @@ namespace CroquetAustralia.Domain.Data
         public string DepositStating { [return: AllowNull] get; }
         public string[] RelatedTournamentIds { get; }
         public bool IsEOI { get; }
+
+        public bool IsUnder21 => Id == Guid.Parse(TournamentsRepository.TournamentIdGcU21);
 
         private static bool IsDepositStatingValid(string depositStating, bool isEOI, out string validationMessage)
         {

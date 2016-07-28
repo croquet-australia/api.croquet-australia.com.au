@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using CroquetAustralia.Domain.Core;
+using CroquetAustralia.Domain.Data;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 using EmptyStringGuard;
 using Newtonsoft.Json;
@@ -65,6 +66,28 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             public decimal? Handicap { get; set; }
             public bool Under21 { get; set; }
             public bool FullTimeStudentUnder25 { get; set; }
+            public int? YearOfBirth { get; set; }
+            public bool? NonResident { get; set; }
+
+            public bool IsUnder18(Tournament tournament)
+            {
+                if (!YearOfBirth.HasValue)
+                {
+                    throw new NotSupportedException($"{nameof(IsUnder18)} is not supported when YearOfBirth is null.");
+                }
+                // todo: check with Susan
+                return tournament.Starts.Year - YearOfBirth.Value < 18;
+            }
+
+            public bool IsUnder22(Tournament tournament)
+            {
+                if (!YearOfBirth.HasValue)
+                {
+                    throw new NotSupportedException($"{nameof(IsUnder22)} is not supported when YearOfBirth is null.");
+                }
+                // todo: check with Susan
+                return tournament.Starts.Year - YearOfBirth.Value < 22;
+            }
         }
     }
 }

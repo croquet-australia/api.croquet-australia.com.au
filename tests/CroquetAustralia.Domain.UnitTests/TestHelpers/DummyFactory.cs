@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Models;
@@ -18,9 +21,18 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             ValueFactories.Add(typeof(LineItem), LineItem);
             ValueFactories.Add(typeof(SubmitEntry), SubmitEntry);
             ValueFactories.Add(typeof(SubmitEntry.LineItem), SubmitEntryLineItem);
+            ValueFactories.Add(typeof(PaymentMethod), () => GetPaymentMethod() as object);
+        }
 
-            // todo: what if more than 2 values
-            ValueFactories.Add(typeof(PaymentMethod), () => RandomBoolean.Next() ? PaymentMethod.Cheque : PaymentMethod.EFT);
+        public int YearOfBirth()
+        {
+            var currentYear = DateTime.Now.Year;
+            return RandomNumber.NextInt(currentYear - 21, currentYear + 1);
+        }
+
+        protected override IEnumerable CreateValues(Type itemType)
+        {
+            return itemType == typeof(SubmitEntry.LineItem) ? CreateValues(itemType, RandomNumber.NextInt(0, 4)) : base.CreateValues(itemType);
         }
 
         private LineItem LineItem()
@@ -32,6 +44,11 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             value.UnitPrice = RandomNumber.NextDecimal(0, 1000);
 
             return value;
+        }
+
+        private T Object<T>()
+        {
+            return (T)base.Object(typeof(T));
         }
 
         private SubmitEntry SubmitEntry()
@@ -61,6 +78,22 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
                 command.Partner = null;
             }
 
+            // todo: Remove this to allow pay by cash
+            if (tournament.IsUnder21)
+            {
+                command.Player.YearOfBirth = YearOfBirth();
+                command.Player.NonResident = RandomBoolean.Next();
+                command.PaymentMethod = command.Player.NonResident.Value ? PaymentMethod.Cash : PaymentMethod.EFT;
+                command.Functions = new SubmitEntry.LineItem[] {};
+                command.Merchandise = new SubmitEntry.LineItem[] {};
+            }
+            else
+            {
+                command.Player.YearOfBirth = null;
+                command.Player.NonResident = null;
+                command.PaymentMethod = GetPaymentMethod(paymentMethod => paymentMethod != PaymentMethod.Cash);
+            }
+
             return command;
         }
 
@@ -73,6 +106,22 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             value.UnitPrice = RandomNumber.NextDecimal(1, 1000);
 
             return value;
+        }
+
+        private static PaymentMethod GetPaymentMethod()
+        {
+            return GetPaymentMethod(paymentMethod => true);
+        }
+
+        private static PaymentMethod GetPaymentMethod(Func<PaymentMethod, bool> predicate)
+        {
+            return GetPaymentMethods().Where(predicate).RandomItem();
+        }
+
+        private static IEnumerable<PaymentMethod> GetPaymentMethods()
+        {
+            return Enum.GetValues(typeof(PaymentMethod))
+                .Cast<PaymentMethod>();
         }
     }
 }

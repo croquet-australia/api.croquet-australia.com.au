@@ -1,0 +1,43 @@
+﻿To:
+- Email: joe@example.com
+  Name: Joe Blow
+Cc: []
+Bcc:
+- Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+From:
+  Email: events@croquet-australia.com.au
+  Name: Croquet Australia - Events Committee
+Subject: Australian Under 21 Golf Croquet Championship Entry
+BodyAsText:
+Dear Joe
+ 
+Thank you for your tournament registration to the Australian Under 21 Golf Croquet Championship.
+ 
+In this instance the entry fee of AUD $35.00 can paid in Australian currency at the time of registration at Cairnlea on Friday 23 September.
+ 
+If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.
+ 
+Wishing you all the best for the competition.
+ 
+Croquet Australia
+BodyAsHtml: >-
+  <p>Dear Joe</p>
+
+
+  <p>Thank you for your tournament registration to the Australian Under 21 Golf Croquet Championship.</p>
+
+
+  <p>In this instance the entry fee of AUD $35.00 can paid in Australian currency at the time of registration at Cairnlea on Friday 23 September.</p>
+
+
+  <p>If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.</p>
+
+
+  <p>Wishing you all the best for the competition.</p>
+
+
+  <p>Croquet Australia</p>
+Attachments: ''

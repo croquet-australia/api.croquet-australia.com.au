@@ -22,5 +22,9 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Models
         public bool Under21 { get; set; }
 
         public bool FullTimeStudentUnder25 { get; set; }
+
+        public int? YearOfBirth { get; set; }
+
+        public bool? NonResident { get; set; }
     }
 }

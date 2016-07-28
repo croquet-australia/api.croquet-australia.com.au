@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using CroquetAustralia.Library.Extensions;
 using OpenMagic.Extensions;
+using YamlDotNet.Serialization;
 
 namespace CroquetAustralia.TestHelpers
 {
@@ -9,7 +11,12 @@ namespace CroquetAustralia.TestHelpers
     {
         public static string ToApprovalText(this object value)
         {
-            var yaml = value.ToYaml();
+            return value.ToApprovalText(Enumerable.Empty<IYamlTypeConverter>());
+        }
+
+        public static string ToApprovalText(this object value, IEnumerable<IYamlTypeConverter> typeConverters)
+        {
+            var yaml = value.ToYaml(typeConverters);
             var formatted = FormatMultiLineYamlFields(yaml);
 
             return formatted;

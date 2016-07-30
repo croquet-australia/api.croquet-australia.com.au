@@ -1,3 +1,4 @@
+using System;
 using EmptyStringGuard;
 using NullGuard;
 using ValidationFlags = NullGuard.ValidationFlags;
@@ -23,7 +24,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Models
 
         public bool FullTimeStudentUnder25 { get; set; }
 
-        public int? YearOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public bool? NonResident { get; set; }
     }

@@ -66,27 +66,25 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             public decimal? Handicap { get; set; }
             public bool Under21 { get; set; }
             public bool FullTimeStudentUnder25 { get; set; }
-            public int? YearOfBirth { get; set; }
+            public DateTime? DateOfBirth { get; set; }
             public bool? NonResident { get; set; }
 
             public bool IsUnder18(Tournament tournament)
             {
-                if (!YearOfBirth.HasValue)
+                if (!DateOfBirth.HasValue)
                 {
-                    throw new NotSupportedException($"{nameof(IsUnder18)} is not supported when YearOfBirth is null.");
+                    throw new NotSupportedException($"{nameof(IsUnder18)} is not supported when DateOfBirth is null.");
                 }
-                // todo: check with Susan
-                return tournament.Starts.Year - YearOfBirth.Value < 18;
+                throw new NotImplementedException("Write spec");
             }
 
-            public bool IsUnder22(Tournament tournament)
+            public bool IsAgeEligible(Tournament tournament)
             {
-                if (!YearOfBirth.HasValue)
+                if (!DateOfBirth.HasValue)
                 {
-                    throw new NotSupportedException($"{nameof(IsUnder22)} is not supported when YearOfBirth is null.");
+                    throw new NotSupportedException($"{nameof(IsAgeEligible)} is not supported when DateOfBirth is null.");
                 }
-                // todo: check with Susan
-                return tournament.Starts.Year - YearOfBirth.Value < 22;
+                throw new NotImplementedException("Write spec");
             }
         }
     }

@@ -103,7 +103,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             {
                 yield return () => _under18AndNewZealanderEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
-            else if (entrySubmitted.Player.IsUnder22(tournament))
+            else if (entrySubmitted.Player.IsAgeEligible(tournament))
             {
                 yield return () => _over18AndNewZealanderEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
@@ -115,7 +115,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             {
                 yield return () => _under18AndAustralianEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
-            else if (entrySubmitted.Player.IsUnder22(tournament))
+            else if (entrySubmitted.Player.IsAgeEligible(tournament))
             {
                 yield return () => _over18AndAustralianEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }

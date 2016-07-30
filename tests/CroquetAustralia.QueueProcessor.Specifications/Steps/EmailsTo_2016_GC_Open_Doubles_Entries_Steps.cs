@@ -74,7 +74,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
                 Email = "joe@example.com",
                 FirstName = "Joe",
                 LastName = "Blow",
-                YearOfBirth = _given.YearOfBirth,
+                DateOfBirth = _given.DateOfBirth,
                 NonResident = _given.NonResident
             };
 

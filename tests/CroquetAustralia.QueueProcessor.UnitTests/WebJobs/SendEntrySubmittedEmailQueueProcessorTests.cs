@@ -60,7 +60,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
             {
                 var entrySubmitted = base.CreateEntrySubmitted(eventSelected, functions, tournament);
 
-                entrySubmitted.Player.YearOfBirth = tournament.Starts.Year - 16;
+                entrySubmitted.Player.DateOfBirth = new DateTime(tournament.Starts.Year - 16, 1, 1);
 
                 return entrySubmitted;
             }

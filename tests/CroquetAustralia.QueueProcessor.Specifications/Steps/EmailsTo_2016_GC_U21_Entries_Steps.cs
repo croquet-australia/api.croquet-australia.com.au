@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using ApprovalTests.Reporters;
 using CroquetAustralia.QueueProcessor.Specifications.TestHelpers;
 using FluentAssertions;
@@ -19,10 +20,10 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
             _actual = actual;
         }
 
-        [Given(@"yearOfBirth is '(.*)'")]
-        public void GivenYearOfBirthIs(int yearOfBirth)
+        [Given(@"dateOfBirth is '(.*)'")]
+        public void GivenDateOfBirthIs(string dateOfBirth)
         {
-            _given.YearOfBirth = yearOfBirth;
+            _given.DateOfBirth = DateTime.Parse(dateOfBirth);
         }
 
         [Given(@"nonResident is '(.*)'")]

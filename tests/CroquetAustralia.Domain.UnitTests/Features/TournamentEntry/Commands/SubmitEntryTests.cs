@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,10 +14,32 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
 {
     public class SubmitEntryTests : TestBase
     {
+        public class IsAgeEligible : SubmitEntryTests
+        {
+            public static IEnumerable<object[]> IsAgeEligibleData;
+
+            [Theory, MemberData(nameof(IsAgeEligibleData))]
+            public void Should_return_expected_value(DateTime dateOfBirth, DateTime tournamentStarts, bool expected)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public class IsUnder18 : SubmitEntryTests
+        {
+            public static IEnumerable<object[]> IsUnder18Data;
+
+            [Theory, MemberData(nameof(IsUnder18Data))]
+            public void Should_return_expected_value(DateTime dateOfBirth, DateTime tournamentStarts, bool expected)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public class ToEntrySubmitted : SubmitEntryTests
         {
             public static IEnumerable<object[]> SubmitEntries => Enumerable.Range(1, 100)
-                .Select(i => new[] {new ToEntrySubmitted().Valid<EntrySubmitted>()});
+                .Select(i => new[] { new ToEntrySubmitted().Valid<EntrySubmitted>() });
 
             [Theory, MemberData(nameof(SubmitEntries))]
             public void Should_return_EntrySubmitted_event_with_populated_properties(SubmitEntry submitEntry)
@@ -54,7 +77,7 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
 
             private static object[] RequiredProperty(string property, object emptyValue, string expectedErrorMessage)
             {
-                return new[] {property, emptyValue, expectedErrorMessage};
+                return new[] { property, emptyValue, expectedErrorMessage };
             }
 
             [Theory, MemberData(nameof(RequiredProperties))]

@@ -13,28 +13,6 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
 {
     public class SubmitEntryTests : TestBase
     {
-        public class IsAgeEligible : SubmitEntryTests
-        {
-            public static IEnumerable<object[]> IsAgeEligibleData;
-
-            [Theory, MemberData(nameof(IsAgeEligibleData))]
-            public void Should_return_expected_value(DateTime dateOfBirth, DateTime tournamentStarts, bool expected)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public class IsUnder18 : SubmitEntryTests
-        {
-            public static IEnumerable<object[]> IsUnder18Data;
-
-            [Theory, MemberData(nameof(IsUnder18Data))]
-            public void Should_return_expected_value(DateTime dateOfBirth, DateTime tournamentStarts, bool expected)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public class ToEntrySubmitted : SubmitEntryTests
         {
             public static IEnumerable<object[]> SubmitEntries => Enumerable.Range(1, 100)

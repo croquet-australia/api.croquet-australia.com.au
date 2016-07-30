@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Core\DateTimeExtensionsTests.cs" />
     <Compile Include="Features\TournamentEntry\Commands\SubmitEntryTests.cs" />
+    <Compile Include="Features\TournamentEntry\Commands\SubmitEntry_PlayerClass_Tests.cs" />
     <Compile Include="Services\Serializers\EventQueueMessageSerializerTests.cs" />
     <Compile Include="TestHelpers\DummyFactory.cs" />
     <Compile Include="TestHelpers\ServiceProvider.cs" />

@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using CroquetAustralia.Domain.Core;
+using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
+using CroquetAustralia.TestHelpers;
+using FluentAssertions;
+using Xunit;
+
+namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
+{
+    public class SubmitEntry_PlayerClass_Tests
+    {
+        public class IsAgeEligible : SubmitEntryTests
+        {
+            private const string TournamentStarts = "24 Sep 2016 Australia/Melbourne";
+
+            public static IEnumerable<object[]> IsAgeEligibleData = new[]
+            {
+                new object[] {"1 Jan 1994", TournamentStarts, false},
+                new object[] {"31 Dec 1994", TournamentStarts, false},
+                new object[] {"1 Jan 1995", TournamentStarts, true},
+                new object[] {"1 Jan 1996", TournamentStarts, true},
+                new object[] {"1 Jan 1997", TournamentStarts, true},
+                new object[] {"23 Sep 1998", TournamentStarts, true},
+                new object[] {"24 Sep 1998", TournamentStarts, true},
+                new object[] {"25 Sep 1998", TournamentStarts, true},
+                new object[] {"1 Jan 1999", TournamentStarts, true},
+                new object[] {"1 Jan 1995", TournamentStarts, true},
+                new object[] {"1 Jan 1996", TournamentStarts, true},
+                new object[] {"1 Jan 1997", TournamentStarts, true},
+                new object[] {"23 Sep 1998", TournamentStarts, true},
+                new object[] {"24 Sep 1998", TournamentStarts, true},
+                new object[] {"25 Sep 1998", TournamentStarts, true},
+                new object[] {"1 Jan 1999", TournamentStarts, true}
+            };
+
+            [Theory, MemberData(nameof(IsAgeEligibleData))]
+            public void Should_return_expected_value(string dateOfBirth, string tournamentStarts, bool expected)
+            {
+                // Given
+                var player = Dummy.Value<SubmitEntry.PlayerClass>();
+                var starts = tournamentStarts.ToZonedDateTime();
+
+                player.SetProperty("DateOfBirth", DateTime.Parse(dateOfBirth));
+
+                // When
+                var isAgeEligible = player.IsAgeEligible(starts);
+
+                // Then
+                isAgeEligible.Should().Be(expected);
+            }
+        }
+
+        public class IsUnder18 : SubmitEntryTests
+        {
+            public static IEnumerable<object[]> IsUnder18Data;
+
+            [Theory, MemberData(nameof(IsUnder18Data))]
+            public void Should_return_expected_value(DateTime dateOfBirth, DateTime tournamentStarts, bool expected)
+            {
+                throw new NotImplementedException();
+            }
+        }
+    }
+}

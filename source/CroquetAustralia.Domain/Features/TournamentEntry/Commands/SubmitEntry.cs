@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using CroquetAustralia.Domain.Core;
-using CroquetAustralia.Domain.Data;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 using EmptyStringGuard;
 using Newtonsoft.Json;
@@ -68,24 +67,6 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             public bool FullTimeStudentUnder25 { get; set; }
             public DateTime? DateOfBirth { get; set; }
             public bool? NonResident { get; set; }
-
-            public bool IsUnder18(Tournament tournament)
-            {
-                if (!DateOfBirth.HasValue)
-                {
-                    throw new NotSupportedException($"{nameof(IsUnder18)} is not supported when DateOfBirth is null.");
-                }
-                throw new NotImplementedException("Write spec");
-            }
-
-            public bool IsAgeEligible(Tournament tournament)
-            {
-                if (!DateOfBirth.HasValue)
-                {
-                    throw new NotSupportedException($"{nameof(IsAgeEligible)} is not supported when DateOfBirth is null.");
-                }
-                throw new NotImplementedException("Write spec");
-            }
         }
     }
 }

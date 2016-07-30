@@ -99,11 +99,11 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private IEnumerable<Func<EmailMessage>> GetNewZelanderGenerator(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)
         {
-            if (entrySubmitted.Player.IsUnder18(tournament))
+            if (entrySubmitted.Player.IsUnder18(tournament.Starts))
             {
                 yield return () => _under18AndNewZealanderEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
-            else if (entrySubmitted.Player.IsAgeEligible(tournament))
+            else if (entrySubmitted.Player.IsAgeEligible(tournament.Starts))
             {
                 yield return () => _over18AndNewZealanderEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
@@ -111,11 +111,11 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private IEnumerable<Func<EmailMessage>> GetAustralianGenerator(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)
         {
-            if (entrySubmitted.Player.IsUnder18(tournament))
+            if (entrySubmitted.Player.IsUnder18(tournament.Starts))
             {
                 yield return () => _under18AndAustralianEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
-            else if (entrySubmitted.Player.IsAgeEligible(tournament))
+            else if (entrySubmitted.Player.IsAgeEligible(tournament.Starts))
             {
                 yield return () => _over18AndAustralianEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }

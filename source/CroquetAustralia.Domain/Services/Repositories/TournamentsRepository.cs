@@ -94,6 +94,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string depositStating = "AUS U21";
             const string slug = "u21";
             var relatedTournamentIds = new string[] {};
+            const bool isUnder21 = true;
 
             var tournament = new Tournament(
                 tournamentId,
@@ -111,7 +112,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 discipline,
                 slug,
                 depositStating,
-                relatedTournamentIds);
+                relatedTournamentIds,
+                isUnder21: isUnder21);
 
             return tournament;
         }

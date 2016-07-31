@@ -148,6 +148,7 @@
     <Compile Include="Core\DateTimeExtensions.cs" />
     <Compile Include="Core\FluentValidatorResources.cs" />
     <Compile Include="Core\ZonedDateTimeJsonConverter.cs" />
+    <Compile Include="ValueObjects\TournamentDateOfBirthRange.cs" />
     <Compile Include="Data\Tournament.cs" />
     <Compile Include="Data\TournamentItem.cs" />
     <Compile Include="Exceptions\EntityNotFoundException.cs" />

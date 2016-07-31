@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CroquetAustralia.Domain.Core;
 using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Models;
+using NodaTime;
 using OpenMagic;
 using OpenMagic.Extensions;
 
@@ -22,6 +24,12 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             ValueFactories.Add(typeof(SubmitEntry), SubmitEntry);
             ValueFactories.Add(typeof(SubmitEntry.LineItem), SubmitEntryLineItem);
             ValueFactories.Add(typeof(PaymentMethod), () => GetPaymentMethod() as object);
+            ValueFactories.Add(typeof(ZonedDateTime), () => ZonedDateTime() as object);
+        }
+
+        private ZonedDateTime ZonedDateTime()
+        {
+            return (Value<DateTime>().ToString("dd MMM yyyy") + " Australia/Canberra").ToZonedDateTime();
         }
 
         public DateTime DateOfBirth(DateTime tournamentStartDate)

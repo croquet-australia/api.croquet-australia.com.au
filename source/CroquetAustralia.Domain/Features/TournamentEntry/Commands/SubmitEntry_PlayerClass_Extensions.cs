@@ -9,7 +9,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
         {
             if (!player.DateOfBirth.HasValue)
             {
-                throw new NotSupportedException($"{nameof(IsUnder18AnytimeDuringTournament)} is not supported when DateOfBirth is null.");
+                throw new InvalidOperationException($"{nameof(IsUnder18AnytimeDuringTournament)} is not supported when DateOfBirth is null.");
             }
             return player.DateOfBirth > tournamentStarts.ToDateTimeUnspecified().AddYears(-18);
         }
@@ -18,7 +18,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
         {
             if (!player.DateOfBirth.HasValue)
             {
-                throw new NotSupportedException($"{nameof(IsAgeEligible)} is not supported when DateOfBirth is null.");
+                throw new InvalidOperationException($"{nameof(IsAgeEligible)} is not supported when DateOfBirth is null.");
             }
 
             return player.DateOfBirth < tournamentStarts.ToDateTimeUnspecified() && player.DateOfBirth >= new DateTime(tournamentStarts.Year - 21, 1, 1);

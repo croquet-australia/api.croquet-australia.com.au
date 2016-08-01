@@ -7,13 +7,16 @@ namespace CroquetAustralia.Domain.ValueObjects
     {
         public TournamentDateOfBirthRange(ZonedDateTime starts)
         {
-            MinimumValue = new DateTime(starts.Year - 21, 1, 1);
-            MaximumValue = starts.ToDateTimeUnspecified();
-            Under18 = MaximumValue.AddYears(-18).AddDays(1);
+            Minimum = new DateTime(starts.Year - 21, 1, 1);
+            Maximum = starts.ToDateTimeUnspecified();
         }
 
-        public DateTime MinimumValue { get; }
-        public DateTime MaximumValue { get; }
-        public DateTime Under18 { get; }
+        public DateTime Minimum { get; }
+        public DateTime Maximum { get; }
+
+        public bool IsValid(DateTime dateOfBirth)
+        {
+            return dateOfBirth >= Minimum && dateOfBirth <= Maximum;
+        }
     }
 }

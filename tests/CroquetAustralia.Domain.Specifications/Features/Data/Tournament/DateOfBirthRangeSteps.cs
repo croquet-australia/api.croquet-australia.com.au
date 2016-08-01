@@ -26,6 +26,12 @@ namespace CroquetAustralia.Domain.Specifications.Features.Data.Tournament
             Given.DummyTournament.Finishes = finishes.ToZonedDateTime();
         }
 
+        [Given(@"tournament practiceStarts '(.*)'")]
+        public void GivenTournamentPracticeStarts(string practiceStarts)
+        {
+            Given.DummyTournament.PracticeStarts = practiceStarts.ToZonedDateTime();
+        }
+
         [Given(@"tournament is U21")]
         public void GivenTournamentIsU21()
         {
@@ -38,8 +44,8 @@ namespace CroquetAustralia.Domain.Specifications.Features.Data.Tournament
             Given.DummyTournament.IsUnder21 = false;
         }
 
-        [When(@"I get TournamentDateOfBirthRange")]
-        public void WhenIGetTournamentDateOfBirthRange()
+        [When(@"I get DateOfBirthRange")]
+        public void WhenIGetDateOfBirthRange()
         {
             Given.Tournament = Given.DummyTournament.Build();
 
@@ -52,22 +58,16 @@ namespace CroquetAustralia.Domain.Specifications.Features.Data.Tournament
             Actual.DateOfBirthRange.Should().NotBeNull();
         }
 
-        [Then(@"result\.MinimumValue should be '(.*)'")]
+        [Then(@"result\.Minimum should be '(.*)'")]
         public void ThenResult_MinimumValueShouldBe(string expected)
         {
-            Actual.DateOfBirthRange.MinimumValue.Should().Be(DateTime.Parse(expected));
+            Actual.DateOfBirthRange.Minimum.Should().Be(DateTime.Parse(expected));
         }
 
-        [Then(@"result\.MaximumValue should be '(.*)'")]
+        [Then(@"result\.Maximum should be '(.*)'")]
         public void ThenResult_MaximumValueShouldBe(string expected)
         {
-            Actual.DateOfBirthRange.MaximumValue.Should().Be(DateTime.Parse(expected));
-        }
-
-        [Then(@"result\.Under18 should be '(.*)'")]
-        public void ThenResult_UnderShouldBe(string expected)
-        {
-            Actual.DateOfBirthRange.Under18.Should().Be(DateTime.Parse(expected));
+            Actual.DateOfBirthRange.Maximum.Should().Be(DateTime.Parse(expected));
         }
 
         [Then(@"the result should be null")]

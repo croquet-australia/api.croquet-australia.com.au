@@ -35,10 +35,11 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
         public bool IsEOI { get; set; }
         public string[] RelatedTournamentIds { get; set; }
         public bool IsUnder21 { get; set; }
+        public ZonedDateTime PracticeStarts { get; set; }
 
         public Tournament Build()
         {
-            return new Tournament(Id, Title, Starts, Finishes, Location, TournamentItems, Date, TournamentItems, Date, TournamentItems, Date, IsDoubles, Discipline, Slug, DepositStating, RelatedTournamentIds, IsEOI, IsUnder21);
+            return new Tournament(Id, Title, Starts, Finishes, Location, TournamentItems, Date, TournamentItems, Date, TournamentItems, Date, IsDoubles, Discipline, Slug, DepositStating, RelatedTournamentIds, IsEOI, IsUnder21, PracticeStarts);
         }
     }
 }

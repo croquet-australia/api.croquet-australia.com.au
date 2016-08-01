@@ -1,17 +1,21 @@
 ﻿using System;
+using CroquetAustralia.Domain.ValueObjects;
 using NodaTime;
 
 namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
 {
     public static class SubmitEntry_PlayerClass_Extensions
     {
-        public static bool IsUnder18AnytimeDuringTournament(this SubmitEntry.PlayerClass player, ZonedDateTime tournamentStarts)
+        public static bool IsUnder18AnytimeDuringTournamentOrPractice(this SubmitEntry.PlayerClass player, ZonedDateTime practiceStarts, ZonedDateTime tournamentStarts)
         {
             if (!player.DateOfBirth.HasValue)
             {
-                throw new InvalidOperationException($"{nameof(IsUnder18AnytimeDuringTournament)} is not supported when DateOfBirth is null.");
+                throw new InvalidOperationException($"{nameof(IsUnder18AnytimeDuringTournamentOrPractice)} is not supported when DateOfBirth is null.");
             }
-            return player.DateOfBirth > tournamentStarts.ToDateTimeUnspecified().AddYears(-18);
+
+            var minimumDate = practiceStarts < tournamentStarts ? practiceStarts.ToDateTimeUnspecified() : tournamentStarts.ToDateTimeUnspecified();
+
+            return player.DateOfBirth > minimumDate.AddYears(-18);
         }
 
         public static bool IsAgeEligible(this SubmitEntry.PlayerClass player, ZonedDateTime tournamentStarts)
@@ -21,7 +25,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
                 throw new InvalidOperationException($"{nameof(IsAgeEligible)} is not supported when DateOfBirth is null.");
             }
 
-            return player.DateOfBirth < tournamentStarts.ToDateTimeUnspecified() && player.DateOfBirth >= new DateTime(tournamentStarts.Year - 21, 1, 1);
+            return new TournamentDateOfBirthRange(tournamentStarts).IsValid(player.DateOfBirth.Value);
         }
     }
 }

@@ -45,35 +45,37 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
 
         public class IsUnder18AnytimeDuringTournament : SubmitEntryTests
         {
+            private const string PracticeStarts = "23 Sep 2016 Australia/Melbourne";
             private const string TournamentStarts = "24 Sep 2016 Australia/Melbourne";
 
             public static IEnumerable<object[]> TheoryData = new[]
             {
-                new object[] {"1 Jan 1994", TournamentStarts, false},
-                new object[] {"31 Dec 1994", TournamentStarts, false},
-                new object[] {"1 Jan 1995", TournamentStarts, false},
-                new object[] {"1 Jan 1996", TournamentStarts, false},
-                new object[] {"1 Jan 1997", TournamentStarts, false},
-                new object[] {"23 Sep 1998", TournamentStarts, false},
-                new object[] {"24 Sep 1998", TournamentStarts, false},
-                new object[] {"25 Sep 1998", TournamentStarts, true},
-                new object[] {"1 Jan 1999", TournamentStarts, true}
+                new object[] {"1 Jan 1994", PracticeStarts, TournamentStarts, false},
+                new object[] {"31 Dec 1994", PracticeStarts, TournamentStarts, false},
+                new object[] {"1 Jan 1995", PracticeStarts, TournamentStarts, false},
+                new object[] {"1 Jan 1996", PracticeStarts, TournamentStarts, false},
+                new object[] {"1 Jan 1997", PracticeStarts, TournamentStarts, false},
+                new object[] {"23 Sep 1998", PracticeStarts, TournamentStarts, false},
+                new object[] {"24 Sep 1998", PracticeStarts, TournamentStarts, true},
+                new object[] {"25 Sep 1998", PracticeStarts, TournamentStarts, true},
+                new object[] {"1 Jan 1999", PracticeStarts, TournamentStarts, true}
             };
 
             [Theory, MemberData(nameof(TheoryData))]
-            public void Should_return_expected_value(string dateOfBirth, string tournamentStarts, bool expected)
+            public void Should_return_expected_value(string dateOfBirth, string tournamentPracticeStarts, string tournamentStarts, bool expected)
             {
                 // Given
                 var player = Dummy.Value<SubmitEntry.PlayerClass>();
+                var practiceStarts = tournamentPracticeStarts.ToZonedDateTime();
                 var starts = tournamentStarts.ToZonedDateTime();
 
                 player.SetProperty("DateOfBirth", DateTime.Parse(dateOfBirth));
 
                 // When
-                var isUnder18AnytimeDuringTournament = player.IsUnder18AnytimeDuringTournament(starts);
+                var isUnder18AnytimeDuringTournamentOrPractice = player.IsUnder18AnytimeDuringTournamentOrPractice(practiceStarts, starts);
 
                 // Then
-                isUnder18AnytimeDuringTournament.Should().Be(expected);
+                isUnder18AnytimeDuringTournamentOrPractice.Should().Be(expected);
             }
         }
     }

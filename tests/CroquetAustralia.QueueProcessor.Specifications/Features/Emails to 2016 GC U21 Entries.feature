@@ -15,14 +15,14 @@ Scenario Outline: happy path
 		| EFT           | 1 Jan 1996  | false       | 18-21 and Australian.txt       |                               |
 		| EFT           | 1 Jan 1997  | false       | 18-21 and Australian.txt       |                               |
 		| EFT           | 23 Sep 1998 | false       | 18-21 and Australian.txt       |                               |
-		| EFT           | 24 Sep 1998 | false       | 18-21 and Australian.txt       |                               |
+		| EFT           | 24 Sep 1998 | false       | Under 18 and Australian.txt    | Under 18 Consent Form AUS.pdf |
 		| EFT           | 25 Sep 1998 | false       | Under 18 and Australian.txt    | Under 18 Consent Form AUS.pdf |
 		| EFT           | 1 Jan 1999  | false       | Under 18 and Australian.txt    | Under 18 Consent Form AUS.pdf |
 		| Cash          | 1 Jan 1995  | true        | 18-21 and New Zealander.txt    |                               |
 		| Cash          | 1 Jan 1996  | true        | 18-21 and New Zealander.txt    |                               |
 		| Cash          | 1 Jan 1997  | true        | 18-21 and New Zealander.txt    |                               |
 		| Cash          | 23 Sep 1998 | true        | 18-21 and New Zealander.txt    |                               |
-		| Cash          | 24 Sep 1998 | true        | 18-21 and New Zealander.txt    |                               |
+		| Cash          | 24 Sep 1998 | true        | Under 18 and New Zealander.txt | Under 18 Consent Form NZ.pdf  |
 		| Cash          | 25 Sep 1998 | true        | Under 18 and New Zealander.txt | Under 18 Consent Form NZ.pdf  |
 		| Cash          | 1 Jan 1999  | true        | Under 18 and New Zealander.txt | Under 18 Consent Form NZ.pdf  |
 

@@ -9,8 +9,8 @@ Scenario: Is under 21 tournament
 	Given tournament is U21
 	When I get DateOfBirthRange
 	Then the result should not be null
-	And result.MinimumValue should be '1 Jan 1995'
-	And result.MaximumValue should be '24 Sep 2016' 
+	And result.Minimum should be '1 Jan 1995'
+	And result.Maximum should be '24 Sep 2016' 
 
 Scenario: Is not under 21 tournament
 	Given tournament is not U21

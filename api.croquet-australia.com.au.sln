@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.WebApi.Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.QueueProcessor.EndToEndTests", "tests\CroquetAustralia.QueueProcessor.EndToEndTests\CroquetAustralia.QueueProcessor.EndToEndTests.csproj", "{300CE1CE-65A5-4C07-873D-96A5E4B1041D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroquetAustralia.Domain.Specifications", "tests\CroquetAustralia.Domain.Specifications\CroquetAustralia.Domain.Specifications.csproj", "{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -331,6 +333,26 @@ Global
 		{300CE1CE-65A5-4C07-873D-96A5E4B1041D}.Release-UnitySubset-v35|Any CPU.Build.0 = Release|Any CPU
 		{300CE1CE-65A5-4C07-873D-96A5E4B1041D}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
 		{300CE1CE-65A5-4C07-873D-96A5E4B1041D}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Debug-AOT|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Debug-AOT|Any CPU.Build.0 = Debug|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Debug-UnitySubset-v35|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Debug-UnitySubset-v35|Any CPU.Build.0 = Debug|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Portable|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Portable|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Portable-Signed|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Portable-Signed|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Portable-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Portable-Unsigned|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Signed|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Signed|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-UnitySubset-v35|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-UnitySubset-v35|Any CPU.Build.0 = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -350,5 +372,6 @@ Global
 		{22ED3A26-6B63-460B-A44F-1C9F8EB85152} = {89751C2D-8A75-4DC1-8564-CC1A3794A10B}
 		{6C122FF0-5E61-4786-B2EA-E99B7DC0E32B} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 		{300CE1CE-65A5-4C07-873D-96A5E4B1041D} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
+		{E2801089-7B27-4579-AF0A-FEE1B6BD73F5} = {A374734F-194F-46CE-B50E-B9A3AF482C45}
 	EndGlobalSection
 EndGlobal

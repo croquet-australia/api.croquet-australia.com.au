@@ -83,6 +83,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functions = new TournamentItem[] {};
             var merchandise = new TournamentItem[] {};
 
+            var practiceStarts = "23 Sep 2016 Australia/Melbourne".ToZonedDateTime();
             var starts = "24 Sep 2016 Australia/Melbourne".ToZonedDateTime();
             var finishes = "26 Sep 2016 Australia/Melbourne".ToZonedDateTime();
             var eventsClose = "01 Sep 2016 23:59 Australia/Perth".ToZonedDateTime();
@@ -94,6 +95,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string depositStating = "AUS U21";
             const string slug = "u21";
             var relatedTournamentIds = new string[] {};
+            const bool isUnder21 = true;
 
             var tournament = new Tournament(
                 tournamentId,
@@ -111,7 +113,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 discipline,
                 slug,
                 depositStating,
-                relatedTournamentIds);
+                relatedTournamentIds,
+                isUnder21: isUnder21,
+                practiceStarts: practiceStarts);
 
             return tournament;
         }

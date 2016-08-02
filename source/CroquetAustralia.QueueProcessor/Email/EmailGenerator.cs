@@ -76,12 +76,17 @@ namespace CroquetAustralia.QueueProcessor.Email
         {
             if (entrySubmitted.EventId == null)
             {
-                throw new ArgumentException("EventId cannot be null.", nameof(entrySubmitted));
+                throw new ArgumentException($"{nameof(entrySubmitted.EntityId)} cannot be null.", nameof(entrySubmitted));
             }
 
             // ReSharper disable once InvertIf
             if (entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGcU21))
             {
+                if (!tournament.PracticeStarts.HasValue)
+                {
+                    throw new ArgumentException($"{nameof(tournament.PracticeStarts)} cannot be null.", nameof(tournament));
+                }
+
                 // ReSharper disable once SwitchStatementMissingSomeCases because default will handle it
                 switch (entrySubmitted.PaymentMethod)
                 {
@@ -99,11 +104,16 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private IEnumerable<Func<EmailMessage>> GetNewZelanderGenerator(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)
         {
-            if (entrySubmitted.Player.IsUnder18(tournament))
+            if (!tournament.PracticeStarts.HasValue)
+            {
+                throw new ArgumentException($"{nameof(tournament.PracticeStarts)} cannot be null.", nameof(tournament));
+            }
+
+            if (entrySubmitted.Player.IsUnder18AnytimeDuringTournamentOrPractice(tournament.PracticeStarts.Value, tournament.Starts))
             {
                 yield return () => _under18AndNewZealanderEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
-            else if (entrySubmitted.Player.IsUnder22(tournament))
+            else if (entrySubmitted.Player.IsAgeEligible(tournament.Starts))
             {
                 yield return () => _over18AndNewZealanderEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
@@ -111,11 +121,16 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private IEnumerable<Func<EmailMessage>> GetAustralianGenerator(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)
         {
-            if (entrySubmitted.Player.IsUnder18(tournament))
+            if (!tournament.PracticeStarts.HasValue)
+            {
+                throw new ArgumentException($"{nameof(tournament.PracticeStarts)} cannot be null.", nameof(tournament));
+            }
+
+            if (entrySubmitted.Player.IsUnder18AnytimeDuringTournamentOrPractice(tournament.PracticeStarts.Value, tournament.Starts))
             {
                 yield return () => _under18AndAustralianEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }
-            else if (entrySubmitted.Player.IsUnder22(tournament))
+            else if (entrySubmitted.Player.IsAgeEligible(tournament.Starts))
             {
                 yield return () => _over18AndAustralianEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace);
             }

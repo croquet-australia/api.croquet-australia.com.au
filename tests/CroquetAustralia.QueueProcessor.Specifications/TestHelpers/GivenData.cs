@@ -1,4 +1,5 @@
-﻿using CroquetAustralia.Domain.Features.TournamentEntry;
+﻿using System;
+using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 
 namespace CroquetAustralia.QueueProcessor.Specifications.TestHelpers
@@ -9,7 +10,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.TestHelpers
         public bool PayingForPartner { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public EntrySubmitted EntrySubmitted { get; set; }
-        public int? YearOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public bool? NonResident { get; set; }
     }
 }

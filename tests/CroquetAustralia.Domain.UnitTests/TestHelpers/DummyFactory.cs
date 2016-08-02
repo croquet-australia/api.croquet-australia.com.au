@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using CroquetAustralia.Domain.Core;
 using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Models;
+using NodaTime;
 using OpenMagic;
 using OpenMagic.Extensions;
 
@@ -22,12 +24,21 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             ValueFactories.Add(typeof(SubmitEntry), SubmitEntry);
             ValueFactories.Add(typeof(SubmitEntry.LineItem), SubmitEntryLineItem);
             ValueFactories.Add(typeof(PaymentMethod), () => GetPaymentMethod() as object);
+            ValueFactories.Add(typeof(ZonedDateTime), () => ZonedDateTime() as object);
         }
 
-        public int YearOfBirth()
+        private ZonedDateTime ZonedDateTime()
         {
-            var currentYear = DateTime.Now.Year;
-            return RandomNumber.NextInt(currentYear - 21, currentYear + 1);
+            return (Value<DateTime>().ToString("dd MMM yyyy") + " Australia/Canberra").ToZonedDateTime();
+        }
+
+        public DateTime DateOfBirth(DateTime tournamentStartDate)
+        {
+            var yearOfTournament = tournamentStartDate.Year;
+            var oldest = new DateTime(yearOfTournament - 21, 1, 1);
+            var youngest = new DateTime(yearOfTournament - 1, 1, 1);
+
+            return RandomDateTime.Enumerable(1, oldest, youngest).Single();
         }
 
         protected override IEnumerable CreateValues(Type itemType)
@@ -81,7 +92,7 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             // todo: Remove this to allow pay by cash
             if (tournament.IsUnder21)
             {
-                command.Player.YearOfBirth = YearOfBirth();
+                command.Player.DateOfBirth = DateOfBirth(tournament.Starts.ToDateTimeUtc());
                 command.Player.NonResident = RandomBoolean.Next();
                 command.PaymentMethod = command.Player.NonResident.Value ? PaymentMethod.Cash : PaymentMethod.EFT;
                 command.Functions = new SubmitEntry.LineItem[] {};
@@ -89,7 +100,7 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             }
             else
             {
-                command.Player.YearOfBirth = null;
+                command.Player.DateOfBirth = null;
                 command.Player.NonResident = null;
                 command.PaymentMethod = GetPaymentMethod(paymentMethod => paymentMethod != PaymentMethod.Cash);
             }

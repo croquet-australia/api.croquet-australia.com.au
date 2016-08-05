@@ -426,7 +426,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var starts = "03 Sep 2016 Australia/Perth".ToZonedDateTime();
             var finishes = "06 Sep 2016 Australia/Perth".ToZonedDateTime();
             var eventsClose = "05 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
-            var functionsClose = eventsClose;
+            var functionsClose = "19 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
             var merchandiseClose = functionsClose;
             const string location = "Perth, WA";
             const string discipline = "gc";

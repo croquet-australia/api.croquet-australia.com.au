@@ -114,6 +114,16 @@ namespace CroquetAustralia.DownloadTournamentEntries
             return string.Join(",", values.Select(FormatValue));
         }
 
+        private static int? AttendingFunction(IEnumerable<FunctionReadModel> functions, string functionId)
+        {
+            return FindFunction(functions, functionId)?.Quantity;
+        }
+
+        private static FunctionReadModel FindFunction(IEnumerable<FunctionReadModel> functions, string functionId)
+        {
+            return functions.SingleOrDefault(function => function.Id.ToString() == functionId);
+        }
+
         private static string FormatPhone(string phone)
         {
             if (string.IsNullOrWhiteSpace(phone))

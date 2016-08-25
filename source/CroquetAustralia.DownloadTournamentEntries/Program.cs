@@ -63,8 +63,23 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
         private static bool IsTestRecord(Model model)
         {
-            return model.EntrySubmitted.Tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdAcPatronsTrophy2016)
-                   && model.EntrySubmitted.Player.Email == "pfreer@netspeed.com.au";
+            if (model.EntrySubmitted.Tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdAcPatronsTrophy2016))
+            {
+                return model.EntrySubmitted.Player.Email == "pfreer@netspeed.com.au";
+            }
+
+            if (IsGcGenderOpen(model))
+            {
+                var testRecord = new DateTime(2016, 07, 13, 07, 13, 36);
+                return model.EntrySubmitted.Created < testRecord;
+            }
+
+            return false;
+        }
+
+        private static bool IsGcGenderOpen(Model model)
+        {
+            return model.EntrySubmitted.Tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdGcWomensOpen2016) || model.EntrySubmitted.Tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdGcMensOpen2016);
         }
     }
 }

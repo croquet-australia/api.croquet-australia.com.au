@@ -15,8 +15,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             {
                 var tournamentIds = new[]
                 {
-                    Guid.Parse(TournamentsRepository.TournamentIdGcWomensOpen2016),
-                    Guid.Parse(TournamentsRepository.TournamentIdGcMensOpen2016)
+                    Guid.Parse(TournamentsRepository.TournamentIdGcU21)
                 };
 
                 var tournamentsRepository = new TournamentsRepository();

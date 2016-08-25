@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
-using CroquetAustralia.Domain.Services.Repositories;
 using CroquetAustralia.DownloadTournamentEntries.ReadModels;
 using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
@@ -64,10 +63,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Partner",
             "Partner Handicap",
             "Entry Email Sent (AEST)",
-            "Entry Email Id",
-            "Welcome M & W",
-            "Presentation Dinner",
-            "Dietary Requirements");
+            "Entry Email Id");
 
         private void ApplyEntrySubmitted(string eventJson, ITournamentsRepository tournamentsRepository)
         {
@@ -112,10 +108,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 EntrySubmitted.Partner == null ? null : string.Format($"{EntrySubmitted.Partner.FirstName} {EntrySubmitted.Partner.LastName}"),
                 EntrySubmitted.Partner?.Handicap,
                 FormatTimeStamp(SentEntrySubmittedEmail?.Created),
-                SentEntrySubmittedEmail?.EmailId,
-                AttendingFunction(EntrySubmitted.Functions, "4d80520d-e8f2-4424-bdaf-164c774b8acd"),
-                AttendingFunction(EntrySubmitted.Functions, "e81cf11f-fc5a-4d26-ba27-9792078c8ef0"),
-                EntrySubmitted.DietaryRequirements
+                SentEntrySubmittedEmail?.EmailId
             };
 
             return string.Join(",", values.Select(FormatValue));

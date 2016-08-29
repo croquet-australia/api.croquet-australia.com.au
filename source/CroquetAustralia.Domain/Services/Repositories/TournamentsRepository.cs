@@ -15,11 +15,14 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcOpenDoubles2016 = "648ca595-184d-4966-a978-d09b510ef371";
         public const string TournamentIdGcOpenSingles2016 = "729a6539-40ad-40b9-bb77-257dcfc47d75";
         public const string TournamentIdAcPatronsTrophy2016 = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
+        // ReSharper disable once InconsistentNaming
         public const string TournamentIdAcPresidentsEightsEOI2016 = "35ac72fe-e3c3-402b-b48b-022412922cbc";
-        public const string TournamentIdGcWorldsEOI2016 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
+        public const string TournamentIdGcWorldsEOI2017 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
         public const string TournamentIdGcWomensOpen2016 = "2ced7cd7-a505-497e-b628-1c31860d102b";
         public const string TournamentIdGcU21 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
+        // ReSharper disable once InconsistentNaming
+        public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
 
         private static readonly Tournament[] Tournaments;
 
@@ -34,7 +37,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcPatronsTrophy(),
                 GetGcMensOpen(),
                 GetGcWomensOpen(),
-                GetGcAusU21()
+                GetGcAusU21(),
+                GetGc_U21_WorldsEOI()
             };
         }
 
@@ -50,7 +54,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public Task<Tournament> GetBySlugAsync(int year, string discipline, string slug)
         {
-            return GetTournamentAsync(t => t.Starts.Year == year && t.Discipline == discipline && t.Slug == slug);
+            return GetTournamentAsync(t => (t.Starts.Year == year) && (t.Discipline == discipline) && (t.Slug == slug));
         }
 
         public Task<Tournament> GetByUrlAsync(string url)
@@ -130,9 +134,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var tournament = Tournaments.SingleOrDefault(where);
 
             if (tournament == null)
-            {
                 throw new TournamentNotFoundException(where);
-            }
 
             return tournament;
         }
@@ -281,7 +283,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetGcWorldsEOI()
         {
-            const string tournamentId = TournamentIdGcWorldsEOI2016;
+            const string tournamentId = TournamentIdGcWorldsEOI2017;
             const string tournamentTitle = "WCF Golf Croquet World Championship - Expressions of Interest";
             const string location = "Victorian Croquet Centre, Cairnlea, VIC";
             const string slug = "wcf-world-championship-expressions-of-interest";
@@ -450,6 +452,50 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 slug,
                 depositStating,
                 relatedTournamentIds);
+
+            return tournament;
+        }
+
+        private static Tournament GetGc_U21_WorldsEOI()
+        {
+            const string tournamentId = TournamentIdGcWorlds_U21_EOI_2017;
+            const string tournamentTitle = "WCF Under 21's Golf Croquet World Championship - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "u21-worlds-eoi";
+            const string depositStating = null;
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const bool isEOI = true;
+            var starts = "18 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "22 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var practiceStarts = "17 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "14 Sep 2016 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] {};
+            var functions = new TournamentItem[] {};
+            var merchandise = new TournamentItem[] {};
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                isEOI: isEOI,
+                isUnder21: true,
+                practiceStarts: practiceStarts);
 
             return tournament;
         }

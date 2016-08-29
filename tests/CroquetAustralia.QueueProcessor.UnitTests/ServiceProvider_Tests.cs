@@ -27,7 +27,8 @@ namespace CroquetAustralia.QueueProcessor.UnitTests
 
             public static IEnumerable<object[]> PublicTypes { get; }
 
-            [Theory, MemberData(nameof(PublicTypes))]
+            [Theory]
+            [MemberData(nameof(PublicTypes))]
             public void Should_get_requested_service(Type serviceType)
             {
                 _serviceProvider.GetService(serviceType).Should().NotBeNull();

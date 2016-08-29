@@ -16,10 +16,14 @@ namespace CroquetAustralia.WebApi.Services
         {
             var message = new StringBuilder();
             if (request.Method != null)
+            {
                 message.Append(request.Method);
+            }
 
             if (request.RequestUri != null)
+            {
                 message.Append(" ").Append(request.RequestUri);
+            }
 
             return message.ToString();
         }

@@ -138,6 +138,7 @@
     <Compile Include="Email\EmailGenerators\U21Tournament\Under18AndNewZealanderEmailGenerator.cs" />
     <Compile Include="Email\EmailMessage.cs" />
     <Compile Include="Email\SendEmailException.cs" />
+    <Compile Include="Email\EmailGenerators\U21WorldsEOIEmailGenerator.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="Helpers\AzureStorageConnectionString.cs" />
     <Compile Include="Email\EmailAddress.cs" />
@@ -185,7 +186,7 @@
     <EmbeddedResource Include="Email\Templates\PayByCash\U21Tournament\Under 18 and New Zealander.txt" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\Under 18 and Australian.txt" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\18-21 and Australian.txt" />
-    <EmbeddedResource Include="Email\Templates\EOI.txt" />
+    <EmbeddedResource Include="Email\Templates\PayBy\EOI.txt" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

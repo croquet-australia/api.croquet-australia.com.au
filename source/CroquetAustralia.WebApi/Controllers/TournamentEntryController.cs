@@ -16,14 +16,16 @@ namespace CroquetAustralia.WebApi.Controllers
             _eventsQueue = eventsQueue;
         }
 
-        [HttpPost, Route("add-entry")]
+        [HttpPost]
+        [Route("add-entry")]
         public async Task AddEntryAsync(SubmitEntry command)
         {
             var entrySubmitted = command.ToEntrySubmitted();
             await _eventsQueue.AddMessageAsync(entrySubmitted);
         }
 
-        [HttpPost, Route("payment-received")]
+        [HttpPost]
+        [Route("payment-received")]
         public async Task PaymentReceivedAsync(ReceivePayment command)
         {
             // todo: extension method command.MapTo<EntrySubmitted>

@@ -8,12 +8,12 @@ namespace CroquetAustralia.Domain.Core
 {
     public class ZonedDateTimeJsonConverter : JsonConverter
     {
-        private readonly ZonedDateTimePattern _dateTimePattern;
         private readonly Type[] _convertableTypes;
+        private readonly ZonedDateTimePattern _dateTimePattern;
 
         public ZonedDateTimeJsonConverter(IDateTimeZoneProvider provider)
         {
-            _convertableTypes = new [] {typeof(ZonedDateTime), typeof(ZonedDateTime?)};
+            _convertableTypes = new[] {typeof(ZonedDateTime), typeof(ZonedDateTime?)};
             _dateTimePattern = ZonedDateTimePattern.CreateWithInvariantCulture("yyyy'-'MM'-'dd'T'HH':'mm':'ss", provider);
         }
 

@@ -54,7 +54,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public Task<Tournament> GetBySlugAsync(int year, string discipline, string slug)
         {
-            return GetTournamentAsync(t => (t.Starts.Year == year) && (t.Discipline == discipline) && (t.Slug == slug));
+            return GetTournamentAsync(t => t.Starts.Year == year && t.Discipline == discipline && t.Slug == slug);
         }
 
         public Task<Tournament> GetByUrlAsync(string url)
@@ -134,7 +134,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var tournament = Tournaments.SingleOrDefault(where);
 
             if (tournament == null)
+            {
                 throw new TournamentNotFoundException(where);
+            }
 
             return tournament;
         }

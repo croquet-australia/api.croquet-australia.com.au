@@ -53,7 +53,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
 
             protected override Tournament CreateTournament()
             {
-                return TournamentsRepository.GetAllAsync().Result.Single(tournament => tournament.IsUnder21);
+                return TournamentsRepository.GetAllAsync().Result.First(tournament => tournament.IsUnder21);
             }
 
             protected override EntrySubmitted CreateEntrySubmitted(bool eventSelected, SubmitEntry.LineItem[] functions, Tournament tournament)
@@ -90,7 +90,8 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     new Over18AndAustralianEmailGenerator(emailMessageSettings),
                     new Under18AndAustralianEmailGenerator(emailMessageSettings),
                     new Over18AndNewZealanderEmailGenerator(emailMessageSettings),
-                    new Under18AndNewZealanderEmailGenerator(emailMessageSettings));
+                    new Under18AndNewZealanderEmailGenerator(emailMessageSettings),
+                    new U21WorldsEOIEmailGenerator(emailMessageSettings));
 
                 _processor = new SendEntrySubmittedEmailQueueProcessor(
                     queueMessageSerializer,

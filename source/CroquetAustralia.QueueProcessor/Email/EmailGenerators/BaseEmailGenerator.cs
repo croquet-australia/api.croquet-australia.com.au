@@ -12,11 +12,23 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
     // todo: replace multiple classes with 'TemplateNameFinder' class
     public abstract class BaseEmailGenerator
     {
+        private readonly EmailAddress[] _bcc;
+        private readonly EmailAddress _from;
         protected readonly EmailMessageSettings EmailMessageSettings;
 
         protected BaseEmailGenerator(EmailMessageSettings emailMessageSettings)
+            : this(
+                emailMessageSettings,
+                new EmailAddress("events@croquet-australia.com.au", "Croquet Australia - Events Committee"), /* todo: remove hard coding */
+                emailMessageSettings.Bcc)
+        {
+        }
+
+        protected BaseEmailGenerator(EmailMessageSettings emailMessageSettings, EmailAddress from, EmailAddress[] bcc)
         {
             EmailMessageSettings = emailMessageSettings;
+            _from = from;
+            _bcc = bcc;
         }
 
         public EmailMessage Generate(SubmitEntry.PlayerClass sendTo, EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)
@@ -24,7 +36,7 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
             var templateName = GetTemplateName(entrySubmitted);
             var template = GetTemplate(templateNamespace, templateName);
             var attachments = GetAttachments(templateNamespace);
-            var emailMessage = TournamentEntryEmailMessage.Create(EmailMessageSettings, tournament, template, entrySubmitted, sendTo, attachments);
+            var emailMessage = TournamentEntryEmailMessage.Create(EmailMessageSettings, tournament, template, entrySubmitted, sendTo, _bcc, _from, attachments);
 
             return emailMessage;
         }

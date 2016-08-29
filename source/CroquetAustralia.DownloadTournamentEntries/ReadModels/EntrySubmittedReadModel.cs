@@ -21,7 +21,7 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
             Functions = source.Functions.Select(function => new FunctionReadModel(function)).ToArray();
             DietaryRequirements = source.DietaryRequirements;
         }
-        
+
         public PlayerReadModel Player { get; private set; }
         public string PaymentMethod { get; private set; }
         public EventReadModel Event { get; private set; }

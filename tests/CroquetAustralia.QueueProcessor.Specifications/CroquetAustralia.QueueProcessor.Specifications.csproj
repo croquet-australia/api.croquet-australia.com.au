@@ -98,6 +98,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Emails to 2016 GC Open Doubles Entries.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Emails to 2017 GC U21 Worlds EOI.feature.cs">
+      <DependentUpon>Emails to 2017 GC U21 Worlds EOI.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Emails to 2016 GC U21 Entries.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +123,10 @@
     <None Include="Features\Emails to 2016 GC Open Doubles Entries.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Emails to 2016 GC Open Doubles Entries.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Emails to 2017 GC U21 Worlds EOI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Emails to 2017 GC U21 Worlds EOI.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Emails to 2016 GC U21 Entries.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

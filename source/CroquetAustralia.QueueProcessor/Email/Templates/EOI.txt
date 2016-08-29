@@ -1,0 +1,7 @@
+﻿Dear {{Player.FirstName}}
+ 
+Thank you for your expression of interest for the {{Tournament.Title}}. 
+ 
+If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator Under 21 Croquet at ndu21c@croquet-australia.com.au.
+
+Croquet Australia

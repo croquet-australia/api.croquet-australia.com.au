@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
+using CroquetAustralia.Domain.Features.TournamentEntry;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 using CroquetAustralia.Domain.Services.Queues;
@@ -20,6 +22,12 @@ namespace CroquetAustralia.WebApi.Controllers
         [Route("add-entry")]
         public async Task AddEntryAsync(SubmitEntry command)
         {
+            // todo: allow javascript to send null
+            if (command.PaymentMethod.HasValue && (int)command.PaymentMethod.Value == -1)
+            {
+                command.PaymentMethod = null;
+            }
+
             var entrySubmitted = command.ToEntrySubmitted();
             await _eventsQueue.AddMessageAsync(entrySubmitted);
         }

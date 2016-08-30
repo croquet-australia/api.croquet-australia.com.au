@@ -14,7 +14,7 @@ Subject: WCF Under 21's Golf Croquet World Championship - Expressions of Interes
 BodyAsText:
 Dear Joe
  
-Thank you for your expression of interest for the WCF Under 21's Golf Croquet World Championship - Expressions of Interest. 
+Thank you for your expression of interest for the WCF Under 21's Golf Croquet World Championship. 
  
 If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator Under 21 Croquet at ndu21c@croquet-australia.com.au.
 
@@ -23,7 +23,7 @@ BodyAsHtml: >-
   <p>Dear Joe</p>
 
 
-  <p>Thank you for your expression of interest for the WCF Under 21's Golf Croquet World Championship - Expressions of Interest. </p>
+  <p>Thank you for your expression of interest for the WCF Under 21's Golf Croquet World Championship. </p>
 
 
   <p>If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator Under 21 Croquet at ndu21c@croquet-australia.com.au.</p>

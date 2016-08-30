@@ -23,7 +23,7 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             ValueFactories.Add(typeof(LineItem), LineItem);
             ValueFactories.Add(typeof(SubmitEntry), SubmitEntry);
             ValueFactories.Add(typeof(SubmitEntry.LineItem), SubmitEntryLineItem);
-            ValueFactories.Add(typeof(PaymentMethod), () => GetPaymentMethod() as object);
+            ValueFactories.Add(typeof(PaymentMethod?), () => GetPaymentMethod() as object);
             ValueFactories.Add(typeof(ZonedDateTime), () => ZonedDateTime() as object);
         }
 
@@ -68,7 +68,7 @@ namespace CroquetAustralia.Domain.UnitTests.TestHelpers
             var tournament = _tournamentsRepository.GetAllAsync().Result.RandomItem();
 
             command.TournamentId = tournament.Id;
-            command.EventId = RandomBoolean.Next() ? tournament.Events.RandomItem().Id : (Guid?)null;
+            command.EventId = RandomBoolean.Next() && tournament.Events.Any() ? tournament.Events.RandomItem()?.Id : null;
 
             if (!command.EventId.HasValue)
             {

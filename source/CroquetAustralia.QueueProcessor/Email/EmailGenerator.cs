@@ -20,6 +20,7 @@ namespace CroquetAustralia.QueueProcessor.Email
         private readonly Over18AndNewZealanderEmailGenerator _over18AndNewZealanderEmailGenerator;
         private readonly SinglesEmailGenerator _singlesEmailGenerator;
         private readonly ITournamentsRepository _tournamentsRepository;
+        private readonly U21WorldsEOIEmailGenerator _u21WorldsEOIEmailGenerator;
         private readonly Under18AndAustralianEmailGenerator _under18AndAustralianEmailGenerator;
         private readonly Under18AndNewZealanderEmailGenerator _under18AndNewZealanderEmailGenerator;
 
@@ -31,7 +32,8 @@ namespace CroquetAustralia.QueueProcessor.Email
             Over18AndAustralianEmailGenerator over18AndAustralianEmailGenerator,
             Under18AndAustralianEmailGenerator under18AndAustralianEmailGenerator,
             Over18AndNewZealanderEmailGenerator over18AndNewZealanderEmailGenerator,
-            Under18AndNewZealanderEmailGenerator under18AndNewZealanderEmailGenerator)
+            Under18AndNewZealanderEmailGenerator under18AndNewZealanderEmailGenerator,
+            U21WorldsEOIEmailGenerator u21WorldsEOIEmailGenerator)
         {
             _tournamentsRepository = tournamentsRepository;
             _singlesEmailGenerator = singlesEmailGenerator;
@@ -41,6 +43,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             _under18AndAustralianEmailGenerator = under18AndAustralianEmailGenerator;
             _over18AndNewZealanderEmailGenerator = over18AndNewZealanderEmailGenerator;
             _under18AndNewZealanderEmailGenerator = under18AndNewZealanderEmailGenerator;
+            _u21WorldsEOIEmailGenerator = u21WorldsEOIEmailGenerator;
         }
 
         public async Task<IEnumerable<EmailMessage>> GenerateAsync(EntrySubmitted entrySubmitted)
@@ -74,6 +77,13 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private IEnumerable<Func<EmailMessage>> GetU21Generators(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)
         {
+            if (entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGcWorlds_U21_EOI_2017))
+            {
+                return entrySubmitted.Player.IsAgeEligible(tournament.Starts)
+                    ? new Func<EmailMessage>[] {() => _u21WorldsEOIEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace)}
+                    : new Func<EmailMessage>[] {};
+            }
+
             if (entrySubmitted.EventId == null)
             {
                 throw new ArgumentException($"{nameof(entrySubmitted.EntityId)} cannot be null.", nameof(entrySubmitted));

@@ -1,4 +1,5 @@
-﻿using CroquetAustralia.Domain.Features.TournamentEntry.Events;
+﻿using System.Linq;
+using CroquetAustralia.Domain.Features.TournamentEntry.Events;
 
 namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
 {
@@ -14,13 +15,18 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
         };
 
         public U21WorldsEOIEmailGenerator(EmailMessageSettings emailMessageSettings)
-            : base(emailMessageSettings, U21Coordinator, BCC)
+            : base(emailMessageSettings, U21Coordinator, GetBCC(emailMessageSettings))
         {
         }
 
         protected override string GetTemplateName(EntrySubmitted entrySubmitted)
         {
             return "EOI";
+        }
+
+        private static EmailAddress[] GetBCC(EmailMessageSettings emailMessageSettings)
+        {
+            return emailMessageSettings.Bcc.Any() ? BCC : new EmailAddress[] {};
         }
     }
 }

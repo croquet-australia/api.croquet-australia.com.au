@@ -13,14 +13,12 @@ namespace CroquetAustralia.QueueProcessor.Email
 {
     public class TournamentEntryEmailMessage
     {
-        public static EmailMessage Create(EmailMessageSettings emailMessageSettings, Tournament tournament, string template, EntrySubmitted @event, SubmitEntry.PlayerClass sendTo, IEnumerable<FileInfo> attachments = null)
+        public static EmailMessage Create(EmailMessageSettings emailMessageSettings, Tournament tournament, string template, EntrySubmitted @event, SubmitEntry.PlayerClass sendTo, IEnumerable<EmailAddress> bcc, EmailAddress from, IEnumerable<FileInfo> attachments = null)
         {
             var tournamentEvent = @event.EventId.HasValue ? tournament.Events.Single(e => e.Id == @event.EventId) : null;
 
             var to = new[] {new EmailAddress(sendTo.Email, $"{sendTo.FirstName} {sendTo.LastName}")};
             var cc = Enumerable.Empty<EmailAddress>();
-            var bcc = emailMessageSettings.Bcc;
-            var from = new EmailAddress("events@croquet-australia.com.au", "Croquet Australia - Events Committee"); // todo: remove hard coding
             var subject = $"{tournament.Title} Entry";
             var bodyAsText = CreateBodyAsText(template, @event, tournament, tournamentEvent, emailMessageSettings);
             var bodyAsHtml = CreateBodyAsHtml(bodyAsText, emailMessageSettings, tournament, @event);

@@ -43,12 +43,12 @@
       <HintPath>..\..\packages\ApprovalUtilities.3.0.11\lib\net45\ApprovalUtilities.Net45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions, Version=4.12.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.12.0\lib\net45\FluentAssertions.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=4.13.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.13.0\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentAssertions.Core, Version=4.12.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\FluentAssertions.4.12.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+    <Reference Include="FluentAssertions.Core, Version=4.13.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FluentAssertions.4.13.0\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -98,6 +98,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Emails to 2016 GC Open Doubles Entries.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Emails to 2017 GC U21 Worlds EOI.feature.cs">
+      <DependentUpon>Emails to 2017 GC U21 Worlds EOI.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Features\Emails to 2016 GC U21 Entries.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +123,10 @@
     <None Include="Features\Emails to 2016 GC Open Doubles Entries.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Emails to 2016 GC Open Doubles Entries.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Emails to 2017 GC U21 Worlds EOI.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Emails to 2017 GC U21 Worlds EOI.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Emails to 2016 GC U21 Entries.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -166,11 +175,15 @@
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Player.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Under 18 and Australian.txt.approved.txt" />
+    <Content Include="Steps\PayBy\2017 GC U21 Worlds EOI.txt.approved.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)packages\SpecFlow.2.1.0\tools\specflow.exe generateall $(ProjectPath)</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

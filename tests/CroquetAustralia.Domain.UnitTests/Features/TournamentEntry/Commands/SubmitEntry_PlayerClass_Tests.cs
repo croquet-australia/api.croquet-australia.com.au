@@ -26,7 +26,8 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
                 new object[] {"25 Sep 1998", TournamentStarts, true}
             };
 
-            [Theory, MemberData(nameof(TheoryData))]
+            [Theory]
+            [MemberData(nameof(TheoryData))]
             public void Should_return_expected_value(string dateOfBirth, string tournamentStarts, bool expected)
             {
                 // Given
@@ -61,7 +62,8 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
                 new object[] {"1 Jan 1999", PracticeStarts, TournamentStarts, true}
             };
 
-            [Theory, MemberData(nameof(TheoryData))]
+            [Theory]
+            [MemberData(nameof(TheoryData))]
             public void Should_return_expected_value(string dateOfBirth, string tournamentPracticeStarts, string tournamentStarts, bool expected)
             {
                 // Given

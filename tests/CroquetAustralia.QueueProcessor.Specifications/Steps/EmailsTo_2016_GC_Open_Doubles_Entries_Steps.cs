@@ -51,7 +51,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
         [Given(@"paymentMethod is '(.*)'")]
         public void GivenPaymentMethodIs(string paymentMethod)
         {
-            _given.PaymentMethod = (PaymentMethod)Enum.Parse(typeof(PaymentMethod), paymentMethod, true);
+            _given.PaymentMethod = paymentMethod == "null" ? (PaymentMethod?)null : (PaymentMethod)Enum.Parse(typeof(PaymentMethod), paymentMethod, true);
         }
 
         [When(@"the entry is submitted")]
@@ -62,7 +62,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
             var tournament = _services.Get<ITournamentsRepository>().GetByUrlAsync(_given.TournamentSlug).Result;
 
             submitEntry.EntityId = Guid.Parse("28e4df74-1acb-4a2e-a317-63f064f10142");
-            submitEntry.EventId = tournament.Events.First().Id;
+            submitEntry.EventId = tournament.Events.Any() ? tournament.Events.First().Id : (Guid?)null;
             submitEntry.Functions = new SubmitEntry.LineItem[] {};
             submitEntry.Merchandise = new SubmitEntry.LineItem[] {};
             submitEntry.PaymentMethod = _given.PaymentMethod;

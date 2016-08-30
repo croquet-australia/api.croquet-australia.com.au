@@ -18,7 +18,8 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
             public static IEnumerable<object[]> SubmitEntries => Enumerable.Range(1, 100)
                 .Select(i => new[] {new ToEntrySubmitted().Valid<EntrySubmitted>()});
 
-            [Theory, MemberData(nameof(SubmitEntries))]
+            [Theory]
+            [MemberData(nameof(SubmitEntries))]
             public void Should_return_EntrySubmitted_event_with_populated_properties(SubmitEntry submitEntry)
             {
                 // When
@@ -57,7 +58,8 @@ namespace CroquetAustralia.Domain.UnitTests.Features.TournamentEntry.Commands
                 return new[] {property, emptyValue, expectedErrorMessage};
             }
 
-            [Theory, MemberData(nameof(RequiredProperties))]
+            [Theory]
+            [MemberData(nameof(RequiredProperties))]
             public void Should_return_ValidationResult_when_required_property_is_empty(string propertyName, object emptyValue, string expectedErrorMessage)
             {
                 // Given

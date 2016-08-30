@@ -1,0 +1,35 @@
+﻿To:
+- Email: joe@example.com
+  Name: Joe Blow
+Cc: []
+Bcc:
+- Email: ndu21c@croquet-australia.com.au
+  Name: Croquet Australia - National Co-ordinator Under 21 Croquet
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+- Email: acquinn@bigpond.com
+  Name: Croquet Australia - Secretary GC Selection
+From:
+  Email: ndu21c@croquet-australia.com.au
+  Name: Croquet Australia - National Co-ordinator Under 21 Croquet
+Subject: WCF Under 21's Golf Croquet World Championship - Expressions of Interest Entry
+BodyAsText:
+Dear Joe
+ 
+Thank you for your expression of interest for the WCF Under 21's Golf Croquet World Championship. 
+ 
+If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator Under 21 Croquet at ndu21c@croquet-australia.com.au.
+
+Croquet Australia
+BodyAsHtml: >-
+  <p>Dear Joe</p>
+
+
+  <p>Thank you for your expression of interest for the WCF Under 21's Golf Croquet World Championship. </p>
+
+
+  <p>If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator Under 21 Croquet at ndu21c@croquet-australia.com.au.</p>
+
+
+  <p>Croquet Australia</p>
+Attachments: ''

@@ -11,7 +11,8 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
         private static readonly EmailAddress[] BCC =
         {
             U21Coordinator,
-            new EmailAddress("admin@croquet-australia.com.au", "Croquet Australia")
+            new EmailAddress("admin@croquet-australia.com.au", "Croquet Australia"),
+            new EmailAddress("acquinn@bigpond.com", "Croquet Australia - Secretary GC Selection")
         };
 
         public U21WorldsEOIEmailGenerator(EmailMessageSettings emailMessageSettings)

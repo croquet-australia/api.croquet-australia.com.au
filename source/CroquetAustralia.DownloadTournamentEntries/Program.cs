@@ -15,7 +15,8 @@ namespace CroquetAustralia.DownloadTournamentEntries
             {
                 var tournamentIds = new[]
                 {
-                    Guid.Parse(TournamentsRepository.TournamentIdGcWorlds_U21_EOI_2017)
+                    Guid.Parse(TournamentsRepository.TournamentIdGcHandicapDoubles2016),
+                    Guid.Parse(TournamentsRepository.TournamentIdGcHandicapSingles2016)
                 };
 
                 var tournamentsRepository = new TournamentsRepository();

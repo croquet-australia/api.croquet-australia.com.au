@@ -53,7 +53,14 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public Task<Tournament> GetByIdAsync(Guid tournamentId)
         {
-            return GetTournamentAsync(t => t.Id == tournamentId);
+            try
+            {
+                return GetTournamentAsync(t => t.Id == tournamentId);
+            }
+            catch (TournamentNotFoundException exception)
+            {
+                throw new TournamentNotFoundException($"tournamentId == {tournamentId}", exception);
+            }
         }
 
         public Task<Tournament> GetBySlugAsync(int year, string discipline, string slug)

@@ -51,13 +51,28 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
             catch (Exception exception)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.WriteLine(exception.Message);
-                Console.WriteLine("----------------------------------------------------------------");
-                Console.WriteLine(exception);
-                Console.ForegroundColor = ConsoleColor.Gray;
+                WriteException(exception);
             }
+        }
+
+        private static void WriteException(Exception exception)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
+            Console.WriteLine(exception.Message);
+
+            if (exception.Data.Count > 0)
+            {
+                Console.WriteLine();
+                foreach (var key in exception.Data.Keys)
+                {
+                    Console.WriteLine($"{key}: {exception.Data[key]}");
+                }
+            }
+
+            Console.WriteLine("----------------------------------------------------------------");
+            Console.WriteLine(exception);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         private static bool IsTestRecord(Model model)

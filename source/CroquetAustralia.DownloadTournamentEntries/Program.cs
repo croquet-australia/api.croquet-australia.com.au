@@ -15,7 +15,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             {
                 var tournamentIds = new[]
                 {
-                    Guid.Parse(TournamentsRepository.TournamentIdGcU21)
+                    Guid.Parse(TournamentsRepository.TournamentIdGcWorlds_U21_EOI_2017)
                 };
 
                 var tournamentsRepository = new TournamentsRepository();
@@ -33,17 +33,20 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
                 Console.WriteLine(Model.Headings);
 
-                var models = tableEntities
+                var allModels = tableEntities
                     .Select(group => new Model(group.Key, group.AsEnumerable(), tournamentsRepository))
-                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id) && !IsTestRecord(m))
                     .ToArray();
 
-                var orderedModels = models
+                var orderedModels = allModels
                     .OrderBy(m => m.EntrySubmitted.Tournament.Title)
                     .ThenBy(m => m.EntrySubmitted.Created)
                     .ToArray();
 
-                foreach (var model in orderedModels)
+                var whereModels = orderedModels
+                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id) && !IsTestRecord(m))
+                    .ToArray();
+
+                foreach (var model in whereModels)
                 {
                     Console.WriteLine(model);
                 }

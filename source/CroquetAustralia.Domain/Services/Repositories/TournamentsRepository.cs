@@ -25,7 +25,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
         public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
         public const string TournamentIdGcHandicapSingles2016 = "e96ff546-1df2-478b-8faa-fa4d85869420";
-
+        public const string TournamentIdGcEights2017EOI = "13b685d4-3734-4a59-b188-50333f104206";
+        
         private static readonly Tournament[] Tournaments;
 
         static TournamentsRepository()
@@ -42,7 +43,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcAusU21(),
                 GetGc_U21_WorldsEOI(),
                 GetGcHandicapDoubles(),
-                GetGcHandicapSingles()
+                GetGcHandicapSingles(),
+                GetGcEights2017EOI()
             };
         }
 
@@ -575,5 +577,46 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
             return tournament;
         }
-   }
+
+        private static Tournament GetGcEights2017EOI()
+        {
+            const string tournamentId = TournamentIdGcEights2017EOI;
+            const string tournamentTitle = "Australian GC President's Eights - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "presidents-eights-expressions-of-interest";
+            const string depositStating = null;
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const bool isEOI = true;
+            var starts = "03 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "05 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "09 Nov 2016 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                isEOI: isEOI);
+
+            return tournament;
+        }
+    }
 }

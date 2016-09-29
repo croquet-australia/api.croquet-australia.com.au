@@ -16,6 +16,7 @@ namespace CroquetAustralia.QueueProcessor.Email
     {
         private readonly DoublesPartnerEmailGenerator _doublesPartnerEmailGenerator;
         private readonly DoublesPlayerEmailGenerator _doublesPlayerEmailGenerator;
+        private readonly GCEightsEOIEmailGenerator _gcEightsEOIEmailGenerator;
         private readonly Over18AndAustralianEmailGenerator _over18AndAustralianEmailGenerator;
         private readonly Over18AndNewZealanderEmailGenerator _over18AndNewZealanderEmailGenerator;
         private readonly SinglesEmailGenerator _singlesEmailGenerator;
@@ -33,7 +34,8 @@ namespace CroquetAustralia.QueueProcessor.Email
             Under18AndAustralianEmailGenerator under18AndAustralianEmailGenerator,
             Over18AndNewZealanderEmailGenerator over18AndNewZealanderEmailGenerator,
             Under18AndNewZealanderEmailGenerator under18AndNewZealanderEmailGenerator,
-            U21WorldsEOIEmailGenerator u21WorldsEOIEmailGenerator)
+            U21WorldsEOIEmailGenerator u21WorldsEOIEmailGenerator,
+            GCEightsEOIEmailGenerator gcEightsEOIEmailGenerator)
         {
             _tournamentsRepository = tournamentsRepository;
             _singlesEmailGenerator = singlesEmailGenerator;
@@ -44,6 +46,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             _over18AndNewZealanderEmailGenerator = over18AndNewZealanderEmailGenerator;
             _under18AndNewZealanderEmailGenerator = under18AndNewZealanderEmailGenerator;
             _u21WorldsEOIEmailGenerator = u21WorldsEOIEmailGenerator;
+            _gcEightsEOIEmailGenerator = gcEightsEOIEmailGenerator;
         }
 
         public async Task<IEnumerable<EmailMessage>> GenerateAsync(EntrySubmitted entrySubmitted)
@@ -67,6 +70,14 @@ namespace CroquetAustralia.QueueProcessor.Email
             if (tournament.IsUnder21)
             {
                 return GetU21Generators(entrySubmitted, tournament, templateNamespace);
+            }
+
+            if (tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdGcEights2017EOI))
+            {
+                return new Func<EmailMessage>[]
+                {
+                    () => _gcEightsEOIEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace)
+                };
             }
 
             return new Func<EmailMessage>[]

@@ -127,6 +127,7 @@
     <Compile Include="Email\EmailGenerators\DoublesPlayerEmailGenerator.cs" />
     <Compile Include="Email\EmailGenerator.cs" />
     <Compile Include="Email\EmailGenerators\U21Tournament\Over18AndAustralianEmailGenerator.cs" />
+    <Compile Include="Email\EmailGenerators\GCEightsEOIEmailGenerator.cs" />
     <Compile Include="Email\IEmailGenerator.cs" />
     <Compile Include="Email\EmailAttachments.cs" />
     <Compile Include="Email\MailInBlue.cs" />
@@ -186,7 +187,8 @@
     <EmbeddedResource Include="Email\Templates\PayByCash\U21Tournament\Under 18 and New Zealander.txt" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\Under 18 and Australian.txt" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\18-21 and Australian.txt" />
-    <EmbeddedResource Include="Email\Templates\PayBy\EOI.txt" />
+    <EmbeddedResource Include="Email\Templates\PayBy\U21WorldsEOI.txt" />
+    <EmbeddedResource Include="Email\Templates\PayBy\GCEightsEOI.txt" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

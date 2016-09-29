@@ -186,7 +186,7 @@
     <EmbeddedResource Include="Email\Templates\PayByCash\U21Tournament\Under 18 and New Zealander.txt" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\Under 18 and Australian.txt" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\18-21 and Australian.txt" />
-    <EmbeddedResource Include="Email\Templates\PayBy\EOI.txt" />
+    <EmbeddedResource Include="Email\Templates\PayBy\U21WorldsEOI.txt" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

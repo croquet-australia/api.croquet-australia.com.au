@@ -22,7 +22,7 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
 
         protected override string GetTemplateName(EntrySubmitted entrySubmitted)
         {
-            return "EOI";
+            return "U21WorldsEOI";
         }
 
         private static EmailAddress[] GetBCC(EmailMessageSettings emailMessageSettings)

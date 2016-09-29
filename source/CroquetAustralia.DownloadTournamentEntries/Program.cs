@@ -15,7 +15,8 @@ namespace CroquetAustralia.DownloadTournamentEntries
             {
                 var tournamentIds = new[]
                 {
-                    Guid.Parse(TournamentsRepository.TournamentIdGcU21)
+                    Guid.Parse(TournamentsRepository.TournamentIdGcHandicapDoubles2016),
+                    Guid.Parse(TournamentsRepository.TournamentIdGcHandicapSingles2016)
                 };
 
                 var tournamentsRepository = new TournamentsRepository();
@@ -33,17 +34,20 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
                 Console.WriteLine(Model.Headings);
 
-                var models = tableEntities
+                var allModels = tableEntities
                     .Select(group => new Model(group.Key, group.AsEnumerable(), tournamentsRepository))
-                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id) && !IsTestRecord(m))
                     .ToArray();
 
-                var orderedModels = models
+                var orderedModels = allModels
                     .OrderBy(m => m.EntrySubmitted.Tournament.Title)
                     .ThenBy(m => m.EntrySubmitted.Created)
                     .ToArray();
 
-                foreach (var model in orderedModels)
+                var whereModels = orderedModels
+                    .Where(m => tournamentIds.Contains(m.EntrySubmitted.Tournament.Id) && !IsTestRecord(m))
+                    .ToArray();
+
+                foreach (var model in whereModels)
                 {
                     Console.WriteLine(model);
                 }
@@ -51,13 +55,28 @@ namespace CroquetAustralia.DownloadTournamentEntries
 
             catch (Exception exception)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine();
-                Console.WriteLine(exception.Message);
-                Console.WriteLine("----------------------------------------------------------------");
-                Console.WriteLine(exception);
-                Console.ForegroundColor = ConsoleColor.Gray;
+                WriteException(exception);
             }
+        }
+
+        private static void WriteException(Exception exception)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
+            Console.WriteLine(exception.Message);
+
+            if (exception.Data.Count > 0)
+            {
+                Console.WriteLine();
+                foreach (var key in exception.Data.Keys)
+                {
+                    Console.WriteLine($"{key}: {exception.Data[key]}");
+                }
+            }
+
+            Console.WriteLine("----------------------------------------------------------------");
+            Console.WriteLine(exception);
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         private static bool IsTestRecord(Model model)

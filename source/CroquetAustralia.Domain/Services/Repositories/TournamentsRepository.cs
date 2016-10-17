@@ -26,7 +26,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
         public const string TournamentIdGcHandicapSingles2016 = "e96ff546-1df2-478b-8faa-fa4d85869420";
         public const string TournamentIdGcEights2017EOI = "13b685d4-3734-4a59-b188-50333f104206";
-        
+        public const string TournamentIdAcOpenDoubles2016 = "587db6a8-5009-44a5-883f-17cec4a335df";
+        public const string TournamentIdAcOpenSingles2016 = "31bf6160-b0d3-40e6-8ae9-7e689c659b33";
+
         private static readonly Tournament[] Tournaments;
 
         static TournamentsRepository()
@@ -44,7 +46,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGc_U21_WorldsEOI(),
                 GetGcHandicapDoubles(),
                 GetGcHandicapSingles(),
-                GetGcEights2017EOI()
+                GetGcEights2017EOI(),
+                GetAcOpenDoubles(),
+                GetAcOpenSingles(),
             };
         }
 
@@ -336,6 +340,42 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return tournament;
         }
 
+        private static Tournament GetAcOpenSingles()
+        {
+            const string tournamentTitle = "Australian AC Open Singles";
+            const string slug = "open-singles";
+            const bool isDoubles = false;
+            var starts = "22 Nov 2016 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "27 Nov 2016 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "03 Nov 2016 17:00 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "68b8de10-a68a-486d-b699-31f6d2e510ae", "Main and Consolation Events", 132),
+                new TournamentItem("event", "e2a4fdfa-02df-4a69-9f54-ca5b185a05c9", "Main Event Only", 132),
+                new TournamentItem("event", "d71af21f-a947-41f5-ac27-5b47b79fe728", "Plate Only", 66)
+            };
+
+            return GetAcOpenTournament(TournamentIdAcOpenSingles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
+        private static Tournament GetAcOpenDoubles()
+        {
+            const string tournamentTitle = "Australian AC Open Doubles";
+            const string slug = "open-doubles";
+            const bool isDoubles = true;
+            var starts = "19 Nov 2016 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "21 Nov 2016 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "03 Nov 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "d03dda72-61d1-4a21-9a31-28fce1d45471", "Main and Consolation Events", 80),
+                new TournamentItem("event", "361b756d-4d72-4750-b6a6-409162d9bf00", "Main Event Only", 80),
+                new TournamentItem("event", "e3b523a8-e171-44d4-ae6e-292f661ae6c2", "Plate Only", 40)
+            };
+
+            return GetAcOpenTournament(TournamentIdAcOpenDoubles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
         private static Tournament GetGcOpenSingles()
         {
             const string tournamentTitle = "Australian GC Open Singles";
@@ -370,6 +410,33 @@ namespace CroquetAustralia.Domain.Services.Repositories
             };
 
             return GetGcOpenTournament(TournamentIdGcOpenDoubles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
+        private static Tournament GetAcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
+        {
+            var functions = new TournamentItem[] { };
+            var functionsClose = eventsClose;
+            var merchandise = new TournamentItem[] { };
+            var merchandiseClose = eventsClose;
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                "Victorian Croquet Centre, Cairnlea, VIC",
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                "ac",
+                slug,
+                "AC " + (isDoubles ? "Doubles" : "Singles"));
+
+            return tournament;
         }
 
         private static Tournament GetGcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)

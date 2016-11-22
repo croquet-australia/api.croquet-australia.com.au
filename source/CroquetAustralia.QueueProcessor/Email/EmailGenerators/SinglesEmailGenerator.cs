@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
+using Newtonsoft.Json;
 
 namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
 {
@@ -23,9 +24,9 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
                 return "Functions Only";
             }
 
-            throw new NotSupportedException("Received an EntrySubmitted entrySubmitted where we don't know what email template to use.")
+            throw new NotSupportedException("Received an EntrySubmitted event where we don't know what email template to use.")
             {
-                Data = {{"Event", @event}}
+                Data = {{"Event", JsonConvert.SerializeObject(@event, Formatting.Indented)}}
             };
         }
     }

@@ -28,6 +28,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcEights2017EOI = "13b685d4-3734-4a59-b188-50333f104206";
         public const string TournamentIdAcOpenDoubles2016 = "587db6a8-5009-44a5-883f-17cec4a335df";
         public const string TournamentIdAcOpenSingles2016 = "31bf6160-b0d3-40e6-8ae9-7e689c659b33";
+        public const string TournamentIdGcWorldQualifier2017EOI = "e777de8c-cd14-4e9f-afda-b0fae09ef549";
 
         private static readonly Tournament[] Tournaments;
 
@@ -49,6 +50,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcEights2017EOI(),
                 GetAcOpenDoubles(),
                 GetAcOpenSingles(),
+                GetGcWorldQualifier2017EOI()
             };
         }
 
@@ -658,6 +660,47 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var starts = "03 Feb 2017 Australia/Melbourne".ToZonedDateTime();
             var finishes = "05 Feb 2017 Australia/Melbourne".ToZonedDateTime();
             var eventsClose = "09 Nov 2016 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                isEOI: isEOI);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcWorldQualifier2017EOI()
+        {
+            const string tournamentId = TournamentIdGcWorldQualifier2017EOI;
+            const string tournamentTitle = "WCF GC World Championship 2017 - Qualifying Tournament - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "wcf-wc-championship-qualifying-tournament-eoi";
+            const string depositStating = null;
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const bool isEOI = true;
+            var starts = "20 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "23 Feb 2017 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "23 Dec 2016 23:59:59 Australia/Perth".ToZonedDateTime();
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 

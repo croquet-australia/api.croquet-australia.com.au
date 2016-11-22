@@ -67,6 +67,8 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             public bool FullTimeStudentUnder25 { get; set; }
             public DateTime? DateOfBirth { get; set; }
             public bool? NonResident { get; set; }
+            public string Country { get; set; }
+            public int? GCDGrade { get; set; }
         }
     }
 }

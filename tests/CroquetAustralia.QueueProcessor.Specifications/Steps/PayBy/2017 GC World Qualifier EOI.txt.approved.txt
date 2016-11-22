@@ -1,0 +1,67 @@
+﻿To:
+- Email: joe@example.com
+  Name: Joe Blow
+Cc: []
+Bcc:
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+From:
+  Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+Subject: WCF GC World Championship 2017 - Qualifying Tournament - Expressions of Interest Entry
+BodyAsText: >+
+  Dear Joe
+
+
+
+  Thank you for your registration to compete in the Qualifying Tournament for the WCF Golf Croquet World Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.
+
+
+
+  Event Conditions can be found at http://croquetvic.asn.au/2017-gcworlds/Qualifying%20Event
+
+
+
+  Note – the Event will be limited to 28 players and if it is over-subscribed, the top 28 applicants by grade on 25 December will be accepted and the rest placed on a reserve list in descending grade order.
+
+
+
+  The entry fee of AUD $50 cash is to be paid at Registration
+
+
+
+  If you have any queries please call the Tournament Manager, Brian Reither at breither@bigpond.com or call +61 488 539 000
+
+
+
+  Wishing you well for the tournament
+
+  Croquet Australia
+
+  +61 457 678 380
+
+BodyAsHtml: >-
+  <p>Dear Joe</p>
+
+
+  <p>Thank you for your registration to compete in the Qualifying Tournament for the WCF Golf Croquet World Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.</p>
+
+
+  <p>Event Conditions can be found at <a href="http://croquetvic.asn.au/2017-gcworlds/Qualifying%20Event">http://croquetvic.asn.au/2017-gcworlds/Qualifying%20Event</a></p>
+
+
+  <p>Note – the Event will be limited to 28 players and if it is over-subscribed, the top 28 applicants by grade on 25 December will be accepted and the rest placed on a reserve list in descending grade order.</p>
+
+
+  <p>The entry fee of AUD $50 cash is to be paid at Registration</p>
+
+
+  <p>If you have any queries please call the Tournament Manager, Brian Reither at breither@bigpond.com or call +61 488 539 000</p>
+
+
+  <p>Wishing you well for the tournament<br />
+
+  Croquet Australia<br />
+
+  +61 457 678 380</p>
+Attachments: ''

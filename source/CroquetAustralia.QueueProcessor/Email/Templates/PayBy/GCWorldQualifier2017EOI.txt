@@ -1,6 +1,6 @@
 ﻿Dear {{Player.FirstName}}
 
-Thank you for your registration to compete in the Qualifying Tournament for the WCF World Croquet Golf Croquet Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.
+Thank you for your registration to compete in the Qualifying Tournament for the WCF Golf Croquet World Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.
 
 Event Conditions can be found at http://croquetvic.asn.au/2017-gcworlds/Qualifying%20Event
 

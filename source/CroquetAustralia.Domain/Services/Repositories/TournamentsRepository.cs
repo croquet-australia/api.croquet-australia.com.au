@@ -691,7 +691,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         private static Tournament GetGcWorldQualifier2017EOI()
         {
             const string tournamentId = TournamentIdGcWorldQualifier2017EOI;
-            const string tournamentTitle = "WCF WC GC Championship 2017 - Qualifying Tournament - Expressions of Interest";
+            const string tournamentTitle = "WCF GC World Championship 2017 - Qualifying Tournament - Expressions of Interest";
             const string location = "Victorian Croquet Centre, Cairnlea, VIC";
             const string slug = "wcf-wc-championship-qualifying-tournament-eoi";
             const string depositStating = null;

@@ -8,13 +8,13 @@ Bcc:
 From:
   Email: admin@croquet-australia.com.au
   Name: Croquet Australia
-Subject: WCF WC GC Championship 2017 - Qualifying Tournament - Expressions of Interest Entry
+Subject: WCF GC World Championship 2017 - Qualifying Tournament - Expressions of Interest Entry
 BodyAsText: >+
   Dear Joe
 
 
 
-  Thank you for your registration to compete in the Qualifying Tournament for the WCF World Croquet Golf Croquet Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.
+  Thank you for your registration to compete in the Qualifying Tournament for the WCF Golf Croquet World Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.
 
 
 
@@ -44,7 +44,7 @@ BodyAsHtml: >-
   <p>Dear Joe</p>
 
 
-  <p>Thank you for your registration to compete in the Qualifying Tournament for the WCF World Croquet Golf Croquet Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.</p>
+  <p>Thank you for your registration to compete in the Qualifying Tournament for the WCF Golf Croquet World Championship being held in February to 2017 at the Victorian Croquet Centre, Melbourne, Australia.</p>
 
 
   <p>Event Conditions can be found at <a href="http://croquetvic.asn.au/2017-gcworlds/Qualifying%20Event">http://croquetvic.asn.au/2017-gcworlds/Qualifying%20Event</a></p>

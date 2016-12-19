@@ -13,6 +13,8 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
             LastName = source.LastName;
             Phone = source.Phone;
             Under21 = source.Under21;
+            GCDGrade = source.GCDGrade;
+            Country = source.Country;
         }
     }
 }

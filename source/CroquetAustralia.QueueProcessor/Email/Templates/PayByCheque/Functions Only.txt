@@ -1,11 +1,12 @@
 ﻿Dear {{Player.FirstName}}
 
-Thank you for your request to attend —
+Thank you for choosing to attend —
 
 {{Functions}}
 
-The total amount of {{TotalPayable}} is to be paid by cheque payable to Australian Croquet Association Inc — 
+The total amount of {{TotalPayable}} is to be paid by cheque made payable to ‘Australian Croquet Association’ and mailed to — 
 
+Croquet Australia
 PO BOX 254
 DICKSON ACT 2602
 

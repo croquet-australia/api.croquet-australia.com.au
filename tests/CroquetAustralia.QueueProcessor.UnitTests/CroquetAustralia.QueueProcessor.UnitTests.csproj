@@ -190,12 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCash\ShouldSendEmailWhenOnlyEventIsSelected.approved.txt" />
+    <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCheque\ShouldSendEmailWhenEventAndFunctionsAreSelected.approved.txt" />
+    <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCheque\ShouldSendEmailWhenOnlyEventIsSelected.approved.txt" />
+    <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCheque\ShouldSendEmailWhenOnlyFunctionsAreSelected.approved.txt" />
     <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByEFT\ShouldSendEmailWhenEventAndFunctionsAreSelected.approved.txt" />
     <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByEFT\ShouldSendEmailWhenOnlyEventIsSelected.approved.txt" />
     <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByEFT\ShouldSendEmailWhenOnlyFunctionsAreSelected.approved.txt" />
-    <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCheque\ShouldSendEmailWhenOnlyFunctionsAreSelected.approved.txt" />
-    <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCheque\ShouldSendEmailWhenOnlyEventIsSelected.approved.txt" />
-    <Content Include="WebJobs\Approvals\ProcessEventAsync\PayByCheque\ShouldSendEmailWhenEventAndFunctionsAreSelected.approved.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

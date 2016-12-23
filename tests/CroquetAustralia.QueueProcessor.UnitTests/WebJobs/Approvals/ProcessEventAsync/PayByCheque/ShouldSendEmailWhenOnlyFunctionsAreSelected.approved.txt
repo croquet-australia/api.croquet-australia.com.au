@@ -14,16 +14,18 @@ BodyHtml: >-
   <p>Dear Tim</p>
 
 
-  <p>Thank you for your request to attend —</p>
+  <p>Thank you for choosing to attend —</p>
 
 
   <p>1 * Eire Cup Presentation Dinner - 6:30pm Sunday 20 March $50.00</p>
 
 
-  <p>The total amount of $50.00 is to be paid by cheque payable to Australian Croquet Association Inc — </p>
+  <p>The total amount of $50.00 is to be paid by cheque made payable to ‘Australian Croquet Association’ and mailed to — </p>
 
 
-  <p>PO BOX 254<br />
+  <p>Croquet Australia<br />
+
+  PO BOX 254<br />
 
   DICKSON ACT 2602</p>
 
@@ -38,12 +40,13 @@ BodyHtml: >-
 BodyText:
 Dear Tim
 
-Thank you for your request to attend —
+Thank you for choosing to attend —
 
 1 * Eire Cup Presentation Dinner - 6:30pm Sunday 20 March $50.00
 
-The total amount of $50.00 is to be paid by cheque payable to Australian Croquet Association Inc — 
+The total amount of $50.00 is to be paid by cheque made payable to ‘Australian Croquet Association’ and mailed to — 
 
+Croquet Australia
 PO BOX 254
 DICKSON ACT 2602
 

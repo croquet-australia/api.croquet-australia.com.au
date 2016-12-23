@@ -1,13 +1,14 @@
 ﻿Dear {{Player.FirstName}}
 
-Thank you for your tournament registration to the {{Tournament.Title}} {{Tournament.TotalPrice}}.
+Thank you for registering to play in the {{Tournament.Title}} {{Tournament.TotalPrice}}.
 
-You have selected to attend — 
+You have also selected to attend — 
 
 {{Functions}}
 
-The total amount of {{TotalPayable}} is to be paid by cheque payable to Australian Croquet Association Inc — 
+The total amount of {{TotalPayable}} is to be paid by cheque made payable to ‘Australian Croquet Association’ and mailed to — 
 
+Croquet Australia
 PO BOX 254
 DICKSON ACT 2602
 

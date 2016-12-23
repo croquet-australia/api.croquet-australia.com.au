@@ -1,16 +1,16 @@
 ﻿Dear {{Player.FirstName}}
 
-Thank you for your request to attend —
+Thank you for choosing to attend —
 
 {{Functions}}
 
-The total amount of {{TotalPayable}} is to be paid by direct deposit —
+The total amount of {{TotalPayable}} is to be paid by direct deposit or electronic funds transfer —
 
 BSB 063 208
 Account Number 1006 2783
 (Commonwealth Bank)
 
-Please identify your payment by stating "{{Stating}}" as well as clicking {{Deposited}} to advise payment has been made.
+Please identify your payment by stating "{{Stating}}".
 
 If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at events@croquet-australia.com.au.
 

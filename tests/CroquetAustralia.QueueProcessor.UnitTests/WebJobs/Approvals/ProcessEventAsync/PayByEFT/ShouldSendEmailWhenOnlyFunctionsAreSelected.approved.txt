@@ -14,13 +14,13 @@ BodyHtml: >-
   <p>Dear Tim</p>
 
 
-  <p>Thank you for your request to attend —</p>
+  <p>Thank you for choosing to attend —</p>
 
 
   <p>1 * Eire Cup Presentation Dinner - 6:30pm Sunday 20 March $50.00</p>
 
 
-  <p>The total amount of $50.00 is to be paid by direct deposit —</p>
+  <p>The total amount of $50.00 is to be paid by direct deposit or electronic funds transfer —</p>
 
 
   <p>BSB 063 208<br />
@@ -30,7 +30,7 @@ BodyHtml: >-
   (Commonwealth Bank)</p>
 
 
-  <p>Please identify your payment by stating "Tim Murphy - AC Championship" as well as <a href="https://localhost:44302/tournaments/deposited?id=d99dd017-edab-46a6-bb58-fde7c6c619fa">clicking here</a> to advise payment has been made.</p>
+  <p>Please identify your payment by stating "Tim Murphy - AC Championship".</p>
 
 
   <p>If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at <a href="mailto:events@croquet-australia.com.au">events@croquet-australia.com.au</a>.</p>
@@ -45,7 +45,7 @@ BodyText: >-
 
 
 
-  Thank you for your request to attend —
+  Thank you for choosing to attend —
 
 
 
@@ -53,7 +53,7 @@ BodyText: >-
 
 
 
-  The total amount of $50.00 is to be paid by direct deposit —
+  The total amount of $50.00 is to be paid by direct deposit or electronic funds transfer —
 
 
 
@@ -65,7 +65,7 @@ BodyText: >-
 
 
 
-  Please identify your payment by stating "Tim Murphy - AC Championship" as well as clicking https://localhost:44302/tournaments/deposited?id=d99dd017-edab-46a6-bb58-fde7c6c619fa to advise payment has been made.
+  Please identify your payment by stating "Tim Murphy - AC Championship".
 
 
 

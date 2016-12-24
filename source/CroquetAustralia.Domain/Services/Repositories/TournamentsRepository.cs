@@ -702,7 +702,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const bool isEOI = true;
             var starts = "20 Feb 2017 Australia/Melbourne".ToZonedDateTime();
             var finishes = "23 Feb 2017 Australia/Melbourne".ToZonedDateTime();
-            var eventsClose = "23 Dec 2016 23:59:59 Australia/Perth".ToZonedDateTime();
+            var eventsClose = "5 Feb 2017 23:59:59 Australia/Perth".ToZonedDateTime();
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 

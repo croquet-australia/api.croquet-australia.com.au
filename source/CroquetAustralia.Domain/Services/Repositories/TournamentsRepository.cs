@@ -812,7 +812,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static TournamentItem EireCupDinner2017()
         {
-            return new TournamentItem("function", "5aaaecb6-c6b4-4fed-9e26-a82a56a318eb", "Eire Cup Presentation Dinner - 7:00pm Sunday 26 March", 55);
+            return new TournamentItem("function", "5aaaecb6-c6b4-4fed-9e26-a82a56a318eb", "Eire Cup Presentation Dinner - 7:00pm Sunday 26 March", 60);
         }
 
     }

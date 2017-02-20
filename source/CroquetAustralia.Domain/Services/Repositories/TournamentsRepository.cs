@@ -768,6 +768,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functions = womens ? AcWomensEvents2017() : AcMensEvents2017();
             var merchandise = new TournamentItem[] { };
 
+            var eventsClose = "16 Feb 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "10 Mar 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var merchandiseClose = functionsClose;
+
             var tournament = new Tournament(
                 tournamentId,
                 tournamentTitle,
@@ -775,11 +779,11 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 "21 Mar 2017 Australia/Hobart".ToZonedDateTime(),
                 location,
                 events,
-                "16 Feb 2017 23:59 Australia/Perth".ToZonedDateTime(),
+                eventsClose,
                 functions,
-                "16 Feb 2017 15:00 Australia/Perth".ToZonedDateTime(),
+                functionsClose,
                 merchandise,
-                "16 Feb 2017 15:00 Australia/Perth".ToZonedDateTime(),
+                merchandiseClose,
                 false,
                 "ac",
                 slug,

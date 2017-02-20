@@ -29,6 +29,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcOpenDoubles2016 = "587db6a8-5009-44a5-883f-17cec4a335df";
         public const string TournamentIdAcOpenSingles2016 = "31bf6160-b0d3-40e6-8ae9-7e689c659b33";
         public const string TournamentIdGcWorldQualifier2017EOI = "e777de8c-cd14-4e9f-afda-b0fae09ef549";
+        public const string TournamentIdAcMensOpen2017 = "b06a8339-74c2-449f-a68e-70ba44c6f199";
+        public const string TournamentIdAcWomensOpen2017 = "33b14886-2a59-4add-a798-e9a7d493af1e";
 
         private static readonly Tournament[] Tournaments;
 
@@ -733,7 +735,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetAcMensOpen2017()
         {
-            const string tournamentId = "b06a8339-74c2-449f-a68e-70ba44c6f199";
+            const string tournamentId = TournamentIdAcMensOpen2017;
             const string tournamentTitle = "Australian AC Men's Singles";
 
             var events = new[]
@@ -748,7 +750,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         private static Tournament GetAcWomensOpen2017()
         {
-            const string tournamentId = "33b14886-2a59-4add-a798-e9a7d493af1e";
+            const string tournamentId = TournamentIdAcWomensOpen2017;
             const string tournamentTitle = "Australian AC Women's Singles";
 
             var events = new[]

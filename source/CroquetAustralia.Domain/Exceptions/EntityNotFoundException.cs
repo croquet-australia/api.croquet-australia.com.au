@@ -14,7 +14,7 @@ namespace CroquetAustralia.Domain.Exceptions
             Init(where);
         }
 
-        protected EntityNotFoundException(string where, string type, Exception innerException) 
+        protected EntityNotFoundException(string where, string type, Exception innerException)
             : base(CreateMessage(type), innerException)
         {
             Init(where);
@@ -22,11 +22,11 @@ namespace CroquetAustralia.Domain.Exceptions
 
         public override IDictionary Data => _data;
 
-        private void Init(string @where)
+        private void Init(string where)
         {
             _data = new Dictionary<string, object>
             {
-                {"where", @where}
+                {"where", where}
             };
         }
 

@@ -117,7 +117,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             {
                 var function = tournament.Functions.Single(f => f.Id == lineItem.Id);
 
-                return $"{lineItem.Quantity} * {function.Title} {lineItem.TotalPrice.ToString("C")}";
+                return $"{lineItem.Quantity} * {function.Title} {lineItem.TotalPrice:C}";
             });
 
             return string.Join(Environment.NewLine, lines);

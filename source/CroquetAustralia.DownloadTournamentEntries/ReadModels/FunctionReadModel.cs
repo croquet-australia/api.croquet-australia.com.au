@@ -10,7 +10,7 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
         public FunctionReadModel(SubmitEntry.LineItem lineItem)
         {
             Id = lineItem.Id;
-            Quantity = lineItem?.Quantity ?? 0;
+            Quantity = lineItem.Quantity;
         }
 
         public Guid Id { get; private set; }

@@ -35,7 +35,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public static string CreateTimestampRowKey()
         {
-            return $"{DateTime.UtcNow.Ticks.ToString("D19")}-{Guid.NewGuid()}";
+            return $"{DateTime.UtcNow.Ticks:D19}-{Guid.NewGuid()}";
         }
     }
 }

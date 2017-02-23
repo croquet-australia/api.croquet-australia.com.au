@@ -63,7 +63,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Partner",
             "Partner Handicap",
             "Entry Email Sent (AEST)",
-            "Entry Email Id", 
+            "Entry Email Id",
             "GC DGrade",
             "Country");
 
@@ -116,16 +116,6 @@ namespace CroquetAustralia.DownloadTournamentEntries
             };
 
             return string.Join(",", values.Select(FormatValue));
-        }
-
-        private static int? AttendingFunction(IEnumerable<FunctionReadModel> functions, string functionId)
-        {
-            return FindFunction(functions, functionId)?.Quantity;
-        }
-
-        private static FunctionReadModel FindFunction(IEnumerable<FunctionReadModel> functions, string functionId)
-        {
-            return functions.SingleOrDefault(function => function.Id.ToString() == functionId);
         }
 
         private static string FormatPhone(string phone)

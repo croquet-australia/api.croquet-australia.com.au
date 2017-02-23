@@ -42,6 +42,7 @@ namespace CroquetAustralia.Domain.Data
             IsUnder21 = isUnder21;
             DateOfBirthRange = isUnder21 ? new TournamentDateOfBirthRange(starts) : null;
             PracticeStarts = practiceStarts;
+            IsGateball = discipline == "gb";
         }
 
         public Guid Id { get; }
@@ -62,6 +63,7 @@ namespace CroquetAustralia.Domain.Data
         public string[] RelatedTournamentIds { get; }
         public bool IsEOI { get; }
         public bool IsUnder21 { get; }
+        public bool IsGateball { get; }
 
         [AllowNull]
         public TournamentDateOfBirthRange DateOfBirthRange { get; }

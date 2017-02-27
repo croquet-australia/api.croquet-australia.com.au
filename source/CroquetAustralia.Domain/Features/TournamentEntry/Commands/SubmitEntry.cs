@@ -29,6 +29,8 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
         public PlayerClass Player { get; set; }
         public PlayerClass Partner { get; set; }
         public PaymentMethod? PaymentMethod { get; set; }
+        public string TeamName { get; set; }
+        public string SupportingClub { get; set; }
 
         public EntrySubmitted ToEntrySubmitted()
         {

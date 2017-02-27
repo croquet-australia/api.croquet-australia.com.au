@@ -26,7 +26,7 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             RuleFor(cmd => cmd.Player.LastName).NotEmpty().When(cmd => cmd.Player != null).WithMessage("Your last name is required.");
             RuleFor(cmd => cmd.Player.Email).NotEmpty().When(cmd => cmd.Player != null).WithMessage("Your email is required.");
             RuleFor(cmd => cmd.Player.Phone).NotEmpty().When(cmd => cmd.Player != null).WithMessage("Your phone is required.");
-            RuleFor(cmd => cmd.Player.Handicap).NotEmpty().When(cmd => cmd.EventId.HasValue && cmd.Player != null).WithMessage("Your handicap is required.");
+            RuleFor(cmd => cmd.Player.Handicap).NotEmpty().When(cmd => cmd.EventId.HasValue && cmd.Player != null && !IsGateball(cmd)).WithMessage("Your handicap is required.");
             RuleFor(cmd => cmd.Partner).NotNull().When(IsDoubles); // todo: WhenAsync is broken in 6.2.1.0
             RuleFor(cmd => cmd.Partner.FirstName).NotEmpty().When(cmd => cmd.Partner != null && IsDoubles(cmd));
             RuleFor(cmd => cmd.Partner.LastName).NotEmpty().When(cmd => cmd.Partner != null && IsDoubles(cmd));
@@ -39,6 +39,18 @@ namespace CroquetAustralia.Domain.Features.TournamentEntry.Commands
             // todo: end to end test
             // todo: LineItems
             // throw new NotImplementedException("todo items");
+        }
+
+        private bool IsGateball(SubmitEntry command)
+        {
+            if (command.TournamentId == Guid.Empty)
+            {
+                return false;
+            }
+
+            var tournament = _tournaments.FindByIdAsync(command.TournamentId).Result;
+
+            return tournament != null && tournament.IsGateball;
         }
 
         private bool IsDoubles(SubmitEntry command)

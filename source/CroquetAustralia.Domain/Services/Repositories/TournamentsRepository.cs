@@ -30,6 +30,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWorldQualifier2017EOI = "e777de8c-cd14-4e9f-afda-b0fae09ef549";
         public const string TournamentIdAcMensOpen2017 = "b06a8339-74c2-449f-a68e-70ba44c6f199";
         public const string TournamentIdAcWomensOpen2017 = "33b14886-2a59-4add-a798-e9a7d493af1e";
+        public const string TournamentIdGateballChampionships2017 = "8161726d-ee57-4b0b-838b-6c0268de81bf";
 
         private static readonly Tournament[] Tournaments;
 
@@ -53,7 +54,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcOpenSingles(),
                 GetGcWorldQualifier2017EOI(),
                 GetAcMensOpen2017(),
-                GetAcWomensOpen2017()
+                GetAcWomensOpen2017(),
+                GetGateballChampionships2017()
             };
         }
 
@@ -732,6 +734,47 @@ namespace CroquetAustralia.Domain.Services.Repositories
         private static TournamentItem EireCupDinner2017()
         {
             return new TournamentItem("function", "5aaaecb6-c6b4-4fed-9e26-a82a56a318eb", "Eire Cup Presentation Dinner - 7:00pm Sunday 26 March", 60);
+        }
+
+        private static Tournament GetGateballChampionships2017()
+        {
+            const string tournamentTitle = "Australian Gateball Championships";
+            const string slug = "championships";
+            const bool isDoubles = false;
+            const string depositStating = "Gateball Championships";
+            const string discipline = "gb";
+
+            var starts = "13 Oct 2017 Australia/Sydney".ToZonedDateTime();
+            var finishes = "15 Oct 2017 Australia/Sydney".ToZonedDateTime();
+            var eventsClose = "22 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "71afc255-9875-4373-a3dd-2e9423013d30", "Team Entry", 175)
+            };
+
+            var functions = new TournamentItem[] {};
+            var functionsClose = eventsClose;
+            var merchandise = new TournamentItem[] {};
+            var merchandiseClose = eventsClose;
+
+            var tournament = new Tournament(
+                TournamentIdGateballChampionships2017,
+                tournamentTitle,
+                starts,
+                finishes,
+                "Bateau Bay, New South Wales",
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating);
+
+            return tournament;
         }
     }
 }

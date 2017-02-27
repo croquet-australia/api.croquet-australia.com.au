@@ -51,7 +51,13 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
             else
             {
                 actualAttachments.Length.Should().Be(1);
-                actualAttachments[0].Name.Should().Be($"U21Tournament.{attachmentFileName}");
+
+                var expectedAttachmentFileName = attachmentFileName.StartsWith("Under 18")
+                    ? $"U21Tournament.{attachmentFileName}" 
+                    : attachmentFileName;
+
+                actualAttachments[0].Name.Should().Be(expectedAttachmentFileName);
+
             }
         }
     }

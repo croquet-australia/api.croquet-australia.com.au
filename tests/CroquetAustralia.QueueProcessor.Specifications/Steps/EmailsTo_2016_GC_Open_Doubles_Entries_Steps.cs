@@ -68,6 +68,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
             submitEntry.PaymentMethod = _given.PaymentMethod;
             submitEntry.PayingForPartner = _given.PayingForPartner;
             submitEntry.TournamentId = tournament.Id;
+            submitEntry.TeamName = "Joe's Team";
 
             submitEntry.Player = new SubmitEntry.PlayerClass
             {
@@ -75,7 +76,7 @@ namespace CroquetAustralia.QueueProcessor.Specifications.Steps
                 FirstName = "Joe",
                 LastName = "Blow",
                 DateOfBirth = _given.DateOfBirth,
-                NonResident = _given.NonResident
+                NonResident = _given.NonResident,
             };
 
             submitEntry.Partner = new SubmitEntry.PlayerClass

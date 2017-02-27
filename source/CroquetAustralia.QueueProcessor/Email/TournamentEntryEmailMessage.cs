@@ -43,7 +43,8 @@ namespace CroquetAustralia.QueueProcessor.Email
                 .Replace("{{Stating}}", GetStating(entrySubmitted, tournament))
                 .Replace("{{Deposited}}", GetDeposited(emailMessageSettings, entrySubmitted))
                 .Replace("{{PartnerUrl}}", GetPartnerUrl(emailMessageSettings.BaseUrl, tournament, entrySubmitted))
-                .Replace("{{IndividualPrice}}", tournamentEvent?.UnitPrice.ToString("C"));
+                .Replace("{{IndividualPrice}}", tournamentEvent?.UnitPrice.ToString("C"))
+                .Replace("{{TeamName}}", entrySubmitted.TeamName);
 
             return formatted;
         }

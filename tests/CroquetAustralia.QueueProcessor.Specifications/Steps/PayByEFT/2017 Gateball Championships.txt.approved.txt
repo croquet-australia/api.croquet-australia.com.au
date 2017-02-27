@@ -1,0 +1,83 @@
+﻿To:
+- Email: joe@example.com
+  Name: Joe Blow
+Cc: []
+Bcc:
+- Email: info@gateball.com.au
+  Name: Croquet Australia - Gateball Championships
+- Email: admin@croquet-australia.com.au
+  Name: Croquet Australia
+From:
+  Email: info@gateball.com.au
+  Name: Croquet Australia - Gateball Championships
+Subject: Australian Gateball Championships Entry
+BodyAsText: >+
+  Dear Joe
+
+
+
+  Thank you for registering to play in the Australian Gateball Championships being held at EDSACC Croquet Club, Bateau Bay, New South Wales.
+
+
+
+  The total amount of $175.00 is to be paid by direct deposit or electronic funds transfer -
+
+
+
+  BSB 063 208
+
+  Account Number 1006 2783
+
+  (Commonwealth Bank)
+
+  	
+
+  Please identify your payment Joe's Team Gateball.
+
+
+
+  Please print and complete the attached form, scan and email to John Park, National Co-ordinator, Gateball, at info@gateball.com.au.
+
+
+
+  Or if you have any queries or realise that any of the above is incorrect please contact John Park, either by email or call 0448 227 467.
+
+
+
+  Wishing you all the best for the competition.
+
+
+
+  Croquet Australia
+
+BodyAsHtml: >-
+  <p>Dear Joe</p>
+
+
+  <p>Thank you for registering to play in the Australian Gateball Championships being held at EDSACC Croquet Club, Bateau Bay, New South Wales.</p>
+
+
+  <p>The total amount of $175.00 is to be paid by direct deposit or electronic funds transfer -</p>
+
+
+  <p>BSB 063 208<br />
+
+  Account Number 1006 2783<br />
+
+  (Commonwealth Bank)</p>
+
+
+  <p>Please identify your payment Joe's Team Gateball.</p>
+
+
+  <p>Please print and complete the attached form, scan and email to John Park, National Co-ordinator, Gateball, at info@gateball.com.au.</p>
+
+
+  <p>Or if you have any queries or realise that any of the above is incorrect please contact John Park, either by email or call 0448 227 467.</p>
+
+
+  <p>Wishing you all the best for the competition.</p>
+
+
+  <p>Croquet Australia</p>
+Attachments: 2017 Gateball Championships Team Details.pdf

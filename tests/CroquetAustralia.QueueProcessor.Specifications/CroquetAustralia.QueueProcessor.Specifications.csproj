@@ -98,6 +98,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Emails to 2016 GC Open Doubles Entries.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Emails to 2017 Gateball Championships.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Emails to 2017 Gateball Championships.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Emails to 2017 GC Worlds Qualifier EOI.feature.cs">
       <DependentUpon>Emails to 2017 GC Worlds Qualifier EOI.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -128,6 +133,10 @@
     <None Include="Features\Emails to 2016 GC Open Doubles Entries.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Emails to 2016 GC Open Doubles Entries.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Emails to 2017 Gateball Championships.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Emails to 2017 Gateball Championships.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Emails to 2017 GC Worlds Qualifier EOI.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -174,11 +183,13 @@
   <ItemGroup>
     <Content Include="Steps\PayByCash\18-21 and New Zealander.txt.approved.txt" />
     <Content Include="Steps\PayByCash\Under 18 and New Zealander.txt.approved.txt" />
+    <Content Include="Steps\PayByCheque\2017 Gateball Championships.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself and your partner - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself and your partner - Player.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByCheque\Doubles Event Only - Paying for yourself only - Player.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\18-21 and Australian.txt.approved.txt" />
+    <Content Include="Steps\PayByEFT\2017 Gateball Championships.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself and your partner - Partner.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself and your partner - Player.txt.approved.txt" />
     <Content Include="Steps\PayByEFT\Doubles Event Only - Paying for yourself only - Partner.txt.approved.txt" />

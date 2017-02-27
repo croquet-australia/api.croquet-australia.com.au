@@ -129,6 +129,7 @@
     <Compile Include="Email\EmailGenerators\GCWorldQualifier2017EOIEmailGenerator.cs" />
     <Compile Include="Email\EmailGenerators\U21Tournament\Over18AndAustralianEmailGenerator.cs" />
     <Compile Include="Email\EmailGenerators\GCEightsEOIEmailGenerator.cs" />
+    <Compile Include="Email\EmailGenerators\Gateball2017EmailGenerator.cs" />
     <Compile Include="Email\IEmailGenerator.cs" />
     <Compile Include="Email\EmailAttachments.cs" />
     <Compile Include="Email\MailInBlue.cs" />
@@ -164,6 +165,8 @@
     </None>
     <EmbeddedResource Include="Email\Templates\PayByCash\U21Tournament\Under 18 Consent Form NZ.pdf" />
     <EmbeddedResource Include="Email\Templates\PayByEFT\U21Tournament\Under 18 Consent Form AUS.pdf" />
+    <EmbeddedResource Include="Email\Templates\PayByCheque\2017 Gateball Championships Team Details.pdf" />
+    <EmbeddedResource Include="Email\Templates\PayByEFT\2017 Gateball Championships Team Details.pdf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -191,6 +194,8 @@
     <EmbeddedResource Include="Email\Templates\PayBy\U21WorldsEOI.txt" />
     <EmbeddedResource Include="Email\Templates\PayBy\GCEightsEOI.txt" />
     <EmbeddedResource Include="Email\Templates\PayBy\GCWorldQualifier2017EOI.txt" />
+    <EmbeddedResource Include="Email\Templates\PayByCheque\2017 Gateball Championships.txt" />
+    <EmbeddedResource Include="Email\Templates\PayByEFT\2017 Gateball Championships.txt" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

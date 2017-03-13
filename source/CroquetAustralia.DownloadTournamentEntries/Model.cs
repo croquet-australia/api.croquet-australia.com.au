@@ -63,9 +63,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Partner",
             "Partner Handicap",
             "Entry Email Sent (AEST)",
-            "Entry Email Id",
-            "GC DGrade",
-            "Country");
+            "Entry Email Id");
 
         private void ApplyEntrySubmitted(string eventJson, ITournamentsRepository tournamentsRepository)
         {
@@ -110,9 +108,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 EntrySubmitted.Partner == null ? null : string.Format($"{EntrySubmitted.Partner.FirstName} {EntrySubmitted.Partner.LastName}"),
                 EntrySubmitted.Partner?.Handicap,
                 FormatTimeStamp(SentEntrySubmittedEmail?.Created),
-                SentEntrySubmittedEmail?.EmailId,
-                EntrySubmitted.Player.GCDGrade,
-                EntrySubmitted.Player.Country
+                SentEntrySubmittedEmail?.EmailId
             };
 
             return string.Join(",", values.Select(FormatValue));

@@ -18,7 +18,7 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
             Tournament = new TournamentReadModel(tournament);
             PayingForPartner = source.PayingForPartner;
             Partner = source.Partner == null ? null : new PlayerReadModel(source.Partner);
-            Functions = source.Functions.Select(function => new FunctionReadModel(tournament, function)).ToArray();
+            Functions = source.Functions.Select(function => new FunctionReadModel(this, tournament, function)).ToArray();
             DietaryRequirements = source.DietaryRequirements;
         }
 

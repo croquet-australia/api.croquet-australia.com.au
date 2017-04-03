@@ -9,12 +9,14 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
     public class FunctionReadModel
     {
-        public FunctionReadModel(Tournament tournament, SubmitEntry.LineItem lineItem)
+        public FunctionReadModel(EntrySubmittedReadModel entrySubmitted, Tournament tournament, SubmitEntry.LineItem lineItem)
         {
             TournamentItem = tournament.Functions.First(f => f.Id == lineItem.Id);
+            EntrySubmitted = entrySubmitted;
             LineItem = lineItem;
         }
 
+        public EntrySubmittedReadModel EntrySubmitted { get; }
         public SubmitEntry.LineItem LineItem { get; }
         public TournamentItem TournamentItem { get; }
     }

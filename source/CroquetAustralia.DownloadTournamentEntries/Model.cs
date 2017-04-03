@@ -64,8 +64,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
             "Partner Handicap",
             "Entry Email Sent (AEST)",
             "Entry Email Id",
-            "GC DGrade",
-            "Country");
+            "Dietary Requirements");
 
         private void ApplyEntrySubmitted(string eventJson, ITournamentsRepository tournamentsRepository)
         {
@@ -111,8 +110,7 @@ namespace CroquetAustralia.DownloadTournamentEntries
                 EntrySubmitted.Partner?.Handicap,
                 FormatTimeStamp(SentEntrySubmittedEmail?.Created),
                 SentEntrySubmittedEmail?.EmailId,
-                EntrySubmitted.Player.GCDGrade,
-                EntrySubmitted.Player.Country
+                EntrySubmitted.DietaryRequirements
             };
 
             return string.Join(",", values.Select(FormatValue));

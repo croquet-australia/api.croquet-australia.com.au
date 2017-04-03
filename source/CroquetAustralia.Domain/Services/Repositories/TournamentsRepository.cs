@@ -40,8 +40,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
             {
                 GetAcMensOpen2016(),
                 GetAcWomensOpen2016(),
-                GetGcOpenDoubles(),
-                GetGcOpenSingles(),
+                GetGcOpenDoubles2016(),
+                GetGcOpenSingles2016(),
                 GetAcPatronsTrophy(),
                 GetGcMensOpen(),
                 GetGcWomensOpen(),
@@ -303,7 +303,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return GetAcOpenTournament(TournamentIdAcOpenDoubles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
         }
 
-        private static Tournament GetGcOpenSingles()
+        private static Tournament GetGcOpenSingles2016()
         {
             const string tournamentTitle = "Australian GC Open Singles";
             const string slug = "open-singles";
@@ -318,10 +318,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "16836a4f-9b25-43c9-9e30-26f7f7e6879b", "Plate Only", 66)
             };
 
-            return GetGcOpenTournament(TournamentIdGcOpenSingles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+            return GetGcOpenTournament2016(TournamentIdGcOpenSingles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
         }
 
-        private static Tournament GetGcOpenDoubles()
+        private static Tournament GetGcOpenDoubles2016()
         {
             const string tournamentTitle = "Australian GC Open Doubles";
             const string slug = "open-doubles";
@@ -336,7 +336,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "1497b1db-86c0-47e3-adac-700110c6a0fa", "Plate Only", 40)
             };
 
-            return GetGcOpenTournament(TournamentIdGcOpenDoubles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+            return GetGcOpenTournament2016(TournamentIdGcOpenDoubles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
         }
 
         private static Tournament GetAcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
@@ -366,7 +366,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return tournament;
         }
 
-        private static Tournament GetGcOpenTournament(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
+        private static Tournament GetGcOpenTournament2016(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
         {
             var functions = new TournamentItem[] {};
             var functionsClose = eventsClose;

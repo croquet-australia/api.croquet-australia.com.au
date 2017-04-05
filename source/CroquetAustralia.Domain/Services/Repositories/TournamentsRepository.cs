@@ -44,7 +44,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcWomensOpen2016(),
                 GetGcOpenDoubles2016(),
                 GetGcOpenSingles2016(),
-                GetAcPatronsTrophy(),
+                GetAcPatronsTrophy2016(),
                 GetGcMensOpen(),
                 GetGcWomensOpen(),
                 GetGcAusU21(),
@@ -229,7 +229,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return tournament;
         }
 
-        private static Tournament GetAcPatronsTrophy()
+        private static Tournament GetAcPatronsTrophy2016()
         {
             const string tournamentId = TournamentIdAcPatronsTrophy2016;
             const string tournamentTitle = "Australian AC Patron's Trophy";

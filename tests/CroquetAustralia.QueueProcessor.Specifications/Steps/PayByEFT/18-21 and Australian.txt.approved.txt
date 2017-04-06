@@ -32,7 +32,7 @@ BodyAsText: >-
 
 
 
-  Please identify your payment by stating "Joe Blow - AUS U21" as well as clicking https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142 to advise payment has been made.
+  Please identify your payment by stating "J Blow - AUS U21" as well as clicking https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142 to advise payment has been made.
 
 
 
@@ -62,7 +62,7 @@ BodyAsHtml: >-
   (Commonwealth Bank)</p>
 
 
-  <p>Please identify your payment by stating "Joe Blow - AUS U21" as well as <a href="https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142">clicking here</a> to advise payment has been made.</p>
+  <p>Please identify your payment by stating "J Blow - AUS U21" as well as <a href="https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142">clicking here</a> to advise payment has been made.</p>
 
 
   <p>If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.</p>

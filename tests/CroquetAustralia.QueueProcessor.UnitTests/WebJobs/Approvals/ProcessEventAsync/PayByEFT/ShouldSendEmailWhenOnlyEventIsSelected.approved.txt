@@ -27,7 +27,7 @@ BodyHtml: >-
   (Commonwealth Bank)</p>
 
 
-  <p>Please identify your payment by stating "Tim Murphy - AC Championship".</p>
+  <p>Please identify your payment by stating "T Murphy - AC Championship".</p>
 
 
   <p>If you have any queries or realise that any of above is incorrect please contact Peter Freer, Chair, Events Committee at <a href="mailto:events@croquet-australia.com.au">events@croquet-australia.com.au</a>.</p>
@@ -58,7 +58,7 @@ BodyText: >-
 
 
 
-  Please identify your payment by stating "Tim Murphy - AC Championship".
+  Please identify your payment by stating "T Murphy - AC Championship".
 
 
 

@@ -867,7 +867,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = eventsClose;
             var merchandise = new TournamentItem[] { };
             var merchandiseClose = eventsClose;
-            var depositStating = "GC " + (isDoubles ? "Dbl" : "Sng");
+            var depositStating = "GC" + (isDoubles ? "D" : "S");
             const string location = "Victorian Croquet Centre, Cairnlea, VIC";
             const string discipline = "gc";
 

@@ -17,6 +17,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcOpenDoubles2017 = "852f05a2-13e7-4b53-8e47-00cba0125511";
         public const string TournamentIdGcOpenSingles2017 = "63f43f13-fbdb-4f70-9b5e-b4a36e8ddc00";
         public const string TournamentIdAcPatronsTrophy2016 = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
+        public const string TournamentIdAcPatronsTrophy2017 = "563e4283-81a9-4cf8-a5a9-a1c9f6b67656";
         public const string TournamentIdAcPresidentsEightsEOI2016 = "35ac72fe-e3c3-402b-b48b-022412922cbc";
         public const string TournamentIdGcWorldsEOI2017 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
@@ -44,7 +45,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcWomensOpen2016(),
                 GetGcOpenDoubles2016(),
                 GetGcOpenSingles2016(),
-                GetAcPatronsTrophy(),
+                GetAcPatronsTrophy2016(),
                 GetGcMensOpen(),
                 GetGcWomensOpen(),
                 GetGcAusU21(),
@@ -59,7 +60,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcWomensOpen2017(),
                 GetGateballChampionships2017(),
                 GetGcOpenDoubles2017(),
-                GetGcOpenSingles2017()
+                GetGcOpenSingles2017(),
+                GetAcPatronsTrophy2017()
             };
         }
 
@@ -229,7 +231,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return tournament;
         }
 
-        private static Tournament GetAcPatronsTrophy()
+        private static Tournament GetAcPatronsTrophy2016()
         {
             const string tournamentId = TournamentIdAcPatronsTrophy2016;
             const string tournamentTitle = "Australian AC Patron's Trophy";
@@ -250,6 +252,48 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
             var functions = new TournamentItem[] {};
             var merchandise = new TournamentItem[] {};
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                false,
+                discipline,
+                slug,
+                depositStating);
+
+            return tournament;
+        }
+
+        private static Tournament GetAcPatronsTrophy2017()
+        {
+            const string tournamentId = TournamentIdAcPatronsTrophy2017;
+            const string tournamentTitle = "Australian AC Patron's Trophy";
+            const string location = "Wynnum Croquet Club, Brisbane, Queensland";
+            const string slug = "patrons-trophy";
+            const string depositStating = "Patron's";
+            const string discipline = "ac";
+            var starts = "10 Jun 2017 Australia/Brisbane".ToZonedDateTime();
+            var finishes = "12 Jun 2017 Australia/Brisbane".ToZonedDateTime();
+            var eventsClose = "01 Jun 2017 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new[]
+            {
+                new TournamentItem("event", "3cca2917-03ec-4bf0-9b28-8541c9fac0ab", "Main Event", 90)
+            };
+
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
 
             var tournament = new Tournament(
                 tournamentId,

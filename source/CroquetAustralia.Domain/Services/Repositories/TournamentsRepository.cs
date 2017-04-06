@@ -96,7 +96,19 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public Task<Tournament> FindByIdAsync(Guid tournamentId)
         {
-            return Task.FromResult(Tournaments.SingleOrDefault(t => t.Id == tournamentId));
+            return Task.FromResult(FindByIdSync(tournamentId));
+        }
+
+        private static Tournament FindByIdSync(Guid tournamentId)
+        {
+            try
+            {
+                return Tournaments.SingleOrDefault(t => t.Id == tournamentId);
+            }
+            catch (Exception exception)
+            {
+                throw new Exception($"An error occurred while find tournamentId '{tournamentId}'.", exception);
+            }
         }
 
         public Task<IEnumerable<Tournament>> GetAllAsync()
@@ -858,7 +870,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "534b9e84-9670-48f9-a26b-a2c7cf11c302", "Plate Only", 66)
             };
 
-            return GetGcOpenTournament2017(TournamentIdGcOpenSingles2016, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+            return GetGcOpenTournament2017(TournamentIdGcOpenSingles2017, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
         }
 
         private static Tournament GetGcOpenTournament2017(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)

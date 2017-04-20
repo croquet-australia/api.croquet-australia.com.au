@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CroquetAustralia.Domain.Data;
 using CroquetAustralia.Domain.Features.TournamentEntry.Commands;
 using CroquetAustralia.Domain.Features.TournamentEntry.Events;
@@ -100,7 +101,33 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private static string GetStating(EntrySubmitted entrySubmitted, Tournament tournament)
         {
-            return $"{entrySubmitted.Player.FirstName.Substring(0, 1)} {entrySubmitted.Player.LastName} {tournament.DepositStating}";
+            var playersName = GetPlayersNameForDepositStating(entrySubmitted.Player);
+
+            return $"{playersName} {tournament.DepositStating}";
+        }
+
+        private static string GetPlayersNameForDepositStating(SubmitEntry.PlayerClass player)
+        {
+            var playersName = $"{player.FirstName.Substring(0, 1)} {player.LastName}";
+            var depositStating = RemoveAllButAlphaNumericAndSpace(playersName);
+
+            return depositStating;
+        }
+
+        private static string RemoveAllButAlphaNumericAndSpace(string input)
+        {
+            const string allowableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 ";
+            var output = new StringBuilder();
+
+            foreach (var character in input)
+            {
+                if (allowableCharacters.Contains(character))
+                {
+                    output.Append(character);
+                }
+            }
+
+            return output.ToString();
         }
 
         private static decimal GetTotalPayable(EntrySubmitted entrySubmitted, TournamentItem tournamentEvent, Tournament tournament)

@@ -3,7 +3,7 @@
   Name: Croquet Australia - Events Committee
 To:
 - Email: tim@example.com
-  Name: Tim Murphy
+  Name: Tim O'Leary
 Bcc:
 - Email: events@croquet-australia.com.au
   Name: Croquet Australia - Events Committee

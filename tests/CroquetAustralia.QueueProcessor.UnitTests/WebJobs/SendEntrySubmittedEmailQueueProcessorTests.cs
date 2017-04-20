@@ -145,7 +145,7 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     {
                         Email = "tim@example.com",
                         FirstName = "Tim",
-                        LastName = "Murphy",
+                        LastName = "O'Leary",
                         Phone = "555",
                         Handicap = -1
                     },

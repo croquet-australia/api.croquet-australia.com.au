@@ -102,21 +102,34 @@ namespace CroquetAustralia.QueueProcessor.Email
         private static string GetStating(EntrySubmitted entrySubmitted, Tournament tournament)
         {
             var playersName = GetPlayersNameForDepositStating(entrySubmitted.Player);
-            var depositStating = RemoveAllButAlphaNumericAndSpace(tournament.DepositStating);
+            var depositStating = GetCharactersApprovedByEftBankingSystem(tournament.DepositStating);
+            var stating = GetMaximumLengthForEftBankingSystem($"{playersName} {depositStating}");
 
-            return $"{playersName} {depositStating}";
+            return stating;
+        }
+
+        private static string GetMaximumLengthForEftBankingSystem(string input)
+        {
+            const int maximumCharacters = 18;
+
+            return input?.Length > maximumCharacters ? input.Substring(0, 18) : input;
         }
 
         private static string GetPlayersNameForDepositStating(SubmitEntry.PlayerClass player)
         {
             var playersName = $"{player.FirstName.Substring(0, 1)} {player.LastName}";
-            var depositStating = RemoveAllButAlphaNumericAndSpace(playersName);
+            var depositStating = GetCharactersApprovedByEftBankingSystem(playersName);
 
             return depositStating;
         }
 
-        private static string RemoveAllButAlphaNumericAndSpace(string input)
+        private static string GetCharactersApprovedByEftBankingSystem(string input)
         {
+            if (input == null)
+            {
+                return null;
+            }
+
             const string allowableCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 ";
             var output = new StringBuilder();
 

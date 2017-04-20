@@ -36,7 +36,7 @@ BodyAsText: >+
 
 
 
-  Please identify your payment by stating "J Blow - GC Doubles" as well as clicking https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142 to advise payment has been made.
+  Please identify your payment by stating "J Blow GC Doubles" as well as clicking https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142 to advise payment has been made.
 
 
 
@@ -78,7 +78,7 @@ BodyAsHtml: >-
   <p>and is to be received no later than Thursday, 21 April 2016.</p>
 
 
-  <p>Please identify your payment by stating "J Blow - GC Doubles" as well as <a href="https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142">clicking here</a> to advise payment has been made.</p>
+  <p>Please identify your payment by stating "J Blow GC Doubles" as well as <a href="https://localhost:44302/tournaments/deposited?id=28e4df74-1acb-4a2e-a317-63f064f10142">clicking here</a> to advise payment has been made.</p>
 
 
   <p>If you have any queries or realise that any of the above is incorrect please contact Peter Freer, Chair, Events Committee at <a href="mailto:events@croquet-australia.com.au">events@croquet-australia.com.au</a>.</p>

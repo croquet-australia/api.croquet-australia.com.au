@@ -100,7 +100,7 @@ namespace CroquetAustralia.QueueProcessor.Email
 
         private static string GetStating(EntrySubmitted entrySubmitted, Tournament tournament)
         {
-            return $"{entrySubmitted.Player.FirstName.Substring(0, 1)} {entrySubmitted.Player.LastName} - {tournament.DepositStating}";
+            return $"{entrySubmitted.Player.FirstName.Substring(0, 1)} {entrySubmitted.Player.LastName} {tournament.DepositStating}";
         }
 
         private static decimal GetTotalPayable(EntrySubmitted entrySubmitted, TournamentItem tournamentEvent, Tournament tournament)

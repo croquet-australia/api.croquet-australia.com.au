@@ -102,8 +102,9 @@ namespace CroquetAustralia.QueueProcessor.Email
         private static string GetStating(EntrySubmitted entrySubmitted, Tournament tournament)
         {
             var playersName = GetPlayersNameForDepositStating(entrySubmitted.Player);
+            var depositStating = RemoveAllButAlphaNumericAndSpace(tournament.DepositStating);
 
-            return $"{playersName} {tournament.DepositStating}";
+            return $"{playersName} {depositStating}";
         }
 
         private static string GetPlayersNameForDepositStating(SubmitEntry.PlayerClass player)

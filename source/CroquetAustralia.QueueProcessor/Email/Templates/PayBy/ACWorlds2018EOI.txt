@@ -1,0 +1,10 @@
+﻿Dear {{Player.FirstName}}
+ 
+Thank you for your expression of interest to play in the 2018 Association Croquet World Championship.
+
+The WCF on Sunday 27 August will announce those players who have been awarded Ranking Places and Wild Card Places.
+
+If you have any queries please do not hesitate to contact Susan Linge at admin@croquet-australia.com.au.
+
+Croquet Australia
+0457 678 380

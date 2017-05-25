@@ -34,6 +34,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcMensOpen2017 = "b06a8339-74c2-449f-a68e-70ba44c6f199";
         public const string TournamentIdAcWomensOpen2017 = "33b14886-2a59-4add-a798-e9a7d493af1e";
         public const string TournamentIdGateballChampionships2017 = "8161726d-ee57-4b0b-838b-6c0268de81bf";
+        public const string TournamentIdAcWorldsEOI2018 = "8fbda7d9-efec-4386-b779-a04cd32755e5";
 
         private static readonly Tournament[] Tournaments;
 
@@ -61,7 +62,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGateballChampionships2017(),
                 GetGcOpenDoubles2017(),
                 GetGcOpenSingles2017(),
-                GetAcPatronsTrophy2017()
+                GetAcPatronsTrophy2017(),
+                GetAcWorlds2018EOI(),
             };
         }
 
@@ -899,6 +901,47 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 discipline,
                 slug,
                 depositStating);
+
+            return tournament;
+        }
+
+        private static Tournament GetAcWorlds2018EOI()
+        {
+            const string tournamentId = TournamentIdAcWorldsEOI2018;
+            const string tournamentTitle = "WCF AC World Championship 2018 - Expressions of Interest";
+            const string location = "Kelburn Croquet Club, Wellington, NZ";
+            const string slug = "wcf-world-championship-eoi";
+            const string depositStating = null;
+            const string discipline = "ac";
+            const bool isDoubles = false;
+            const bool isEOI = true;
+            var starts = "03 Feb 2018 Pacific/Auckland".ToZonedDateTime();
+            var finishes = "11 Feb 2018 Pacific/Auckland".ToZonedDateTime();
+            var eventsClose = "09 Jul 2017 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                isEOI: isEOI);
 
             return tournament;
         }

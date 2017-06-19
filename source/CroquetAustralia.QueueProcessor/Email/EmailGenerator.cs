@@ -27,6 +27,7 @@ namespace CroquetAustralia.QueueProcessor.Email
         private readonly Under18AndNewZealanderEmailGenerator _under18AndNewZealanderEmailGenerator;
         private readonly Gateball2017EmailGenerator _gateball2017EmailGenerator;
         private readonly ACWorlds2018EOIEmailGenerator _acWorlds2018EOIEmailGenerator;
+        private readonly ACEightsEOIEmailGenerator _acEightsEOIEmailGenerator;
 
         public EmailGenerator(
             ITournamentsRepository tournamentsRepository,
@@ -41,7 +42,8 @@ namespace CroquetAustralia.QueueProcessor.Email
             GCEightsEOIEmailGenerator gcEightsEOIEmailGenerator,
             GCWorldQualifier2017EOIEmailGenerator gcWorldQualifier2017EOIEmailGenerator,
             Gateball2017EmailGenerator gateball2017EmailGenerator,
-            ACWorlds2018EOIEmailGenerator acWorlds2018EOIEmailGenerator)
+            ACWorlds2018EOIEmailGenerator acWorlds2018EOIEmailGenerator,
+            ACEightsEOIEmailGenerator acEightsEOIEmailGenerator)
         {
             _tournamentsRepository = tournamentsRepository;
             _singlesEmailGenerator = singlesEmailGenerator;
@@ -56,6 +58,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             _gcWorldQualifier2017EOIEmailGenerator = gcWorldQualifier2017EOIEmailGenerator;
             _gateball2017EmailGenerator = gateball2017EmailGenerator;
             _acWorlds2018EOIEmailGenerator = acWorlds2018EOIEmailGenerator;
+            _acEightsEOIEmailGenerator = acEightsEOIEmailGenerator;
         }
 
         public async Task<IEnumerable<EmailMessage>> GenerateAsync(EntrySubmitted entrySubmitted)
@@ -86,6 +89,14 @@ namespace CroquetAustralia.QueueProcessor.Email
                 return new Func<EmailMessage>[]
                 {
                     () => _gcEightsEOIEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace)
+                };
+            }
+
+            if (tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdAcEights2017EOI))
+            {
+                return new Func<EmailMessage>[]
+                {
+                    () => _acEightsEOIEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace)
                 };
             }
 

@@ -1,0 +1,10 @@
+﻿Dear {{Player.FirstName}}
+ 
+Thank you for your expression of interest to play in the 2017 President’s AC Eights. The 24 highest ranked players as at Monday 24 July, 2017 will be offered a place in the First Eights, Second Eights and Third Eights. Those women players who are not offered a placed in the open eights will be offered a place in the Women’s Eights. Please note the AC Selection Committee has the ability to include up to two Wild Cards in the available 32 places.
+
+It is anticipated that letters of invitation will be sent, via email by the end of the first week of August.
+
+If you have any queries please do not hesitate to contact Anne Quinn at acquinn@bigpond.com.
+
+Croquet Australia
+0457 678 380

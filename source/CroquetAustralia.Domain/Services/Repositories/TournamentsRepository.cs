@@ -1020,7 +1020,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "ee1cb889-f5cc-4400-8e7c-0e9bc03f5fe2", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 });
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 });
         }
 
         private static Tournament GetGcGenderTournament2017(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)

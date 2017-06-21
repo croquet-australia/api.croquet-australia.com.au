@@ -36,6 +36,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGateballChampionships2017 = "8161726d-ee57-4b0b-838b-6c0268de81bf";
         public const string TournamentIdAcWorldsEOI2018 = "8fbda7d9-efec-4386-b779-a04cd32755e5";
         public const string TournamentIdAcEights2017EOI = "77370e58-a06a-4816-be81-a3f7ad19ebb5";
+        public const string TournamentIdGcMensOpen2017 = "9d7a4a85-8759-4bbb-9691-846803171a4f";
+        public const string TournamentIdGcWomensOpen2017 = "f8c1fae1-1edc-4cac-8f5e-c3f678aa53a6";
 
         private static readonly Tournament[] Tournaments;
 
@@ -48,8 +50,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcOpenDoubles2016(),
                 GetGcOpenSingles2016(),
                 GetAcPatronsTrophy2016(),
-                GetGcMensOpen(),
-                GetGcWomensOpen(),
+                GetGcMensOpen2016(),
+                GetGcWomensOpen2016(),
                 GetGcAusU21(),
                 GetGc_U21_WorldsEOI(),
                 GetGcHandicapDoubles(),
@@ -66,6 +68,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcPatronsTrophy2017(),
                 GetAcWorlds2018EOI(),
                 GetAcEights2017EOI(),
+                GetGcMensOpen2017(),
+                GetGcWomensOpen2017()
             };
         }
 
@@ -457,7 +461,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return tournament;
         }
 
-        private static Tournament GetGcMensOpen()
+        private static Tournament GetGcMensOpen2016()
         {
             const string tournamentId = TournamentIdGcMensOpen2016;
             const string tournamentTitle = "Australian GC Men's Singles";
@@ -469,10 +473,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "b89fa7d6-8a80-49d9-ad5a-fd40ed27966a", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2016});
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2016});
         }
 
-        private static Tournament GetGcWomensOpen()
+        private static Tournament GetGcWomensOpen2016()
         {
             const string tournamentId = TournamentIdGcWomensOpen2016;
             const string tournamentTitle = "Australian GC Women's Singles";
@@ -484,10 +488,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "4a492460-a1a8-4dfa-a952-21ff20b81ce8", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2016});
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2016});
         }
 
-        private static Tournament GetGcGenderTournament(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
+        private static Tournament GetGcGenderTournament2016(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
         {
             var functions = new[]
             {
@@ -985,6 +989,77 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 slug,
                 depositStating,
                 isEOI: isEOI);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcMensOpen2017()
+        {
+            const string tournamentId = TournamentIdGcMensOpen2017;
+            const string tournamentTitle = "Australian GC Men's Singles";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "765baf6a-0b9b-44b7-8343-2f4c53e705d4", "Main and Consolation Events", 85),
+                new TournamentItem("event", "f4f95439-b756-4bd0-a03e-8527ec67cf96", "Main Event Only", 85),
+                new TournamentItem("event", "45afbc57-d1d2-4a60-826b-d590c4fd656a", "Plate Only", 42.50m)
+            };
+
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2017 });
+        }
+
+        private static Tournament GetGcWomensOpen2017()
+        {
+            const string tournamentId = TournamentIdGcWomensOpen2017;
+            const string tournamentTitle = "Australian GC Women's Singles";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "aaa80a0c-c37e-47f5-835a-d00a22950cdd", "Main and Consolation events", 85),
+                new TournamentItem("event", "aea02bf2-a321-493b-8720-26b728015c1a", "Main Event Only", 85),
+                new TournamentItem("event", "ee1cb889-f5cc-4400-8e7c-0e9bc03f5fe2", "Plate Only", 42.50m)
+            };
+
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 });
+        }
+
+        private static Tournament GetGcGenderTournament2017(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
+        {
+            var functions = new[]
+            {
+                new TournamentItem("function", "eeb28e49-1978-4cdd-935c-fbe4c7e427f4", "Welcome BBQ Men's & Women's Singles - 5:00pm Friday 1 September", 10),
+                new TournamentItem("function", "57388a06-7071-4e73-b8e4-2d05781f1780", "ISS Presentation Dinner - 6:30pm Sunday 10 September at Mercure Brisbane, North Quay", 60)
+            };
+
+            var merchandise = new TournamentItem[] { };
+
+            var starts = "02 Sep 2016 Australia/Brisbane".ToZonedDateTime();
+            var finishes = "05 Sep 2016 Australia/Brisbane".ToZonedDateTime();
+            var eventsClose = "03 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "27 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var merchandiseClose = functionsClose;
+            const string location = "Brisbane, QLD";
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const string depositStating = "GC Championship";
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                relatedTournamentIds);
 
             return tournament;
         }

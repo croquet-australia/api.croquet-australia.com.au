@@ -1033,10 +1033,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
             var merchandise = new TournamentItem[] { };
 
-            var starts = "02 Sep 2016 Australia/Brisbane".ToZonedDateTime();
-            var finishes = "05 Sep 2016 Australia/Brisbane".ToZonedDateTime();
-            var eventsClose = "03 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
-            var functionsClose = "27 Aug 2016 23:59 Australia/Perth".ToZonedDateTime();
+            var starts = "02 Sep 2017 Australia/Brisbane".ToZonedDateTime();
+            var finishes = "05 Sep 2017 Australia/Brisbane".ToZonedDateTime();
+            var eventsClose = "03 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "27 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
             var merchandiseClose = functionsClose;
             const string location = "Brisbane, QLD";
             const string discipline = "gc";

@@ -1005,7 +1005,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "45afbc57-d1d2-4a60-826b-d590c4fd656a", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2017 });
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2017 }, "GC Mens");
         }
 
         private static Tournament GetGcWomensOpen2017()
@@ -1020,10 +1020,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "ee1cb889-f5cc-4400-8e7c-0e9bc03f5fe2", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 });
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 }, "GC Womens");
         }
 
-        private static Tournament GetGcGenderTournament2017(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
+        private static Tournament GetGcGenderTournament2017(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds, string depositStating)
         {
             var functions = new[]
             {
@@ -1041,7 +1041,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string location = "Brisbane, QLD";
             const string discipline = "gc";
             const bool isDoubles = false;
-            const string depositStating = "GC Championship";
 
             var tournament = new Tournament(
                 tournamentId,

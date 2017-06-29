@@ -1072,8 +1072,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string tournamentTitle = "Australian Golf Croquet Handicap Doubles";
             const string slug = "handicap-doubles";
             const bool isDoubles = true;
-            var starts = "6 Nov 2017 Australia/Melbourne".ToZonedDateTime();
-            var finishes = "7 Nov 2017 Australia/Melbourne".ToZonedDateTime();
+            var starts = "06 Nov 2017 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "07 Nov 2017 Australia/Melbourne".ToZonedDateTime();
             var eventsClose = "19 Oct 2017 23:59 Australia/Perth".ToZonedDateTime();
             var events = new[]
             {
@@ -1088,7 +1088,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string tournamentTitle = "Australian Golf Croquet Handicap Singles";
             const string slug = "handicap-singles";
             const bool isDoubles = false;
-            var starts = "8 Nov 2017 Australia/Melbourne".ToZonedDateTime();
+            var starts = "08 Nov 2017 Australia/Melbourne".ToZonedDateTime();
             var finishes = "10 Nov 2017 Australia/Melbourne".ToZonedDateTime();
             var eventsClose = "30 Sep 2017 17:00 Australia/Perth".ToZonedDateTime();
             var events = new[]

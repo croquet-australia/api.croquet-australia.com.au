@@ -96,7 +96,8 @@ namespace CroquetAustralia.QueueProcessor.UnitTests.WebJobs
                     new GCWorldQualifier2017EOIEmailGenerator(emailMessageSettings),
                     new Gateball2017EmailGenerator(emailMessageSettings),
                     new ACWorlds2018EOIEmailGenerator(emailMessageSettings),
-                    new ACEightsEOIEmailGenerator(emailMessageSettings));
+                    new ACEightsEOIEmailGenerator(emailMessageSettings),
+                    new ACEightsReservesEOIEmailGenerator(emailMessageSettings));
 
                 _processor = new SendEntrySubmittedEmailQueueProcessor(
                     queueMessageSerializer,

@@ -1,0 +1,10 @@
+﻿Dear {{Player.FirstName}}
+ 
+Thank you for your expression of interest to be considered as a reserve for the 2017 President’s AC Eights. Thirty-two players have received invitations to play in the event, the format of which will be four open eights.
+
+Players are required to accept their place no later than Monday 4 September. If there are vacant positions, the AC Selectors will fill these from this round of EOIs and you will be advised accordingly.
+
+If you have any queries please do not hesitate to contact Anne Quinn at acquinn@bigpond.com.
+
+Croquet Australia
+0457 678 380

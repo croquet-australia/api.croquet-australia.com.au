@@ -122,6 +122,7 @@
     <Compile Include="..\CroquetAustralia.WebApi\Properties\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Email\EmailGenerators\ACEightsReservesEOIEmailGenerator.cs" />
     <Compile Include="Email\EmailGenerators\BaseEmailGenerator.cs" />
     <Compile Include="Email\EmailGenerators\DoublesPartnerEmailGenerator.cs" />
     <Compile Include="Email\EmailGenerators\DoublesPlayerEmailGenerator.cs" />
@@ -200,6 +201,7 @@
     <EmbeddedResource Include="Email\Templates\PayByEFT\2017 Gateball Championships.txt" />
     <EmbeddedResource Include="Email\Templates\PayBy\ACWorlds2018EOI.txt" />
     <EmbeddedResource Include="Email\Templates\PayBy\ACEightsEOI.txt" />
+    <EmbeddedResource Include="Email\Templates\PayBy\ACEightsReservesEOI.txt" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>

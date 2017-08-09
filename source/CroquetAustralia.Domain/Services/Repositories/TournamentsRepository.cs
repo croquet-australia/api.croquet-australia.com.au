@@ -36,6 +36,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGateballChampionships2017 = "8161726d-ee57-4b0b-838b-6c0268de81bf";
         public const string TournamentIdAcWorldsEOI2018 = "8fbda7d9-efec-4386-b779-a04cd32755e5";
         public const string TournamentIdAcEights2017EOI = "77370e58-a06a-4816-be81-a3f7ad19ebb5";
+        public const string TournamentIdAcEightsReserves2017EOI = "618f7ae6-a86b-45f6-8998-082a2b03ab45";
         public const string TournamentIdGcMensOpen2017 = "9d7a4a85-8759-4bbb-9691-846803171a4f";
         public const string TournamentIdGcWomensOpen2017 = "f8c1fae1-1edc-4cac-8f5e-c3f678aa53a6";
         public const string TournamentIdGcHandicapDoubles2017 = "8942c912-5844-4053-b122-7f8c9a6953ed";
@@ -72,6 +73,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcPatronsTrophy2017(),
                 GetAcWorlds2018EOI(),
                 GetAcEights2017EOI(),
+                GetAcEightsReserves2017EOI(),
                 GetGcMensOpen2017(),
                 GetGcWomensOpen2017(),
                 GetGcHandicapDoubles2017(),
@@ -973,6 +975,47 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var starts = "06 Oct 2017 Australia/Melbourne".ToZonedDateTime();
             var finishes = "09 Oct 2017 Australia/Melbourne".ToZonedDateTime();
             var eventsClose = "24 Jul 2017 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                isEOI: isEOI);
+
+            return tournament;
+        }
+
+        private static Tournament GetAcEightsReserves2017EOI()
+        {
+            const string tournamentId = TournamentIdAcEightsReserves2017EOI;
+            const string tournamentTitle = "Australian AC President's Eights Reserves - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "presidents-eights-reserves-expressions-of-interest";
+            const string depositStating = null;
+            const string discipline = "ac";
+            const bool isDoubles = false;
+            const bool isEOI = true;
+            var starts = "06 Oct 2017 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "09 Oct 2017 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "28 Aug 2017 23:59:59 Australia/Perth".ToZonedDateTime();
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
 

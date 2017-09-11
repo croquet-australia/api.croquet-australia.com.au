@@ -1078,7 +1078,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         {
             var functions = new[]
             {
-                //new TournamentItem("function", "eeb28e49-1978-4cdd-935c-fbe4c7e427f4", "Welcome BBQ Men's & Women's Singles - 5:00pm Friday 1 September", 10),
+                new TournamentItem("function", "eeb28e49-1978-4cdd-935c-fbe4c7e427f4", "Welcome BBQ Men's & Women's Singles - 5:00pm Friday 1 September", 10),
                 new TournamentItem("function", "57388a06-7071-4e73-b8e4-2d05781f1780", "ISS Presentation Dinner - 6:30pm Sunday 10 September at Mercure Brisbane, North Quay", 60)
             };
 

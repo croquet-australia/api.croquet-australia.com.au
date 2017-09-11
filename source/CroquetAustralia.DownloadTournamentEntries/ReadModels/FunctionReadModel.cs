@@ -11,9 +11,21 @@ namespace CroquetAustralia.DownloadTournamentEntries.ReadModels
     {
         public FunctionReadModel(EntrySubmittedReadModel entrySubmitted, Tournament tournament, SubmitEntry.LineItem lineItem)
         {
-            TournamentItem = tournament.Functions.First(f => f.Id == lineItem.Id);
+            TournamentItem = FindFirstFunction(tournament, lineItem);
             EntrySubmitted = entrySubmitted;
             LineItem = lineItem;
+        }
+
+        private static TournamentItem FindFirstFunction(Tournament tournament, SubmitEntry.LineItem lineItem)
+        {
+            try
+            {
+                return tournament.Functions.First(f => f.Id == lineItem.Id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Cannot find function '{lineItem.Id}' in tournament '{tournament.Title}'.", e);
+            }
         }
 
         public EntrySubmittedReadModel EntrySubmitted { get; }

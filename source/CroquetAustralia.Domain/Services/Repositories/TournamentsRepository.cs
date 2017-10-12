@@ -22,7 +22,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWorldsEOI2017 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
         public const string TournamentIdGcWomensOpen2016 = "2ced7cd7-a505-497e-b628-1c31860d102b";
-        public const string TournamentIdGcU21 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
+        public const string TournamentIdGc_U21_2016 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
         // ReSharper disable once InconsistentNaming
         public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
         public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
@@ -57,7 +57,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcPatronsTrophy2016(),
                 GetGcMensOpen2016(),
                 GetGcWomensOpen2016(),
-                GetGcAusU21(),
+                GetGcAus_U21_2016(),
                 GetGc_U21_WorldsEOI(),
                 GetGcHandicapDoubles2016(),
                 GetGcHandicapSingles2016(),
@@ -79,7 +79,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcHandicapDoubles2017(),
                 GetGcHandicapSingles2017(),
                 GetAcOpenDoubles2017(),
-                GetAcOpenSingles2017(),
+                GetAcOpenSingles2017()
             };
         }
 
@@ -134,9 +134,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return Task.FromResult(Tournaments.AsEnumerable());
         }
 
-        private static Tournament GetGcAusU21()
+        private static Tournament GetGcAus_U21_2016()
         {
-            const string tournamentId = TournamentIdGcU21;
+            const string tournamentId = TournamentIdGc_U21_2016;
             const string tournamentTitle = "Australian Under 21 Golf Croquet Championship";
 
             var events = new[]

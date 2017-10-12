@@ -1137,7 +1137,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const bool isDoubles = false;
             var starts = "08 Nov 2017 Australia/Melbourne".ToZonedDateTime();
             var finishes = "10 Nov 2017 Australia/Melbourne".ToZonedDateTime();
-            var eventsClose = "30 Sep 2017 17:00 Australia/Perth".ToZonedDateTime();
+            var eventsClose = "19 Oct 2017 17:00 Australia/Perth".ToZonedDateTime();
             var events = new[]
             {
                 new TournamentItem("event", "d3f8428b-d5a7-444b-8487-9c85ec86020e", "Main and Consolation Events", 80),

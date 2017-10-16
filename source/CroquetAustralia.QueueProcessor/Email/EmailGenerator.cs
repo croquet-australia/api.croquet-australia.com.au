@@ -156,7 +156,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             }
 
             // ReSharper disable once InvertIf
-            if (entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGcU21))
+            if (entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_2016))
             {
                 if (!tournament.PracticeStarts.HasValue)
                 {

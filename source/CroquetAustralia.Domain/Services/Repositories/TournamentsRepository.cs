@@ -44,7 +44,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcOpenDoubles2017 = "f055cdbc-1915-4c1e-8bc4-2efff3147c0b";
         public const string TournamentIdAcOpenSingles2017 = "e9d98094-4c82-43b4-a9b8-5229c99adbfa";
         public const string TournamentIdGc_U21_Singles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
-        public const string TournamentIdGc_U21_Doubles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
+        public const string TournamentIdGc_U21_Doubles_2018 = "a19f5ccc-de2e-44ef-aac7-4fbc9e60dbeb";
 
         private static readonly Tournament[] Tournaments;
 

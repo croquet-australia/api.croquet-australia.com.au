@@ -23,8 +23,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
         public const string TournamentIdGcWomensOpen2016 = "2ced7cd7-a505-497e-b628-1c31860d102b";
         public const string TournamentIdGc_U21_2016 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
+
         // ReSharper disable once InconsistentNaming
         public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
+
         public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
         public const string TournamentIdGcHandicapSingles2016 = "e96ff546-1df2-478b-8faa-fa4d85869420";
         public const string TournamentIdGcEights2017EOI = "13b685d4-3734-4a59-b188-50333f104206";
@@ -45,6 +47,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcOpenSingles2017 = "e9d98094-4c82-43b4-a9b8-5229c99adbfa";
         public const string TournamentIdGc_U21_Singles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
         public const string TournamentIdGc_U21_Doubles_2018 = "a19f5ccc-de2e-44ef-aac7-4fbc9e60dbeb";
+        public const string TournamentIdGcEights2018EOI = "67fcd691-8e3d-4c26-a394-ca5c7a68f226";
 
         private static readonly Tournament[] Tournaments;
 
@@ -83,7 +86,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcOpenDoubles2017(),
                 GetAcOpenSingles2017(),
                 GetGcAus_U21_Singles_2018(),
-                GetGcAus_U21_Doubles_2018()
+                GetGcAus_U21_Doubles_2018(),
+                GetGcEights2018EOI()
             };
         }
 
@@ -121,6 +125,11 @@ namespace CroquetAustralia.Domain.Services.Repositories
             return Task.FromResult(FindByIdSync(tournamentId));
         }
 
+        public Task<IEnumerable<Tournament>> GetAllAsync()
+        {
+            return Task.FromResult(Tournaments.AsEnumerable());
+        }
+
         private static Tournament FindByIdSync(Guid tournamentId)
         {
             try
@@ -131,11 +140,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
             {
                 throw new Exception($"An error occurred while find tournamentId '{tournamentId}'.", exception);
             }
-        }
-
-        public Task<IEnumerable<Tournament>> GetAllAsync()
-        {
-            return Task.FromResult(Tournaments.AsEnumerable());
         }
 
         private static Tournament GetGcAus_U21_2016()
@@ -487,7 +491,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "b89fa7d6-8a80-49d9-ad5a-fd40ed27966a", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2016 });
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2016});
         }
 
         private static Tournament GetGcWomensOpen2016()
@@ -502,7 +506,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "4a492460-a1a8-4dfa-a952-21ff20b81ce8", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2016 });
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2016});
         }
 
         private static Tournament GetGcGenderTournament2016(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
@@ -1060,7 +1064,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "45afbc57-d1d2-4a60-826b-d590c4fd656a", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2017 }, "GC Mens");
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2017}, "GC Mens");
         }
 
         private static Tournament GetGcWomensOpen2017()
@@ -1075,7 +1079,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "ee1cb889-f5cc-4400-8e7c-0e9bc03f5fe2", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 }, "GC Womens");
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2017}, "GC Womens");
         }
 
         private static Tournament GetGcGenderTournament2017(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds, string depositStating)
@@ -1249,10 +1253,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string tournamentTitle = "Australian Under 21 Golf Croquet Championship - Doubles";
             var starts = "20 Jan 2018 Australia/Melbourne".ToZonedDateTime();
             var finishes = "20 Jan 2018 Australia/Melbourne".ToZonedDateTime();
-            var events = new[] { new TournamentItem("event", "1095d23d-d47e-45ed-9013-385da32bb9ce", "Doubles (per player)", 17) };
+            var events = new[] {new TournamentItem("event", "1095d23d-d47e-45ed-9013-385da32bb9ce", "Doubles (per player)", 17)};
             const string depositStating = "AUS U21 DBL";
             const string slug = "u21-doubles";
-            var relatedTournamentIds = new[] { TournamentIdGc_U21_Singles_2018 };
+            var relatedTournamentIds = new[] {TournamentIdGc_U21_Singles_2018};
             const bool isDoubles = true;
 
             return GetGcAus_U21_2018(
@@ -1273,10 +1277,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string tournamentTitle = "Australian Under 21 Golf Croquet Championship - Singles";
             var starts = "21 Jan 2018 Australia/Melbourne".ToZonedDateTime();
             var finishes = "22 Jan 2018 Australia/Melbourne".ToZonedDateTime();
-            var events = new[] { new TournamentItem("event", "01fdbe1f-2898-4ed2-9a4d-4e33d072870c", "Singles", 35) };
+            var events = new[] {new TournamentItem("event", "01fdbe1f-2898-4ed2-9a4d-4e33d072870c", "Singles", 35)};
             const string depositStating = "AUS U21 SNG";
             const string slug = "u21-singles";
-            var relatedTournamentIds = new[] { TournamentIdGc_U21_Doubles_2018 };
+            var relatedTournamentIds = new[] {TournamentIdGc_U21_Doubles_2018};
             const bool isDoubles = false;
 
             return GetGcAus_U21_2018(
@@ -1323,6 +1327,47 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 relatedTournamentIds,
                 isUnder21: isUnder21,
                 practiceStarts: practiceStarts);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcEights2018EOI()
+        {
+            const string tournamentId = TournamentIdGcEights2018EOI;
+            const string tournamentTitle = "Australian GC President's Eights - Expressions of Interest";
+            const string location = "Victorian Croquet Centre, Cairnlea, VIC";
+            const string slug = "presidents-eights-expressions-of-interest";
+            const string depositStating = null;
+            const string discipline = "gc";
+            const bool isDoubles = false;
+            const bool isEOI = true;
+            var starts = "16 Feb 2018 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "18 Feb 2018 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "30 Nov 2017 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new TournamentItem[] { };
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                isEOI: isEOI);
 
             return tournament;
         }

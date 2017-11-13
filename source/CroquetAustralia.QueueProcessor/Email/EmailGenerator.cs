@@ -87,7 +87,7 @@ namespace CroquetAustralia.QueueProcessor.Email
                 return GetU21Generators(entrySubmitted, tournament, templateNamespace);
             }
 
-            if (tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdGcEights2017EOI))
+            if (IsGcEightsTournament(tournament))
             {
                 return new Func<EmailMessage>[]
                 {
@@ -139,6 +139,12 @@ namespace CroquetAustralia.QueueProcessor.Email
             {
                 () => _singlesEmailGenerator.Generate(entrySubmitted.Player, entrySubmitted, tournament, templateNamespace)
             };
+        }
+
+        private static bool IsGcEightsTournament(Tournament tournament)
+        {
+            return tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdGcEights2017EOI) ||
+                   tournament.Id == Guid.Parse(TournamentsRepository.TournamentIdGcEights2018EOI);
         }
 
         private IEnumerable<Func<EmailMessage>> GetU21Generators(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)

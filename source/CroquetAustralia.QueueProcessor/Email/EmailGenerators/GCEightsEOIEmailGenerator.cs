@@ -6,7 +6,7 @@ namespace CroquetAustralia.QueueProcessor.Email.EmailGenerators
     public class GCEightsEOIEmailGenerator : BaseEmailGenerator
     {
         /* todo: remove hard coding of email addresses */
-        private static readonly EmailAddress GCSC = new EmailAddress("acquinn@bigpond.com", "Croquet Australia - Secretary GC Selection");
+        private static readonly EmailAddress GCSC = new EmailAddress("glenleslie@bigpond.com", "Croquet Australia - Chair GC Selection");
 
         private static readonly EmailAddress[] BCC =
         {

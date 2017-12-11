@@ -162,7 +162,7 @@ namespace CroquetAustralia.QueueProcessor.Email
             }
 
             // ReSharper disable once InvertIf
-            if (entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_2016))
+            if (IsU21Tournament(entrySubmitted))
             {
                 if (!tournament.PracticeStarts.HasValue)
                 {
@@ -182,6 +182,14 @@ namespace CroquetAustralia.QueueProcessor.Email
             }
 
             throw new ArgumentException($"EventId '{entrySubmitted.EventId}' is not supported.", nameof(entrySubmitted));
+        }
+
+        private static bool IsU21Tournament(EntrySubmitted entrySubmitted)
+        {
+            return entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_2016) ||
+                   entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Doubles_2018) ||
+                   entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Singles_2018);
+
         }
 
         private IEnumerable<Func<EmailMessage>> GetNewZelanderGenerator(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)

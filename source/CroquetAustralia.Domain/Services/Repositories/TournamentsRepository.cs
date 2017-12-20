@@ -48,6 +48,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGc_U21_Singles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
         public const string TournamentIdGc_U21_Doubles_2018 = "a19f5ccc-de2e-44ef-aac7-4fbc9e60dbeb";
         public const string TournamentIdGcEights2018EOI = "67fcd691-8e3d-4c26-a394-ca5c7a68f226";
+        public const string TournamentIdAcMensOpen2018 = "51456c5d-bab1-4bd6-8f51-056a458574c8";
+        public const string TournamentIdAcWomensOpen2018 = "9f653760-8fbe-45a5-9007-6337f6ce9e19";
 
         private static readonly Tournament[] Tournaments;
 
@@ -87,7 +89,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcOpenSingles2017(),
                 GetGcAus_U21_Singles_2018(),
                 GetGcAus_U21_Doubles_2018(),
-                GetGcEights2018EOI()
+                GetGcEights2018EOI(),
+                GetAcMensOpen2018(),
+                GetAcWomensOpen2018()
             };
         }
 
@@ -491,7 +495,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "b89fa7d6-8a80-49d9-ad5a-fd40ed27966a", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2016});
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2016 });
         }
 
         private static Tournament GetGcWomensOpen2016()
@@ -506,7 +510,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "4a492460-a1a8-4dfa-a952-21ff20b81ce8", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2016});
+            return GetGcGenderTournament2016(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2016 });
         }
 
         private static Tournament GetGcGenderTournament2016(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds)
@@ -1064,7 +1068,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "45afbc57-d1d2-4a60-826b-d590c4fd656a", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] {TournamentIdGcWomensOpen2017}, "GC Mens");
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2017 }, "GC Mens");
         }
 
         private static Tournament GetGcWomensOpen2017()
@@ -1079,7 +1083,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 new TournamentItem("event", "ee1cb889-f5cc-4400-8e7c-0e9bc03f5fe2", "Plate Only", 42.50m)
             };
 
-            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] {TournamentIdGcMensOpen2017}, "GC Womens");
+            return GetGcGenderTournament2017(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2017 }, "GC Womens");
         }
 
         private static Tournament GetGcGenderTournament2017(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds, string depositStating)
@@ -1253,10 +1257,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string tournamentTitle = "Australian Under 21 Golf Croquet Championship - Doubles";
             var starts = "20 Jan 2018 Australia/Melbourne".ToZonedDateTime();
             var finishes = "20 Jan 2018 Australia/Melbourne".ToZonedDateTime();
-            var events = new[] {new TournamentItem("event", "1095d23d-d47e-45ed-9013-385da32bb9ce", "Doubles (per player)", 17)};
+            var events = new[] { new TournamentItem("event", "1095d23d-d47e-45ed-9013-385da32bb9ce", "Doubles (per player)", 17) };
             const string depositStating = "AUS U21 DBL";
             const string slug = "u21-doubles";
-            var relatedTournamentIds = new[] {TournamentIdGc_U21_Singles_2018};
+            var relatedTournamentIds = new[] { TournamentIdGc_U21_Singles_2018 };
             const bool isDoubles = true;
 
             return GetGcAus_U21_2018(
@@ -1277,10 +1281,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
             const string tournamentTitle = "Australian Under 21 Golf Croquet Championship - Singles";
             var starts = "21 Jan 2018 Australia/Melbourne".ToZonedDateTime();
             var finishes = "22 Jan 2018 Australia/Melbourne".ToZonedDateTime();
-            var events = new[] {new TournamentItem("event", "01fdbe1f-2898-4ed2-9a4d-4e33d072870c", "Singles", 35)};
+            var events = new[] { new TournamentItem("event", "01fdbe1f-2898-4ed2-9a4d-4e33d072870c", "Singles", 35) };
             const string depositStating = "AUS U21 SNG";
             const string slug = "u21-singles";
-            var relatedTournamentIds = new[] {TournamentIdGc_U21_Doubles_2018};
+            var relatedTournamentIds = new[] { TournamentIdGc_U21_Doubles_2018 };
             const bool isDoubles = false;
 
             return GetGcAus_U21_2018(
@@ -1368,6 +1372,69 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 slug,
                 depositStating,
                 isEOI: isEOI);
+
+            return tournament;
+        }
+        private static Tournament GetAcMensOpen2018()
+        {
+            const string tournamentId = TournamentIdAcMensOpen2018;
+            const string tournamentTitle = "Australian AC Men's Singles Championship";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "23e737b6-d304-4043-ab7e-07444c7287c7", "Main and Consolation Events", 90),
+                new TournamentItem("event", "076e50be-d667-4c42-9656-86312780e476", "Main Event Only", 90),
+                new TournamentItem("event", "fc1a3da8-1a5a-46a3-8060-0028a27f83fe", "Plate Only", 45)
+            };
+
+            return GetAcGenderTournament2018(tournamentId, tournamentTitle, "mens-open", events, false);
+        }
+
+        private static Tournament GetAcWomensOpen2018()
+        {
+            const string tournamentId = TournamentIdAcWomensOpen2018;
+            const string tournamentTitle = "Australian AC Women's Singles Championship";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "9823c240-8150-456e-a768-35cdfe1695fe", "Main and Consolation events", 90),
+                new TournamentItem("event", "e1dcca85-075e-4ac0-825c-f38418001aff", "Main Event Only", 90),
+                new TournamentItem("event", "e794e981-f8fe-48c7-b396-08c27460a81e", "Plate Only", 45)
+            };
+
+            return GetAcGenderTournament2018(tournamentId, tournamentTitle, "womens-open", events, true);
+        }
+
+        private static Tournament GetAcGenderTournament2018(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, bool womens)
+        {
+            var functions = new[]
+            {
+                new TournamentItem("function", "ffbbd303-eb62-4fc2-9874-dc67ca7009cb", "Welcome BBQ 5pm Friday 16 March at Hutt Rd.", 20),
+                new TournamentItem("function", "8a92c78c-5aac-40e8-a142-c95049ce7887", "Eire Cup Presentation Dinner 7pm Sunday 25 March", 60)
+            };
+
+            var merchandise = new TournamentItem[] { };
+
+            var eventsClose = "05 Mar 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "05 Mar 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var merchandiseClose = functionsClose;
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                "17 Mar 2018 Australia/Adelaide".ToZonedDateTime(),
+                "20 Mar 2018 Australia/Adelaide".ToZonedDateTime(),
+                "Adelaide, South Australia",
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                false,
+                "ac",
+                slug,
+                "AC Championship");
 
             return tournament;
         }

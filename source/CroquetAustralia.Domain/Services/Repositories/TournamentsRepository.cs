@@ -1415,8 +1415,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
             var merchandise = new TournamentItem[] { };
 
-            var eventsClose = "05 Mar 2018 23:59 Australia/Perth".ToZonedDateTime();
-            var functionsClose = "05 Mar 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var eventsClose = "22 Feb 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "22 Feb 2018 23:59 Australia/Perth".ToZonedDateTime();
             var merchandiseClose = functionsClose;
 
             var tournament = new Tournament(

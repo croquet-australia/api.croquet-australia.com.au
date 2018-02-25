@@ -21,6 +21,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
 
         public const string TournamentIdAcPatronsTrophy2016 = "675d9e9f-6163-43ff-bec5-ba34840a9be1";
         public const string TournamentIdAcPatronsTrophy2017 = "563e4283-81a9-4cf8-a5a9-a1c9f6b67656";
+        public const string TournamentIdAcPatronsTrophy2018 = "c130e7e0-b035-4ca7-92b2-75e88d0d85bb";
+
         public const string TournamentIdAcPresidentsEightsEOI2016 = "35ac72fe-e3c3-402b-b48b-022412922cbc";
         public const string TournamentIdGcWorldsEOI2017 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
@@ -96,7 +98,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcMensOpen2018(),
                 GetAcWomensOpen2018(),
                 GetGcOpenDoubles2018(),
-                GetGcOpenSingles2018()
+                GetGcOpenSingles2018(),
+                GetAcPatronsTrophy2018()
             };
         }
 
@@ -1503,6 +1506,47 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 merchandise,
                 merchandiseClose,
                 isDoubles,
+                discipline,
+                slug,
+                depositStating);
+
+            return tournament;
+        }
+        private static Tournament GetAcPatronsTrophy2018()
+        {
+            const string tournamentId = TournamentIdAcPatronsTrophy2018;
+            const string tournamentTitle = "Australian AC Patron's Trophy";
+            const string location = "Wynnum Croquet Club, Brisbane, Queensland";
+            const string slug = "patrons-trophy";
+            const string depositStating = "Patron's";
+            const string discipline = "ac";
+            var starts = "09 Jun 2018 Australia/Brisbane".ToZonedDateTime();
+            var finishes = "11 Jun 2018 Australia/Brisbane".ToZonedDateTime();
+            var eventsClose = "31 May 2018 23:59:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+
+            var events = new[]
+            {
+                new TournamentItem("event", "0fe1bcba-98fb-4642-a65e-471266e00de0", "Main Event", 90)
+            };
+
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                false,
                 discipline,
                 slug,
                 depositStating);

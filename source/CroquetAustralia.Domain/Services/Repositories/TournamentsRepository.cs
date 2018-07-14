@@ -1173,10 +1173,10 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functions = new TournamentItem[] { };
             var merchandise = new TournamentItem[] { };
 
-            var starts = "08 Sep 2017 Australia/Sydney".ToZonedDateTime();
-            var finishes = "11 Sep 2017 Australia/Sydney".ToZonedDateTime();
-            var eventsClose = "10 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
-            var functionsClose = "10 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var starts = "08 Sep 2018 Australia/Sydney".ToZonedDateTime();
+            var finishes = "11 Sep 2018 Australia/Sydney".ToZonedDateTime();
+            var eventsClose = "10 Aug 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "10 Aug 2018 23:59 Australia/Perth".ToZonedDateTime();
             var merchandiseClose = functionsClose;
             const string location = "Hunter, NSW";
             const string discipline = "gc";

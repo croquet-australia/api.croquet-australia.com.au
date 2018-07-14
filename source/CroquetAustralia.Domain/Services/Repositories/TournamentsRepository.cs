@@ -55,6 +55,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcEights2018EOI = "67fcd691-8e3d-4c26-a394-ca5c7a68f226";
         public const string TournamentIdAcMensOpen2018 = "51456c5d-bab1-4bd6-8f51-056a458574c8";
         public const string TournamentIdAcWomensOpen2018 = "9f653760-8fbe-45a5-9007-6337f6ce9e19";
+        public const string TournamentIdGcMensOpen2018 = "928a3ba6-61f1-49c9-be68-b974b1c0c424";
+        public const string TournamentIdGcWomensOpen2018 = "33f6aff2-be0d-4322-a6e5-0e3906c5bd8d";
 
         private static readonly Tournament[] Tournaments;
 
@@ -99,7 +101,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetAcWomensOpen2018(),
                 GetGcOpenDoubles2018(),
                 GetGcOpenSingles2018(),
-                GetAcPatronsTrophy2018()
+                GetAcPatronsTrophy2018(),
+                GetGcMensOpen2018(),
+                GetGcWomensOpen2018()
             };
         }
 
@@ -1110,6 +1114,71 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = "31 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
             var merchandiseClose = functionsClose;
             const string location = "Brisbane, QLD";
+            const string discipline = "gc";
+            const bool isDoubles = false;
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                relatedTournamentIds);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcMensOpen2018()
+        {
+            const string tournamentId = TournamentIdGcMensOpen2018;
+            const string tournamentTitle = "Australian GC Men's Singles";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "f94130ad-4d34-4fbf-aed4-2c02bc56d30e", "Main and Consolation Events", 95),
+                new TournamentItem("event", "cb496e22-bde4-47ed-86cd-9795576e3756", "Main Event Only", 95),
+                new TournamentItem("event", "c6a50e37-a2be-4ab4-ad55-5b0fb15e587e", "Plate Only", 47.50m)
+            };
+
+            return GetGcGenderTournament2018(tournamentId, tournamentTitle, "mens-open", events, new[] { TournamentIdGcWomensOpen2018 }, "GC Mens");
+        }
+
+        private static Tournament GetGcWomensOpen2018()
+        {
+            const string tournamentId = TournamentIdGcWomensOpen2018;
+            const string tournamentTitle = "Australian GC Women's Singles";
+
+            var events = new[]
+            {
+                new TournamentItem("event", "d54f2c37-7f7c-4f1b-a1d4-af91f5009e0e", "Main and Consolation events", 95),
+                new TournamentItem("event", "b9557681-be7d-443d-830c-803d959537a8", "Main Event Only", 95),
+                new TournamentItem("event", "f7d57e29-f0be-4315-9faf-7c79e51bd28f", "Plate Only", 47.50m)
+            };
+
+            return GetGcGenderTournament2018(tournamentId, tournamentTitle, "womens-open", events, new[] { TournamentIdGcMensOpen2018 }, "GC Womens");
+        }
+
+        private static Tournament GetGcGenderTournament2018(string tournamentId, string tournamentTitle, string slug, TournamentItem[] events, string[] relatedTournamentIds, string depositStating)
+        {
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var starts = "08 Sep 2017 Australia/Sydney".ToZonedDateTime();
+            var finishes = "11 Sep 2017 Australia/Sydney".ToZonedDateTime();
+            var eventsClose = "10 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = "10 Aug 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var merchandiseClose = functionsClose;
+            const string location = "Hunter, NSW";
             const string discipline = "gc";
             const bool isDoubles = false;
 

@@ -32,8 +32,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
         // ReSharper disable once InconsistentNaming
         public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
 
-        public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
-        public const string TournamentIdGcHandicapSingles2016 = "e96ff546-1df2-478b-8faa-fa4d85869420";
         public const string TournamentIdGcEights2017EOI = "13b685d4-3734-4a59-b188-50333f104206";
         public const string TournamentIdAcOpenDoubles2016 = "587db6a8-5009-44a5-883f-17cec4a335df";
         public const string TournamentIdAcOpenSingles2016 = "31bf6160-b0d3-40e6-8ae9-7e689c659b33";
@@ -46,8 +44,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcEightsReserves2017EOI = "618f7ae6-a86b-45f6-8998-082a2b03ab45";
         public const string TournamentIdGcMensOpen2017 = "9d7a4a85-8759-4bbb-9691-846803171a4f";
         public const string TournamentIdGcWomensOpen2017 = "f8c1fae1-1edc-4cac-8f5e-c3f678aa53a6";
-        public const string TournamentIdGcHandicapDoubles2017 = "8942c912-5844-4053-b122-7f8c9a6953ed";
-        public const string TournamentIdGcHandicapSingles2017 = "00a1dd57-ac07-4905-a434-5b418edab8a0";
         public const string TournamentIdAcOpenDoubles2017 = "f055cdbc-1915-4c1e-8bc4-2efff3147c0b";
         public const string TournamentIdAcOpenSingles2017 = "e9d98094-4c82-43b4-a9b8-5229c99adbfa";
         public const string TournamentIdGc_U21_Singles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
@@ -57,6 +53,13 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcWomensOpen2018 = "9f653760-8fbe-45a5-9007-6337f6ce9e19";
         public const string TournamentIdGcMensOpen2018 = "928a3ba6-61f1-49c9-be68-b974b1c0c424";
         public const string TournamentIdGcWomensOpen2018 = "33f6aff2-be0d-4322-a6e5-0e3906c5bd8d";
+
+        public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
+        public const string TournamentIdGcHandicapSingles2016 = "e96ff546-1df2-478b-8faa-fa4d85869420";
+        public const string TournamentIdGcHandicapDoubles2017 = "8942c912-5844-4053-b122-7f8c9a6953ed";
+        public const string TournamentIdGcHandicapSingles2017 = "00a1dd57-ac07-4905-a434-5b418edab8a0";
+        public const string TournamentIdGcHandicapDoubles2018 = "8fb9cf7f-6105-47ec-9a0f-d10ff4325de5";
+        public const string TournamentIdGcHandicapSingles2018 = "2fc52538-87ff-4619-b81f-59c658173c75";
 
         private static readonly Tournament[] Tournaments;
 
@@ -103,7 +106,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcOpenSingles2018(),
                 GetAcPatronsTrophy2018(),
                 GetGcMensOpen2018(),
-                GetGcWomensOpen2018()
+                GetGcWomensOpen2018(),
+                GetGcHandicapDoubles2018(),
+                GetGcHandicapSingles2018(),
             };
         }
 
@@ -1251,6 +1256,69 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 starts,
                 finishes,
                 "Deniliquin Croquet Club, Deniliquin, NSW",
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                "gc",
+                slug,
+                depositStating);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcHandicapDoubles2018()
+        {
+            const string tournamentTitle = "Australian Golf Croquet Handicap Doubles";
+            const string slug = "handicap-doubles";
+            const bool isDoubles = true;
+            var starts = "24 Oct 2018 Australia/Adelaide".ToZonedDateTime();
+            var finishes = "25 Oct 2018 Australia/Adelaide".ToZonedDateTime();
+            var eventsClose = "04 Oct 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "4be42814-c17f-4dbd-9992-f83605f162c7", "Main and Consolation Events", 60),
+                new TournamentItem("event", "ccbd00bd-3e4a-4d39-92e4-37753d93be16", "Main and Consolation Events", 30)
+            };
+
+            return GetGcHandicapTournament2018(TournamentIdGcHandicapDoubles2018, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
+        private static Tournament GetGcHandicapSingles2018()
+        {
+            const string tournamentTitle = "Australian Golf Croquet Handicap Singles";
+            const string slug = "handicap-singles";
+            const bool isDoubles = false;
+            var starts = "26 Oct 2018 Australia/Adelaide".ToZonedDateTime();
+            var finishes = "28 Oct 2018 Australia/Adelaide".ToZonedDateTime();
+            var eventsClose = "04 Oct 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "d3f8428b-d5a7-444b-8487-9c85ec86020e", "Main and Consolation Events", 90),
+                new TournamentItem("event", "ba2f3676-1a9d-4d85-b368-9d090f8eb126", "Main Event Only", 90),
+                new TournamentItem("event", "f287630e-eb00-4ca8-a400-f31faa0d3faf", "Plate Only", 45)
+            };
+
+            return GetGcHandicapTournament2018(TournamentIdGcHandicapSingles2018, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
+        private static Tournament GetGcHandicapTournament2018(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
+        {
+            var functions = new TournamentItem[] { };
+            var functionsClose = eventsClose;
+            var merchandise = new TournamentItem[] { };
+            var merchandiseClose = eventsClose;
+            var depositStating = "GC Hcp " + (isDoubles ? "Dbl" : "Sng");
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                "SACA HQ, Hutt Rd, Adelaide &amp; other Adelaide venues as required",
                 events,
                 eventsClose,
                 functions,

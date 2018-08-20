@@ -1318,7 +1318,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 tournamentTitle,
                 starts,
                 finishes,
-                "SACA HQ, Hutt Rd, Adelaide &amp; other Adelaide venues as required",
+                "SACA HQ, Hutt Rd, Adelaide & other Adelaide venues as required",
                 events,
                 eventsClose,
                 functions,

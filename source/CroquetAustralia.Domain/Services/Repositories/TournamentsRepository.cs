@@ -1539,7 +1539,7 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var merchandise = new TournamentItem[] { };
 
             var practiceStarts = "12 Jan 2019 Australia/Melbourne".ToZonedDateTime();
-            var eventsClose = "14 Dec 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var eventsClose = "14 Dec 2018 23:59 Australia/Perth".ToZonedDateTime();
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
             const string location = "SACA HQ, Hutt Road, Adelaide South Australia";

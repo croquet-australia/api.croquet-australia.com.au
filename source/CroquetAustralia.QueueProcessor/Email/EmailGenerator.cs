@@ -188,8 +188,9 @@ namespace CroquetAustralia.QueueProcessor.Email
         {
             return entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_2016) ||
                    entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Doubles_2018) ||
-                   entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Singles_2018);
-
+                   entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Singles_2018) ||
+                   entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Doubles_2019) ||
+                   entrySubmitted.TournamentId == Guid.Parse(TournamentsRepository.TournamentIdGc_U21_Singles_2019);
         }
 
         private IEnumerable<Func<EmailMessage>> GetNewZelanderGenerator(EntrySubmitted entrySubmitted, Tournament tournament, string templateNamespace)

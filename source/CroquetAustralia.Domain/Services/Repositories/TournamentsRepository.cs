@@ -27,7 +27,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWorldsEOI2017 = "56111ebd-325f-4a68-95aa-35d3dfb7d5cc";
         public const string TournamentIdGcMensOpen2016 = "0b4a3868-c974-47bb-85d5-d6eaee6a67da";
         public const string TournamentIdGcWomensOpen2016 = "2ced7cd7-a505-497e-b628-1c31860d102b";
-        public const string TournamentIdGc_U21_2016 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
 
         // ReSharper disable once InconsistentNaming
         public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
@@ -46,8 +45,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWomensOpen2017 = "f8c1fae1-1edc-4cac-8f5e-c3f678aa53a6";
         public const string TournamentIdAcOpenDoubles2017 = "f055cdbc-1915-4c1e-8bc4-2efff3147c0b";
         public const string TournamentIdAcOpenSingles2017 = "e9d98094-4c82-43b4-a9b8-5229c99adbfa";
-        public const string TournamentIdGc_U21_Singles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
-        public const string TournamentIdGc_U21_Doubles_2018 = "a19f5ccc-de2e-44ef-aac7-4fbc9e60dbeb";
         public const string TournamentIdGcEights2018EOI = "67fcd691-8e3d-4c26-a394-ca5c7a68f226";
         public const string TournamentIdAcMensOpen2018 = "51456c5d-bab1-4bd6-8f51-056a458574c8";
         public const string TournamentIdAcWomensOpen2018 = "9f653760-8fbe-45a5-9007-6337f6ce9e19";
@@ -60,6 +57,12 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcHandicapSingles2017 = "00a1dd57-ac07-4905-a434-5b418edab8a0";
         public const string TournamentIdGcHandicapDoubles2018 = "8fb9cf7f-6105-47ec-9a0f-d10ff4325de5";
         public const string TournamentIdGcHandicapSingles2018 = "2fc52538-87ff-4619-b81f-59c658173c75";
+
+        public const string TournamentIdGc_U21_2016 = "d30d3ad9-b9ba-4a47-8545-f8e550aa9c6e";
+        public const string TournamentIdGc_U21_Singles_2018 = "a028fa8f-c185-4636-8a99-ada77cd4717d";
+        public const string TournamentIdGc_U21_Doubles_2018 = "a19f5ccc-de2e-44ef-aac7-4fbc9e60dbeb";
+        public const string TournamentIdGc_U21_Singles_2019 = "63b28728-c7e9-46dd-9217-8cd681008fc6";
+        public const string TournamentIdGc_U21_Doubles_2019 = "2b49eb46-b017-4e46-b925-6e94008a398d";
 
         private static readonly Tournament[] Tournaments;
 
@@ -109,6 +112,8 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcWomensOpen2018(),
                 GetGcHandicapDoubles2018(),
                 GetGcHandicapSingles2018(),
+                GetGcAus_U21_Singles_2019(),
+                GetGcAus_U21_Doubles_2019()
             };
         }
 
@@ -1454,6 +1459,90 @@ namespace CroquetAustralia.Domain.Services.Repositories
             var functionsClose = eventsClose;
             var merchandiseClose = functionsClose;
             const string location = "Sandy Bay Croquet Club, Hobart, Tasmania";
+            const string discipline = "gc";
+            const bool isUnder21 = true;
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                location,
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                discipline,
+                slug,
+                depositStating,
+                relatedTournamentIds,
+                isUnder21: isUnder21,
+                practiceStarts: practiceStarts);
+
+            return tournament;
+        }
+
+        private static Tournament GetGcAus_U21_Doubles_2019()
+        {
+            const string tournamentId = TournamentIdGc_U21_Doubles_2019;
+            const string tournamentTitle = "Australian Under 21 Golf Croquet Championship - Doubles";
+            var starts = "12 Jan 2019 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "14 Jan 2019 Australia/Melbourne".ToZonedDateTime();
+            var events = new[] { new TournamentItem("event", "01b1a134-8e58-435e-950e-d3ab96267cff", "Doubles (per player)", 17) };
+            const string depositStating = "AUS U21 DBL";
+            const string slug = "u21-doubles";
+            var relatedTournamentIds = new[] { TournamentIdGc_U21_Singles_2019 };
+            const bool isDoubles = true;
+
+            return GetGcAus_U21_2019(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                events,
+                depositStating,
+                slug,
+                relatedTournamentIds,
+                isDoubles);
+        }
+
+        private static Tournament GetGcAus_U21_Singles_2019()
+        {
+            const string tournamentId = TournamentIdGc_U21_Singles_2019;
+            const string tournamentTitle = "Australian Under 21 Golf Croquet Championship - Singles";
+            var starts = "12 Jan 2019 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "14 Jan 2019 Australia/Melbourne".ToZonedDateTime();
+            var events = new[] { new TournamentItem("event", "2490c7bb-6b1f-4acc-bff3-39c962e5da4b", "Singles", 35) };
+            const string depositStating = "AUS U21 SNG";
+            const string slug = "u21-singles";
+            var relatedTournamentIds = new[] { TournamentIdGc_U21_Doubles_2019 };
+            const bool isDoubles = false;
+
+            return GetGcAus_U21_2019(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                events,
+                depositStating,
+                slug,
+                relatedTournamentIds,
+                isDoubles);
+        }
+
+        private static Tournament GetGcAus_U21_2019(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, string depositStating, string slug, string[] relatedTournamentIds, bool isDoubles)
+        {
+            var functions = new TournamentItem[] { };
+            var merchandise = new TournamentItem[] { };
+
+            var practiceStarts = "12 Jan 2019 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "14 Dec 2017 23:59 Australia/Perth".ToZonedDateTime();
+            var functionsClose = eventsClose;
+            var merchandiseClose = functionsClose;
+            const string location = "SACA HQ, Hutt Road, Adelaide South Australia";
             const string discipline = "gc";
             const bool isUnder21 = true;
 

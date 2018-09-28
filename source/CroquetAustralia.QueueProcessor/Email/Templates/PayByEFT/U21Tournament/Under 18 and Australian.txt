@@ -1,10 +1,10 @@
 ﻿Dear {{Player.FirstName}}
 
-Thank you for your tournament registration to the {{Tournament.Title}}.
+Thank you for your tournament registration to play in the {{Tournament.Title}}.
 
-As you have indicated that you are under 18 it is necessary for a parent or guardian to complete the attached consent form which is to be emailed to Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au by Friday 15th December, the closing date for entries.
+As you have indicated that you are under 18 it is necessary for a parent or guardian to complete the attached consent form and email it to Jacky McDonald, National Co-ordinator U21 at ndu21c@croquet-australia.com.au by Friday 14th December (the closing date for entries).
 
-The total amount of {{TotalPayable}} is to be paid by direct deposit —
+Please also pay the total amount of {{TotalPayable}} by direct deposit to: 
 
 BSB 063 208
 Account Number 1006 2783
@@ -12,8 +12,5 @@ Account Number 1006 2783
 
 Please identify your payment by stating "{{Stating}}".
 
-If you have any queries or realise that any of above is incorrect please contact Jacky McDonald, National Co-ordinator U21 Croquet at ndu21c@croquet-australia.com.au.
-
-Wishing you all the best for the competition.
-
-Croquet Australia
+If you have any queries please contact Jacky McDonald, National Co-ordinator U21 at 
+ndu21c@croquet-australia.com.au  

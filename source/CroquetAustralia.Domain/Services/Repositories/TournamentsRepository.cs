@@ -32,8 +32,6 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdGcWorlds_U21_EOI_2017 = "3c04a403-2b2b-41b8-9163-3926c297e12d";
 
         public const string TournamentIdGcEights2017EOI = "13b685d4-3734-4a59-b188-50333f104206";
-        public const string TournamentIdAcOpenDoubles2016 = "587db6a8-5009-44a5-883f-17cec4a335df";
-        public const string TournamentIdAcOpenSingles2016 = "31bf6160-b0d3-40e6-8ae9-7e689c659b33";
         public const string TournamentIdGcWorldQualifier2017EOI = "e777de8c-cd14-4e9f-afda-b0fae09ef549";
         public const string TournamentIdAcMensOpen2017 = "b06a8339-74c2-449f-a68e-70ba44c6f199";
         public const string TournamentIdAcWomensOpen2017 = "33b14886-2a59-4add-a798-e9a7d493af1e";
@@ -43,13 +41,18 @@ namespace CroquetAustralia.Domain.Services.Repositories
         public const string TournamentIdAcEightsReserves2017EOI = "618f7ae6-a86b-45f6-8998-082a2b03ab45";
         public const string TournamentIdGcMensOpen2017 = "9d7a4a85-8759-4bbb-9691-846803171a4f";
         public const string TournamentIdGcWomensOpen2017 = "f8c1fae1-1edc-4cac-8f5e-c3f678aa53a6";
-        public const string TournamentIdAcOpenDoubles2017 = "f055cdbc-1915-4c1e-8bc4-2efff3147c0b";
-        public const string TournamentIdAcOpenSingles2017 = "e9d98094-4c82-43b4-a9b8-5229c99adbfa";
         public const string TournamentIdGcEights2018EOI = "67fcd691-8e3d-4c26-a394-ca5c7a68f226";
         public const string TournamentIdAcMensOpen2018 = "51456c5d-bab1-4bd6-8f51-056a458574c8";
         public const string TournamentIdAcWomensOpen2018 = "9f653760-8fbe-45a5-9007-6337f6ce9e19";
         public const string TournamentIdGcMensOpen2018 = "928a3ba6-61f1-49c9-be68-b974b1c0c424";
         public const string TournamentIdGcWomensOpen2018 = "33f6aff2-be0d-4322-a6e5-0e3906c5bd8d";
+
+        public const string TournamentIdAcOpenDoubles2016 = "587db6a8-5009-44a5-883f-17cec4a335df";
+        public const string TournamentIdAcOpenSingles2016 = "31bf6160-b0d3-40e6-8ae9-7e689c659b33";
+        public const string TournamentIdAcOpenDoubles2017 = "f055cdbc-1915-4c1e-8bc4-2efff3147c0b";
+        public const string TournamentIdAcOpenSingles2017 = "e9d98094-4c82-43b4-a9b8-5229c99adbfa";
+        public const string TournamentIdAcOpenDoubles2018 = "681403d9-7704-421e-ba00-806a722dcbd3";
+        public const string TournamentIdAcOpenSingles2018 = "0bcdd82b-5d91-4d5f-93af-79aaeb66a902";
 
         public const string TournamentIdGcHandicapDoubles2016 = "591ce7dd-5e26-4a38-916f-0022a5533854";
         public const string TournamentIdGcHandicapSingles2016 = "e96ff546-1df2-478b-8faa-fa4d85869420";
@@ -113,7 +116,9 @@ namespace CroquetAustralia.Domain.Services.Repositories
                 GetGcHandicapDoubles2018(),
                 GetGcHandicapSingles2018(),
                 GetGcAus_U21_Singles_2019(),
-                GetGcAus_U21_Doubles_2019()
+                GetGcAus_U21_Doubles_2019(),
+                GetAcOpenDoubles2018(),
+                GetAcOpenSingles2018()
             };
         }
 
@@ -1375,6 +1380,69 @@ namespace CroquetAustralia.Domain.Services.Repositories
         }
 
         private static Tournament GetAcOpenTournament2017(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
+        {
+            var functions = new TournamentItem[] { };
+            var functionsClose = eventsClose;
+            var merchandise = new TournamentItem[] { };
+            var merchandiseClose = eventsClose;
+
+            var tournament = new Tournament(
+                tournamentId,
+                tournamentTitle,
+                starts,
+                finishes,
+                "Victorian Croquet Centre, Cairnlea, VIC",
+                events,
+                eventsClose,
+                functions,
+                functionsClose,
+                merchandise,
+                merchandiseClose,
+                isDoubles,
+                "ac",
+                slug,
+                "AC " + (isDoubles ? "Dbl" : "Sng"));
+
+            return tournament;
+        }
+
+        private static Tournament GetAcOpenDoubles2018()
+        {
+            const string tournamentTitle = "Australian AC Open Doubles";
+            const string slug = "open-doubles";
+            const bool isDoubles = true;
+            var starts = "17 Nov 2018 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "19 Nov 2018 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "28 Oct 2018 23:59 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "61e06167-6e6e-43bb-85a8-a91ae79649fb", "Main and Consolation Events", 90),
+                new TournamentItem("event", "3cf1f8f3-292b-46f8-b33d-6111e685e802", "Main Event Only", 90),
+                new TournamentItem("event", "fe212e18-b346-4855-bd71-53dfa77729af", "Plate Only", 45)
+            };
+
+            return GetAcOpenTournament2018(TournamentIdAcOpenDoubles2018, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
+        private static Tournament GetAcOpenSingles2018()
+        {
+            const string tournamentTitle = "Australian AC Open Singles";
+            const string slug = "open-singles";
+            const bool isDoubles = false;
+            var starts = "20 Nov 2018 Australia/Melbourne".ToZonedDateTime();
+            var finishes = "25 Nov 2018 Australia/Melbourne".ToZonedDateTime();
+            var eventsClose = "26 Oct 2018 17:00 Australia/Perth".ToZonedDateTime();
+            var events = new[]
+            {
+                new TournamentItem("event", "7cd4f680-bbe2-4831-a3db-d10cb2074650", "Main and Consolation Events", 142),
+                new TournamentItem("event", "6a0d813c-df80-448f-98c0-4e2a26a9d1b0", "Main Event Only", 142),
+                new TournamentItem("event", "351c3efa-4927-4968-bcf4-af9059e17e27", "Plate Only", 71)
+            };
+
+            return GetAcOpenTournament2018(TournamentIdAcOpenSingles2018, tournamentTitle, starts, finishes, events, eventsClose, isDoubles, slug);
+        }
+
+        private static Tournament GetAcOpenTournament2018(string tournamentId, string tournamentTitle, ZonedDateTime starts, ZonedDateTime finishes, TournamentItem[] events, ZonedDateTime eventsClose, bool isDoubles, string slug)
         {
             var functions = new TournamentItem[] { };
             var functionsClose = eventsClose;
